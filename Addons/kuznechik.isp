@@ -1,0 +1,18 @@
+[NAME]
+Кузнечик
+[/NAME]
+[BINARY]
+Kuznechik/Kuznechik
+[/BINARY]
+[URL]
+localhost:4356
+[/URL]
+[ALG_DESC]
+алг вперед(цел расстояние)
+алг назад(цел расстояние)
+алг перекрасить
+[/ALG_DESC]
+[ICON]
+[/ICON]
+[INIT]
+[/INIT]

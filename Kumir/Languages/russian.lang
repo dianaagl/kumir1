@@ -1,0 +1,6 @@
+﻿name = Русский
+loc_file = russian.qm qt_ru.qm
+err_file = russian.msg
+key_file = russian.keywords
+posix_name = ru_RU
+extra_charset = 0410-044F,0401,0451,2500,2502,250C,2510,2514,2518,251C,2524,252C,2534,253C,2580,2584,2588,258C,2590-2593,2320,25A0,2219,221A,2248,2264,2265,2321,2550-256C,A0,B0,B2,B7,B9,F7,A9

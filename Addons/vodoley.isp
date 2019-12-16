@@ -1,0 +1,27 @@
+[NAME]
+Водолей[/NAME]
+[BINARY]
+Vodoley/bin/vodoley
+[/BINARY]
+[URL]
+localhost:4356
+[/URL]
+[ALG_DESC]
+алг перелей из A в B
+алг перелей из A в C
+алг перелей из B в A
+алг перелей из B в C
+алг перелей из C в A
+алг перелей из C в B
+алг наполни A
+алг наполни B
+алг наполни C
+алг вылей A
+алг вылей B
+алг вылей C
+[/ALG_DESC]
+[ICON]
+vodoley.ico
+[/ICON]
+[INIT]
+[/INIT]

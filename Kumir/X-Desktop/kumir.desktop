@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=kumir %U
+Icon=kumir
+Name=Kumir
+Name[ru]=Кумир
+GenericName=Kumir Language Implementation
+GenericName[ru]=Программирование на русском алгоритмическом языке
+Categories=Education;ComputerScience;
+X-SuSE-translate=true

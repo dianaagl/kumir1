@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+	<mime-type type="application/x-kumir-program">
+		<comment>Kumir program</comment>
+		<comment xml:lang="ru">Кумир-программа</comment>
+		<glob pattern="*.kum"/>
+	</mime-type>
+</mime-info>

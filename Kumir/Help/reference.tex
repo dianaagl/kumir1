@@ -1,0 +1,430 @@
+\chapter{Справочник}
+
+\section{Команды Робота}
+
+\begin{center}
+\begin{tabular}{||c|c||}
+\hline
+\hline
+вверх &  вниз\\
+\hline
+вправо &  влево\\
+\hline
+\multicolumn{2}{||c||}{закрасить}\\
+\hline
+\hline
+\end{tabular}
+\begin{tabular}{||c||}
+\hline
+\hline
+\textbf{вещ} температура\\
+\hline
+\textbf{вещ} радиация\\
+\hline
+\hline
+\end{tabular}
+
+\vspace{1ex}
+
+\begin{tabular}{||c|c||}
+\hline
+\hline
+\textbf{лог} сверху стена & \textbf{лог} сверху свободно\\
+\hline
+\textbf{лог} снизу стена & \textbf{лог} снизу свободно\\
+\hline
+\textbf{лог} справа стена & \textbf{лог} справа свободно\\
+\hline
+\textbf{лог} слева стена & \textbf{лог} слева свободно\\
+\hline
+\textbf{лог} клетка закрашена & \textbf{лог} клетка чистая\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Команды Чертежника}
+\begin{center}
+\begin{tabular}{||c||}
+\hline
+\hline
+поднять перо\\
+\hline
+  опустить перо\\
+\hline
+  сместиться в точку (\textbf{арг вещ} x, y)\\
+\hline
+  сместиться на вектор (\textbf{арг вещ} x, y)\\
+\hline
+  установить цвет (\textbf{арг стр} ц)\\
+\hline
+  надпись (\textbf{арг вещ} ширина, \textbf{арг лит} стр)\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Команды для работы с файлами}
+\begin{center}
+\begin{tabular}{||c||}
+\hline
+\hline
+создать файл (\textbf{арг лит} имяФайла)\\
+\hline
+  открыть на чтение (\textbf{арг лит} имяФайла, \textbf{арг цел} ключ)\\
+\hline
+  открыть на запись (\textbf{арг лит} имяФайла, \textbf{арг цел} ключ)\\
+\hline
+  начать чтение (\textbf{арг цел} ключ)\\
+\hline
+  закрыть (\textbf{арг цел} ключ)\\
+\hline
+  \textbf{ф\_ввод} ключ, \dots\\
+\hline
+  \textbf{ф\_вывод} ключ, \dots\\
+\hline
+  \textbf{лог} конец файла (\textbf{арг цел} ключ)\\
+\hline
+  \textbf{лог} существует файл (\textbf{арг лит} имяФайла)\\
+\hline
+прочесть байт (\textbf{рез цел} байт, \textbf{арг цел} ключ)\\
+\hline
+записать байт (\textbf{арг цел} байт, \textbf{арг цел} ключ)\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Общий вид алгоритма}
+\sffamily
+\textbf{алг} имя (\emph{аргументы и результаты})\\ 
+\otstup \textbf{дано} \emph{условия применимости алгоритма}\\
+\otstup \textbf{надо} \emph{цель выполнения алгоритма}\\
+\textbf{нач}\\
+\otstup \emph{тело алгоритма}\\
+\textbf{кон}
+
+\section{Команды алгоритмического языка}
+
+\begin{center}
+\begin{tabular}{||p{10cm}||}
+\hline
+\hline
+\textbf{нц} \textit{число повторений} \textbf{раз}
+
+\otstup \textit{тело цикла (последовательность команд)}
+
+\textbf{кц}\\
+\hline
+\textbf{нц пока} \textit{условие}
+
+\otstup \textit{тело цикла (последовательность команд)}
+
+\textbf{кц}\\
+\hline
+\textbf{нц для} $i$ \textbf{от} $i1$ \textbf{до} $i2$ 
+
+\otstup \textit{тело цикла (последовательность команд)}
+
+\textbf{кц}\\
+\hline
+\hline
+\end{tabular}
+\vspace{1ex}
+
+\begin{tabular}{||p{6cm}|p{6cm}||}
+\hline
+\hline
+\textbf{если} \textit{условие}
+
+\otstup \textbf{то} \textit{серия 1}
+
+\otstup \textbf{иначе} \textit{серия 2}
+
+\textbf{все} &
+\textbf{если} \textit{условие}
+
+\otstup \textbf{то} \textit{серия 1}
+
+\textbf{все}\\
+\hline
+\textbf{выбор} \textit{условие}
+
+\otstup \textbf{при} \textit{условие 1}: \textit{серия 1}
+
+\otstup \textbf{при} \textit{условие 2}: \textit{серия 2}
+
+\otstup \dots
+
+\otstup \textbf{при} \textit{условие n}: \textit{серия n}
+
+\otstup \textbf{иначе} \textit{серия n+1}
+
+\textbf{все} &
+\textbf{выбор} \textit{условие}
+
+\otstup \textbf{при} \textit{условие 1}: \textit{серия 1}
+
+\otstup \textbf{при} \textit{условие 2}: \textit{серия 2}
+
+\otstup \dots
+
+\otstup \textbf{при} \textit{условие n}: \textit{серия n}
+
+\textbf{все}\\
+\hline
+\hline
+\end{tabular}
+\vspace{1ex}
+
+\begin{tabular}{||l|l||}
+\hline
+\hline
+ & \textbf{утв} \textit{условие}\\
+\hline
+ & \textbf{ввод} \textit{имена величин}\\
+\hline
+ & \textbf{вывод} \textit{тексты, имена величин, выражения,} \textbf{нс}\\
+\hline
+ & \textbf{выход}\\
+\hline
+\textrm{вызов:} & \textit{имя алгоритма (аргументы и имена результатов)}\\
+\hline
+\textrm{присваивание:} & \textit{имя величины := выражение}\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\normalfont
+
+\section{Типы величин}
+
+\begin{center}
+\begin{tabular}{||p{5cm}|p{5cm}||}
+\hline
+\hline
+ & \textit{Таблицы:}\\
+\hline
+целые \textbf{цел} 
+
+вещественные \textbf{вещ} 
+
+логические \textbf{лог} 
+
+символьные \textbf{сим} 
+
+литерные \textbf{лит} &
+целые \textbf{цел таб} 
+
+вещественные \textbf{вещ таб} 
+
+логические \textbf{лог таб} 
+
+символьные \textbf{сим таб} 
+
+литерные \textbf{лит таб}\\
+\hline
+\multicolumn{2}{||c||}{Пример описания: \sffamily \textbf{цел} i, j, \textbf{лит} t, \textbf{вещ таб} а[1:50]}\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Виды величин}
+\begin{itemize}
+\item аргументы (\textbf{арг}) --- описываются в заголовке алгоритма 
+\item результаты (\textbf{рез}) --- описываются в заголовке алгоритма 
+\item значения функций (\textbf{знач}) --- описываются указанием типа перед именем ал\-го\-рит\-ма-функ\-ции
+\item локальные --- описываются в теле алгоритма, между \textbf{нач} и \textbf{кон}
+\item общие --- описываются после строки \textbf{исп} исполнителя, до первой строки \textbf{алг}
+\end{itemize}
+
+\section{Общий вид исполнителя}
+{\sffamily
+\textbf{исп} имя\\
+\otstup \textit{вступление исполнителя:}\\
+\otstup \textit{\quad -- описание общих величин исполнителя}\\
+\otstup \textit{\quad -- команды для задания начальных значений общих величин и т. п.}\\
+\otstup \textit{алгоритмы исполнителя}\\
+\textbf{кон\_исп}}
+
+\section{Арифметические операции и стандартные функции для работы с числами}
+\label{standard-operations}
+\begin{center}
+\begin{tabular}{||c|c||}
+\hline
+\hline
+\textbf{Название операции} &
+\textbf{Форма записи} \\
+\hline
+сложение &
+x + y\\
+вычитание &
+x - y\\
+умножение &
+x * y\\
+деление &
+x / y\\
+возведение в степень &
+x ** y\\
+\hline
+\hline
+\end{tabular}
+
+\begin{tabular}{||c|c||}
+\hline
+\hline
+\textbf{Название функции} &
+\textbf{Форма записи} \\
+\hline
+корень квадратный &
+sqrt(x) \\
+абсолютная величина &
+abs(x) и iabs(x)\\
+знак числа (-1, 0 или 1) &
+sign(x) \\
+синус &
+sin(x) \\
+косинус &
+cos(x) \\
+тангенс &
+tg(x) \\
+котангенс &
+ctg(x) \\
+арксинус &
+arcsin(x) \\
+арккосинус &
+arccos(x) \\
+арктангенс &
+arctg(x) \\
+арккотангенс &
+arcctg(x) \\
+натуральный логарифм &
+ln(x) \\
+десятичный логарифм &
+lg(x) \\
+степень числа $e$ ($e \approx 2.718181$) &
+exp(x) \\
+минимум из чисел x и y &
+min(x,y) \\
+максимум из чисел x и y &
+max(x,y) \\
+остаток от деления x на y (x, y --- целые) &
+mod(x,y) \\
+частное от деления x на y (x, y --- целые) &
+div(x,y) \\
+целая часть числа x &
+int(x) \\
+случайное число в диапазоне от 0 до x &
+rnd(x) \\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Операции сравнения чисел}
+\begin{center}
+\begin{tabular}{||c|c||}
+\hline
+\hline
+\textbf{Название операции} &
+\textbf{Форма записи} \\
+\hline
+равно&
+x = y\\
+не равно&
+x <> y\\
+меньше&
+x<y\\
+больше&
+x>y\\
+меньше или равно&
+x<=y\\
+больше или равно&
+x>=y\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Логические операции}
+\begin{center}
+\begin{tabular}{||c|c||c||}
+\hline
+\hline
+\textbf{Название операции} &
+\textbf{Форма записи} &
+\textbf{Пример} \\
+\hline
+конъюнкция & \textbf{и} & а \textbf{и} б\\
+дизъюнкция & \textbf{или} & а \textbf{или} б\\
+отрицание & \textbf{не} & \textbf{не} а, завтра \textbf{не} будет дождь\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+\section{Операции для работы со строками}
+\begin{center}
+\begin{tabular}{||c|c||}
+\hline
+\hline
+\textbf{Название операции} &
+\textbf{Пример} \\
+\hline
+слияние & а+б\\
+вырезка & а[3:5]\\
+взятие символа & а[3]\\
+\hline
+равно&
+а = б\\
+не равно&
+а <> б\\
+\hline
+\hline
+\end{tabular}
+\end{center}
+
+
+\section{Другие встроенные алгоритмы}
+\begin{center}
+\begin{tabular}{||c|c||}
+\hline
+\hline
+\textbf{Функция} &
+\textbf{Форма вызова}\\
+\hline
+\hline
+Строковое представление целого числа &
+цел\_в\_лит(х)\\
+Строковое представление вещественного числа &
+вещ\_в\_лит(х)\\
+Перевод строки в целое число &
+лит\_в\_цел(стр, успех)\\
+Перевод строки в вещественное число &
+лит\_в\_вещ(стр, успех)\\
+\hline
+Длина строки &
+длин(стр)\\
+Код символа в таблице КОИ-8 &
+код(с)\\
+Символ таблицы КОИ-8 &
+символ(х)\\
+Код символа в таблице Юникод &
+юникод(с)\\
+Символ таблицы Юникод &
+символ2(х) \\
+\hline
+Код нажатой клавиши &
+клав\\
+Текущее время в миллисекундах &
+время\\
+Приостановка выполнения программы &
+пауза\\
+Остановка выполнения программы &
+стоп\\
+\hline
+\hline
+\end{tabular}
+\end{center}

@@ -1,0 +1,1 @@
+ВЫБОР -> выбор ИНАЧЕ_ВСЕ : { this.setError(this.currentPosition, 2200401); processCorrectSwitch(); } 

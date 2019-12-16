@@ -1,0 +1,17 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Meta+L" keySequence="Esc, L" name="нц-для-кц             (ESC, Д)" >
+ <event key="1053" count="2" modifiers="0" type="6" text="н" autoRepeat="0" />
+ <event key="1062" count="2" modifiers="0" type="6" text="ц" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="1044" count="2" modifiers="0" type="6" text="д" autoRepeat="0" />
+ <event key="1051" count="2" modifiers="0" type="6" text="л" autoRepeat="0" />
+ <event key="1071" count="2" modifiers="0" type="6" text="я" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="1050" count="2" modifiers="0" type="6" text="к" autoRepeat="0" />
+ <event key="1062" count="2" modifiers="0" type="6" text="ц" autoRepeat="0" />
+ <event key="16777235" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777235" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777233" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+</macro>

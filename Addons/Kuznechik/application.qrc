@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>160_55r.png</file>
+        <file>160_55l.png</file>
+        <file>71_71grMet.png</file>
+        <file>71_71grMet_d.png</file>
+        <file>butt.png</file>
+        <file>buttd.png</file>
+        <file>kumir.png</file>
+        <file>recolor.png</file>
+        <file>kuznec.png</file>
+        <file>clear.png</file>
+    </qresource>
+</RCC>

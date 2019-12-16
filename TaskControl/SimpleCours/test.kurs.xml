@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KURS xml:id="0" xml:name="Тест Курс">
+  
+  <T xml:id="1" xml:name="Задание 1">
+       <T xml:id="3" xml:name="Задание 3">
+        
+       </T>
+       <TITLE>Цикл пока</TITLE>
+       <DESC>
+       <![CDATA[ <HTML>]]>
+              <![CDATA[  <BODY>]]>
+              <![CDATA[  <b>Закрасить ряд</b>]]>
+         <![CDATA[       <img src="data:image/gif;base64,R0lGODlhEAAOALMAAOazToeHh0tLS/7LZv/0j
+vb29t/f3//Ub//ge8WSLf/rhf/3kdbW1mxsbP//mf///yH5BAAAAAAALAAAAAAQAA4AAA
+Re8L1Ekyky67QZ1hLnjM5UUde0ECwLJoExKcppV0aCcGCmTIHEIUEqjgaORCMxIC6e0Cc
+guWw6aFjsVMkkIr7g77ZKPJjPZqIyd7sJAgVGoEGv2xsBxqNgYPj/gAwXEQA7">]]>
+              <![CDATA[  </BODY>]]>
+         <![CDATA[       </HTML>]]>
+               
+              
+        </DESC>
+       <CS>Кумир</CS>
+       <ISP xml:ispname="Robot"></ISP>
+
+       <ENV>8x8.fil</ENV>
+       <PROGRAM>r1.kum</PROGRAM>
+       <READY>false</READY>
+       <MARK>0</MARK>
+  </T>
+  
+  <T xml:id="2" xml:name="Задание 2">
+       <TITLE>"ТЕСТ ЗАДАНИЯ 2" </TITLE>
+       <DESC>test.htm</DESC>
+       <CS>"Кумир 2"</CS>
+       <ISP xml:ispname="Robot"></ISP>
+       <ENV>"test.env"</ENV>
+       <READY>false</READY>
+       <DEPEND>
+            <ID>1</ID>
+            <MIN>5</MIN>
+       </DEPEND>
+       
+
+       <MARK>0</MARK>
+  </T>
+  
+  <T xml:id="4" xml:name="Задание 4">
+       <TITLE>"ТЕСТ ЗАДАНИЯ 4" </TITLE>
+       <DESC>test.htm</DESC>
+       <CS>"Кумир 2"</CS>
+       <ISP>Robot</ISP>
+       <READY>false</READY>
+       <DEPEND>1</DEPEND>
+  </T>
+  
+  <T xml:id="5" xml:name="Протомодуль">
+       <TITLE>Проверка протомодуля Гастарбайтеры </TITLE>
+       <DESC>test.htm</DESC>
+       <CS>Кумир</CS>
+         <ISP xml:ispname="Гастарбайтеры">
+          <ENV>g1.fil</ENV>        
+          <CONTROL>check.js</CONTROL>         
+         </ISP>
+       <READY>false</READY>
+       <DEPEND>1</DEPEND>
+       <MARK>0</MARK>
+  </T>
+  
+
+  
+</KURS>

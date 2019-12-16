@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>module_window.png</file>
+        <file>pult_window.png</file>
+    </qresource>
+</RCC>

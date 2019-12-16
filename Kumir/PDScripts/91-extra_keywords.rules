@@ -1,0 +1,92 @@
+ФРАГМЕНТ_АЛГОРИТМА* -> все : { setExtraCloseKeywordError(FI); }
+ФРАГМЕНТ_АЛГОРИТМА* -> кц : { setExtraCloseKeywordError(LOOPEND); }
+ФРАГМЕНТ_АЛГОРИТМА* -> кц_при : { setExtraCloseKeywordError(LOOPCONDEND); }
+АЛГОРИТМ* -> кон : { setExtraCloseKeywordError(END); }
+
+ФРАГМЕНТ_АЛГОРИТМА* -> иначе : { setExtraCloseKeywordError(ELSE); }
+ФРАГМЕНТ_АЛГОРИТМА* -> надо : { setExtraCloseKeywordError(NADO); }
+ФРАГМЕНТ_АЛГОРИТМА* -> дано : { setExtraCloseKeywordError(DANO); }
+ФРАГМЕНТ_АЛГОРИТМА* -> строка_документации : { setExtraCloseKeywordError(DOC); }
+#ФРАГМЕНТ_АЛГОРИТМА* -> выбор : { setExtraCloseKeywordError(SWITCH); }
+ФРАГМЕНТ_АЛГОРИТМА* -> при : { setExtraCloseKeywordError(CASE); }
+#ФРАГМЕНТ_АЛГОРИТМА* -> если : { setExtraCloseKeywordError(IF); }
+ФРАГМЕНТ_АЛГОРИТМА* -> то : { setExtraCloseKeywordError(THEN); }
+ФРАГМЕНТ_АЛГОРИТМА* -> использовать : { this.setError(this.currentPosition, 2200504); appendSimpleLine(); } 
+
+ЛИНЕЙНАЯ_СТРОКА* -> выбор : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> при : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> если : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> все : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> иначе : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> нц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> кц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> кон : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ЛИНЕЙНАЯ_СТРОКА* -> использовать : { this.setError(this.currentPosition, 2200504); appendSimpleLine(); } 
+
+#ИСПОЛНИТЕЛЬ* -> выбор : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#ИСПОЛНИТЕЛЬ* -> при : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#ИСПОЛНИТЕЛЬ* -> если : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#ИСПОЛНИТЕЛЬ* -> все : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#ИСПОЛНИТЕЛЬ* -> иначе : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#ИСПОЛНИТЕЛЬ* -> нц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#ИСПОЛНИТЕЛЬ* -> кц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+ИСПОЛНИТЕЛЬ* -> кон : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+
+
+#АЛГОРИТМ* -> выбор : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> при : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#АЛГОРИТМ* -> если : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> все : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#АЛГОРИТМ* -> иначе : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+#АЛГОРИТМ* -> нц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> кц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> кон : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+АЛГОРИТМ* -> дано : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> надо : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> строка_документации : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+АЛГОРИТМ* -> нач ФРАГМЕНТ_АЛГОРИТМА* КОНЕЦ_АЛГОРИТМА : { this.setError(this.currentPosition, 2200404); this.addDummyAlgHeader(); processCorrectAlgBegin(); }
+
+
+ИСПОЛНИТЕЛЬ* -> кон_исп : { this.setError(this.currentPosition, 1126); appendSimpleLine(); } 
+
+#АЛГОРИТМ* -> алг ДОКУМЕНТАЦИЯ ДАНО_НАДО : { this.setError(this.currentPosition, 1129); appendSimpleLine(); } 
+АЛГОРИТМ* -> алг ДОКУМЕНТАЦИЯ ДАНО_НАДО end : { this.setError(this.currentPosition, 1129); appendSimpleLine(); } {} 
+АЛГОРИТМ* -> алг алг МУСОР_МЕЖДУ_АЛГ_НАЧ ДОКУМЕНТАЦИЯ ДАНО_НАДО ТЕЛО_АЛГОРИТМА : { this.setError(this.currentPosition, 1129); appendSimpleLine(); } { processCorrectAlgHeader(); }
+АЛГОРИТМ* -> дано : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+АЛГОРИТМ* -> надо : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+
+ИСПОЛНИТЕЛЬ* -> перем : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+
+ИСПОЛНИТЕЛЬ* -> присваивание : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+ИСПОЛНИТЕЛЬ* -> вызов_алгоритма : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+ИСПОЛНИТЕЛЬ* -> ввод : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+ИСПОЛНИТЕЛЬ* -> вывод : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+ИСПОЛНИТЕЛЬ* -> ф_ввод : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+ИСПОЛНИТЕЛЬ* -> ф_вывод : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+ИСПОЛНИТЕЛЬ* -> утв : { this.setError(this.currentPosition, 2200804); appendSimpleLine(); }
+
+ОШИБОЧНАЯ_ЗАГРУЗКА* -> использовать : { this.setError(this.currentPosition, 2200901); appendSimpleLine(); }
+СТРОКА_ВНЕ_АЛГОРИТМА* -> использовать : { this.setError(this.currentPosition, 2200901); appendSimpleLine(); }
+СТРОКА_ВНЕ_АЛГОРИТМА* -> нц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+СТРОКА_ВНЕ_АЛГОРИТМА* -> кц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+СТРОКА_ВНЕ_АЛГОРИТМА* -> если : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+СТРОКА_ВНЕ_АЛГОРИТМА* -> то : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+СТРОКА_ВНЕ_АЛГОРИТМА* -> иначе : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+СТРОКА_ВНЕ_АЛГОРИТМА* -> все : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+
+СТРОКА_ПЕРЕД_АЛГОРИТМОМ* -> нц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+СТРОКА_ПЕРЕД_АЛГОРИТМОМ* -> кц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+СТРОКА_ПЕРЕД_АЛГОРИТМОМ* -> если : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+СТРОКА_ПЕРЕД_АЛГОРИТМОМ* -> то : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+СТРОКА_ПЕРЕД_АЛГОРИТМОМ* -> иначе : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+СТРОКА_ПЕРЕД_АЛГОРИТМОМ* -> все : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); } 
+
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> использовать : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> нц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> кц : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> если : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> то : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> иначе : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> все : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> вызов_алгоритма : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }
+МУСОР_В_КОНЦЕ_ПРОГРАММЫ* -> присваивание : { this.setError(this.currentPosition, 2200500); appendSimpleLine(); }

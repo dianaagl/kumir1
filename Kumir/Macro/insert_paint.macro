@@ -1,0 +1,13 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Meta+5" keySequence="Esc, Space" name="закрасить" >
+ <event key="1047" count="2" modifiers="0" type="6" text="з" autoRepeat="0" />
+ <event key="1040" count="2" modifiers="0" type="6" text="а" autoRepeat="0" />
+ <event key="1050" count="2" modifiers="0" type="6" text="к" autoRepeat="0" />
+ <event key="1056" count="2" modifiers="0" type="6" text="р" autoRepeat="0" />
+ <event key="1040" count="2" modifiers="0" type="6" text="а" autoRepeat="0" />
+ <event key="1057" count="2" modifiers="0" type="6" text="с" autoRepeat="0" />
+ <event key="1048" count="2" modifiers="0" type="6" text="и" autoRepeat="0" />
+ <event key="1058" count="2" modifiers="0" type="6" text="т" autoRepeat="0" />
+ <event key="1068" count="2" modifiers="0" type="6" text="ь" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+</macro>

@@ -1,0 +1,4 @@
+Character-Encoding: UTF-8
+Title: Convertor to C (ISO/IEC 9899:1999)
+Title[ru_RU]: Конвертор в язык Си (ISO/IEC 9899:1999)
+Python-Module: translator_service.c99

@@ -1,0 +1,6 @@
+pdflatex manual.tex
+mv manual.idx manual1.idx
+rumakeindex manual1.idx
+iconv -f KOI8-R -t UTF8 manual1.ind > manual.ind
+rm manual1.*
+pdflatex manual.tex

@@ -1,0 +1,24 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Meta+W" keySequence="Esc, W" name="do-while-end_do" >
+ <event key="68" count="1" modifiers="0" type="6" text="d" autoRepeat="0" />
+ <event key="79" count="1" modifiers="0" type="6" text="o" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="87" count="1" modifiers="0" type="6" text="w" autoRepeat="0" />
+ <event key="72" count="1" modifiers="0" type="6" text="h" autoRepeat="0" />
+ <event key="73" count="1" modifiers="0" type="6" text="i" autoRepeat="0" />
+ <event key="76" count="1" modifiers="0" type="6" text="l" autoRepeat="0" />
+ <event key="69" count="1" modifiers="0" type="6" text="e" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="69" count="1" modifiers="0" type="6" text="e" autoRepeat="0" />
+ <event key="78" count="1" modifiers="0" type="6" text="n" autoRepeat="0" />
+ <event key="68" count="1" modifiers="0" type="6" text="d" autoRepeat="0" />
+ <event key="16777248" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="95" count="1" modifiers="33554432" type="6" text="_" autoRepeat="0" />
+ <event key="68" count="1" modifiers="0" type="6" text="d" autoRepeat="0" />
+ <event key="79" count="1" modifiers="0" type="6" text="o" autoRepeat="0" />
+ <event key="16777235" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777235" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777233" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+</macro>

@@ -1,0 +1,9 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="" keySequence="Esc, Space" name="paint" >
+ <event key="80" count="1" modifiers="0" type="6" text="p" autoRepeat="0" />
+ <event key="65" count="1" modifiers="0" type="6" text="a" autoRepeat="0" />
+ <event key="73" count="1" modifiers="0" type="6" text="i" autoRepeat="0" />
+ <event key="78" count="1" modifiers="0" type="6" text="n" autoRepeat="0" />
+ <event key="84" count="1" modifiers="0" type="6" text="t" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+</macro>

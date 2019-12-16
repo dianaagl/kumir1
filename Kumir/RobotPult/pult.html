@@ -1,0 +1,58 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" encoding="utf-8">
+    <head>
+        <!-- Подключаем файл со скриптами (их может быть несколько)-->
+        <script src="pult.files/scripts.js"></script>
+        
+        <!-- Заголовок окна пульта -->
+        <title>Пульт Робота</title>
+        
+        <!-- Подключаем файл с таблицей стилей (их может быть несколько) -->
+        <link href="pult.files/stylesheet.css" rel="stylesheet">
+    </head>
+    
+    <!-- После загрузки страницы устанавливаем размер окна
+    методом pult.setWindowSize(ширина,высота)
+    ВНИМАНИЕ: нужно указать несколько бОльший размер, чтобы гарантированно 
+    не было скроллинга; достаточно добавить 5 пикселей.
+    -->
+    <body onload="pult.setWindowSize(255,445)">
+        <!-- Кнопки пульта представляют собой теги div
+        Действия описаны в файле scripts.js, внешний вид и
+        положение - в stylesheet.css.
+        -->
+        <div id="btn_up" onclick="btnUpClick()"></div>
+        <div id="btn_left" onclick="btnLeftClick()"></div>
+        <div id="btn_paint" onclick="btnPaintClick()"></div>
+        <div id="btn_right" onclick="btnRightClick()"></div>
+        <div id="btn_down" onclick="btnDownClick()"></div>
+        <div id="btn_radiation" onclick="btnRadiationClick()"></div>
+        <div id="btn_temp" onclick="btnTempClick()"></div>
+        <!-- Кнопка, которая имеет два состояния (зажата/незажата) - это
+        на самом деле две кнопки. Видимость определяется классом visible или hidden.
+        -->
+        <div id="btn_wall_painted" class="visible" onclick="btnWallPaintedClick()"></div>
+        <div id="btn_wall_painted_toggled" class="hidden" onclick="btnWallPaintedUnClick()"></div>
+        <div id="btn_free_clean" class="visible" onclick="btnFreeCleanClick()"></div>
+        <div id="btn_free_clean_toggled" class="hidden" onclick="btnFreeCleanUnClick()"></div>
+        <div id="btn_clear" onclick="btnClearClick()" onmouseover='showHint("hint_clear")' onmouseout='hideHint("hint_clear")'></div>
+        <div id="btn_copy" onclick="btnCopyClick()" onmouseover='showHint("hint_copy")' onmouseout='hideHint("hint_copy")'></div>
+        <div id="btn_scroll_up" onclick="btnScrollUpClick()"></div>
+        <div id="btn_scroll_down" onclick="btnScrollDownClick()"></div>
+        <!-- Индикатор наличия связи. Его состояние визуализируется 
+        соответствующим классом (по умолчанию - has_link)
+        -->
+        <div id="link_indicator" class="has_link"></div>
+        <!-- Логгер - это фрейм, в который мы пишем текст из JavaScript.
+        Поскольку с фреймом обязан быть связан существующий документ, то
+        передаем ему в свойство "src" ссылку на пустой файл 
+        -->
+        <iframe id="logger" src="pult.files/logger.html" scrolling="no"></iframe>
+        <!-- Всплывающие подсказки к кнопкам "скопировать" и "очистить" -->
+        <div id="hint_copy" class="hidden">
+            Скопировать в буфер обмена
+        </div>
+        <div id="hint_clear" class="hidden">
+            Очистить историю
+        </div>
+    </body>
+</html>

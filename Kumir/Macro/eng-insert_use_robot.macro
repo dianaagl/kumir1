@@ -1,0 +1,16 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Ctrl+Meta+1" keySequence="Esc, 1" name="use Robot" >
+ <event key="16777249" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777232" count="1" modifiers="67108864" type="6" text="" autoRepeat="0" />
+ <event key="85" count="1" modifiers="0" type="6" text="u" autoRepeat="0" />
+ <event key="83" count="1" modifiers="0" type="6" text="s" autoRepeat="0" />
+ <event key="69" count="1" modifiers="0" type="6" text="e" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="16777248" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="82" count="1" modifiers="33554432" type="6" text="R" autoRepeat="0" />
+ <event key="79" count="1" modifiers="0" type="6" text="o" autoRepeat="0" />
+ <event key="66" count="1" modifiers="0" type="6" text="b" autoRepeat="0" />
+ <event key="79" count="1" modifiers="0" type="6" text="o" autoRepeat="0" />
+ <event key="84" count="1" modifiers="0" type="6" text="t" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+</macro>

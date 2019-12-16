@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>editcopy.xpm</file>
+        <file>editcut.xpm</file>
+        <file>filenew.xpm</file>
+        <file>fileopen.xpm</file>
+        <file>editpaste.xpm</file>
+        <file>filesave.xpm</file>
+        <file>../../img/vpered.png</file>
+        <file>../../img/nazad.png</file>
+        <file>../../img/vlevo.png</file>
+        <file>../../img/vpravo.png</file>
+        <file>../../img/WallNXT.png</file>
+        <file>../../img/SoundNXT.png</file>
+        <file>../../img/butt.png</file>
+        <file>../../img/buttd.png</file>
+        <file>../../img/butt.png</file>
+        <file>../../img/kumir.png</file>
+        <file>trtl_obod.svg</file>
+        <file>pictomir_icons/actions/backward.svg</file>
+        <file>pictomir_icons/actions/forward.svg</file>
+        <file>pictomir_icons/actions/turn_left.svg</file>
+        <file>pictomir_icons/actions/turn_right.svg</file>
+        <file>pictomir_icons/conditions/free.svg</file>
+        <file>pictomir_icons/conditions/wall.svg</file>
+        <file>pictomir_icons/actions/sound.svg</file>
+        <file>nxt_background.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,36 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>robot_frames/1.png</file>
+        <file>robot_frames/2.png</file>
+        <file>robot_frames/3.png</file>
+        <file>robot_frames/4.png</file>
+        <file>robot_frames/5.png</file>
+        <file>robot_frames/6.png</file>
+        <file>robot_frames/7.png</file>
+        <file>robot_frames/8.png</file>
+        <file>robot_frames/9.png</file>
+        <file>robot_frames/10.png</file>
+        <file>robot_frames/11.png</file>
+        <file>robot_frames/12.png</file>
+        <file>robot_frames/13.png</file>
+        <file>robot_frames/14.png</file>
+        <file>robot_frames/15.png</file>
+        <file>robot_frames/16.png</file>
+        <file>grass_painted.png</file>
+        <file>grass.png</file>
+        <file>stars.png</file>
+        <file>icons/actions/forward.svg</file>
+        <file>icons/actions/paint.svg</file>
+        <file>icons/actions/turn_left.svg</file>
+        <file>icons/actions/turn_right.svg</file>
+        <file>icons/conditions/clean.svg</file>
+        <file>icons/conditions/free.svg</file>
+        <file>icons/conditions/painted.svg</file>
+        <file>icons/conditions/wall.svg</file>
+        <file>show_menu_icon.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>_default.fil</file>
+        <file>ru_RU.qm</file>
+    </qresource>
+</RCC>

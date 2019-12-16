@@ -1,0 +1,46 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/_default.fil</file>
+        <file>resources/grass_0.png</file>
+        <file>resources/grass_1.png</file>
+        <file>resources/grass_2.png</file>
+        <file>resources/grass_3.png</file>
+        <file>resources/grass_4.png</file>
+        <file>resources/grass_5.png</file>
+        <file>resources/grass_6.png</file>
+        <file>resources/grass_7.png</file>
+        <file>resources/show_menu_icon.png</file>
+        <file>resources/speed_down.png</file>
+        <file>resources/speed_up_down.svg</file>
+        <file>resources/speed_up.png</file>
+        <file>resources/stars.png</file>
+        <file>resources/icons/actions/forward.svg</file>
+        <file>resources/icons/actions/paint.svg</file>
+        <file>resources/icons/actions/turn_left.svg</file>
+        <file>resources/icons/actions/turn_right.svg</file>
+        <file>resources/icons/conditions/clean.svg</file>
+        <file>resources/icons/conditions/free.svg</file>
+        <file>resources/icons/conditions/painted.svg</file>
+        <file>resources/icons/conditions/wall.svg</file>
+        <file>resources/robot_frames/1.png</file>
+        <file>resources/robot_frames/2.png</file>
+        <file>resources/robot_frames/3.png</file>
+        <file>resources/robot_frames/4.png</file>
+        <file>resources/robot_frames/5.png</file>
+        <file>resources/robot_frames/6.png</file>
+        <file>resources/robot_frames/7.png</file>
+        <file>resources/robot_frames/8.png</file>
+        <file>resources/robot_frames/9.png</file>
+        <file>resources/robot_frames/10.png</file>
+        <file>resources/robot_frames/11.png</file>
+        <file>resources/robot_frames/12.png</file>
+        <file>resources/robot_frames/13.png</file>
+        <file>resources/robot_frames/14.png</file>
+        <file>resources/robot_frames/15.png</file>
+        <file>resources/robot_frames/16.png</file>
+        <file>resources/robot_frames/broken_east.png</file>
+        <file>resources/robot_frames/broken_north.png</file>
+        <file>resources/robot_frames/broken_south.png</file>
+        <file>resources/robot_frames/broken_west.png</file>
+    </qresource>
+</RCC>

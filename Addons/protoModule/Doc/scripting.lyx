@@ -1,0 +1,1268 @@
+#LyX 1.6.5 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+\usepackage{indentfirst}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
+\language russian
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Протоисполнители: руководство по созданию скриптов"
+\pdf_author "Виктор Яковлев"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Subject
+Протоисполнители
+\end_layout
+
+\begin_layout Title
+Руководство по созданию скриптов
+\end_layout
+
+\begin_layout Section
+Структура пакета протоисполнителя
+\end_layout
+
+\begin_layout Standard
+Пакет протоисполнителя -- это каталог, либо JAR-файл (создается соответствующей
+ командой из Java SDK), который содержит в себе:
+\end_layout
+
+\begin_layout Enumerate
+Описания одной или нескольких сцен.
+\end_layout
+
+\begin_layout Enumerate
+Описания одного или нескольких актёров.
+\end_layout
+
+\begin_layout Enumerate
+Описания одного или нескольких КуМир-исполнителей.
+\end_layout
+
+\begin_layout Standard
+В одном пакете может быть несколько исполнителей, которые совместно используют
+ одни и теже сцены либо одних и тех же актёров.
+\end_layout
+
+\begin_layout Subsection
+Формат описания сцены
+\end_layout
+
+\begin_layout Standard
+Сцена содержит подкаталоги:
+\end_layout
+
+\begin_layout Itemize
+scripts -- общие скрипты для всех видов отображения;
+\end_layout
+
+\begin_layout Itemize
+2.5D/scripts -- скрипты, доступные только для 2.5D отображения;
+\end_layout
+
+\begin_layout Itemize
+2.5D/pixmaps -- изображения отдельных ячеек сцены.
+\end_layout
+
+\begin_layout Standard
+Изображения могут быть представлены в форматах PNG или SVG.
+ Имена файлов изображений формируются следующим образом:
+\end_layout
+
+\begin_layout LyX-Code
+edge_(%1)_(%2).(png|svg)
+\end_layout
+
+\begin_layout Standard
+Здесь 
+\family typewriter
+%1
+\family default
+ -- это одно из значений: 
+\family typewriter
+top
+\family default
+, 
+\family typewriter
+bottom
+\family default
+, 
+\family typewriter
+front
+\family default
+, 
+\family typewriter
+back
+\family default
+, 
+\family typewriter
+left
+\family default
+, 
+\family typewriter
+right
+\family default
+, определяющее сторону ячейки; 
+\family typewriter
+%2
+\family default
+ -- целое число, определяющее номер состояния границы ячейки (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:scene-base-methods"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Скрипты представляют собой тексты программ на языке ECMA-262 и имеют расширение
+ 
+\begin_inset Quotes fld
+\end_inset
+
+.js
+\begin_inset Quotes frd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Формат описания актёра
+\end_layout
+
+\begin_layout Standard
+Класс актёра содержит подкаталоги:
+\end_layout
+
+\begin_layout Itemize
+scripts -- общие скрипты для всех видов отображения;
+\end_layout
+
+\begin_layout Itemize
+2.5D/scripts -- скрипты, доступные только для 2.5D отображения;
+\end_layout
+
+\begin_layout Itemize
+2.5D/frames -- отдельные кадры изображения актёра.
+\end_layout
+
+\begin_layout Standard
+Имена файлов изображений формируются следующим образом:
+\end_layout
+
+\begin_layout LyX-Code
+frame_%1.(png|svg)
+\end_layout
+
+\begin_layout Standard
+Здесь 
+\family typewriter
+%1
+\family default
+ -- это номер кадра.
+\end_layout
+
+\begin_layout Subsection
+Формат описания исполнителя
+\end_layout
+
+\begin_layout Standard
+Описания исполнителей хранятся в каталоге 
+\family typewriter
+modules
+\family default
+ пакета протоисполнителя.
+ Формат описания -- структурированный XML:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Корневой элемент: 
+\series default
+<module name=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+имя
+\begin_inset space ~
+\end_inset
+
+исполнителя
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+scene=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+класс
+\begin_inset space ~
+\end_inset
+
+используемой
+\begin_inset space ~
+\end_inset
+
+сцены
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+view=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+тип
+\begin_inset space ~
+\end_inset
+
+отображения
+\begin_inset space ~
+\end_inset
+
+(на
+\begin_inset space ~
+\end_inset
+
+данный
+\begin_inset space ~
+\end_inset
+
+момент
+\begin_inset space ~
+\end_inset
+
+--
+\begin_inset space ~
+\end_inset
+
+только
+\begin_inset space ~
+\end_inset
+
+2.5D)
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout Itemize
+Следом за открывающим тегом <module> следует 
+\series bold
+текстовое описание исполнителя
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Далее следует один или несколько тегов 
+\series bold
+описания актёров
+\series default
+: <actor class=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+класс
+\begin_inset space ~
+\end_inset
+
+актёра
+\begin_inset space ~
+\end_inset
+
+(имя
+\begin_inset space ~
+\end_inset
+
+каталога
+\begin_inset space ~
+\end_inset
+
+актёра)
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+name=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+имя
+\begin_inset space ~
+\end_inset
+
+экземпляра
+\begin_inset space ~
+\end_inset
+
+актёра
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ />
+\end_layout
+
+\begin_layout Itemize
+Затем перечисляются 
+\series bold
+алгоритмы
+\series default
+ исполнителя: <command name=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+имя алгоритма
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+return=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+возвращаемый
+\begin_inset space ~
+\end_inset
+
+тип
+\begin_inset space ~
+\end_inset
+
+в
+\begin_inset space ~
+\end_inset
+
+C-синтаксисе
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+actor=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+имя
+\begin_inset space ~
+\end_inset
+
+актёра,
+\begin_inset space ~
+\end_inset
+
+который
+\begin_inset space ~
+\end_inset
+
+выполняет
+\begin_inset space ~
+\end_inset
+
+алгоритм
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+func=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+имя
+\begin_inset space ~
+\end_inset
+
+ECMAScript-функции
+\begin_inset space ~
+\end_inset
+
+актёра
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout Itemize
+Внутри элемента <command> могут быть опциональные описания 
+\series bold
+аргументов алгоримта
+\series default
+: <argument type=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+тип
+\begin_inset space ~
+\end_inset
+
+в
+\begin_inset space ~
+\end_inset
+
+C-синтаксисе
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+name=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+имя
+\begin_inset space ~
+\end_inset
+
+аргумента
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+default=
+\begin_inset Quotes erd
+\end_inset
+
+
+\emph on
+значение
+\begin_inset space ~
+\end_inset
+
+по
+\begin_inset space ~
+\end_inset
+
+умолчанию
+\begin_inset space ~
+\end_inset
+
+(для
+\begin_inset space ~
+\end_inset
+
+ПиктоМира)
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout Section
+Методы и свойства сцены
+\end_layout
+
+\begin_layout Standard
+У объекта класса 
+\begin_inset Quotes eld
+\end_inset
+
+сцена
+\begin_inset Quotes erd
+\end_inset
+
+ есть общие методы и есть методы, которые объявлены только в одном из видов
+ отображения.
+\end_layout
+
+\begin_layout Subsection
+Общие для всех типов отображения методы и свойства
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:scene-base-methods"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ width: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- размер сцены вдоль оси X;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ length: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- размер сцены вдоль оси Y;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ height: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- размер сцены вдоль оси Z;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ clazz: 
+\series bold
+string (read)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- имя класса сцены;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ setSize(x, y, z: 
+\series bold
+unsigned int): void
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- устанавливает размер сцены;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ setCellAttribute(x, y, z: 
+\series bold
+unsigned int, name: string, value: variant): void
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- устанавливает именованный аттрибут 
+\family typewriter
+name
+\family default
+ ячейки в значение 
+\family typewriter
+value
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ cellAttribute(x, y, z: 
+\series bold
+unsigned int, name: string): variant
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- возвращает значение именованного аттрибута 
+\family typewriter
+name
+\family default
+ ячейки;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ setCellBorderState(x, y, z: 
+\series bold
+unsigned int, border: string, state: int): void
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- устанавливает отображаемое графически состояние грани 
+\family typewriter
+border
+\family default
+ ячейки в значение 
+\family typewriter
+state
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ cellBorderState(x, y, z: 
+\series bold
+unsigned int, border: string): int
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- возвращает отображаемое графически состояние грани 
+\family typewriter
+border
+\family default
+ ячейки с заданными координатами.
+\end_layout
+
+\begin_layout Subsection
+Специфичные для отображения 2.5D методы и свойства
+\end_layout
+
+\begin_layout Standard
+Нет специфичных методов и свойств.
+\end_layout
+
+\begin_layout Section
+Методы и свойства актёров
+\end_layout
+
+\begin_layout Subsection
+Общие для всех типов отображения методы и свойства
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:actor-base-methods"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ x: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- координата X на сцене;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ y: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- координата Y на сцене;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ z: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- координата Z на сцене;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ visible: 
+\series bold
+bool (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- видимость на сцене;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ enabled: 
+\series bold
+bool (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- активное состояние актёра;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ name: 
+\series bold
+string (read)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- имя экземпляра актёра;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ clazz: 
+\series bold
+string (read)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- имя класса актёра;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ evaluating: 
+\series bold
+bool (read)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- актёр в данный момент выполняет команду в своём потоке;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ setPosition(x, y, z: unsigned int): void
+\family default
+\noun on
+ 
+\noun default
+-- устанавливает сразу 3 координаты актёра на сцене;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ setAttribute(name: string, value: variant): void
+\family default
+\noun on
+ 
+\noun default
+-- устанавливает именованный аттрибут 
+\family typewriter
+name
+\family default
+ в значение 
+\family typewriter
+value
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ attribute(name: string): variant
+\family default
+\noun on
+ 
+\noun default
+-- возвращает значение именованного аттрибута 
+\family typewriter
+name
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ sleep_sec(time: unsigned int): void
+\family default
+\noun on
+ 
+\noun default
+-- прерывает выполнение на 
+\family typewriter
+time
+\family default
+ секунд, не блокируя выполнения других потоков-актёров;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ sleep_msec(time: unsigned int): void
+\family default
+\noun on
+ 
+\noun default
+-- прерывает выполнение на 
+\family typewriter
+time
+\family default
+ миллисекунд, не блокируя выполнения других потоков-актёров;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ evaluateCommand(func: string, wait: bool): void
+\family default
+\noun on
+ 
+\noun default
+-- запрос на выполнение актёром в своём отдельном потоке функции 
+\family typewriter
+func
+\family default
+ (функция может быть приватной) без аргументов; если 
+\family typewriter
+wait
+\family default
+ -- истина, то выполнение блокируется до завершения выполнения вызванной
+ функции;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ evaluateCommand(func: string, wait: bool, arg1: variant): void;
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+function
+\series default
+ evaluateCommand(func: string, wait: bool, arg1, arg2: variant): void;
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+function
+\series default
+ evaluateCommand(func: string, wait: bool, arg1, arg2, arg3: variant): void
+ 
+\family default
+-- то же самое, но с передачей от 1 до 3 аргументов в вызов функции.
+\end_layout
+
+\begin_layout Subsection
+Методы и свойства, специфичные для отображения 2.5D
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+property
+\series default
+ currentFrame: 
+\series bold
+unsigned int (read/write)
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- номер отображаемого кадра;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function
+\series default
+ beginMove(x, y, z: unsinged int): void
+\family default
+ -- подготовка к плавному перемещению актёра в соседнюю клетку с заданными
+ координатами; если указана несоседняя клетка, то при перемещении будет
+ наблюдаться 
+\begin_inset Quotes eld
+\end_inset
+
+эффект телепортации
+\begin_inset Quotes erd
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function 
+\series default
+moveBy(percentage: real): void
+\family default
+\noun on
+ 
+\noun default
+-- плавное перемещение в соседнюю клетку, инициированное функцией 
+\family typewriter
+beginMove
+\family default
+, на 
+\family typewriter
+percentage
+\family default
+ (значение от 
+\begin_inset Formula $0.0$
+\end_inset
+
+ до 
+\begin_inset Formula $1.0$
+\end_inset
+
+) процентов;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+\series bold
+function endMove(): void
+\family default
+\series default
+\noun on
+ 
+\noun default
+-- завершение плавного перемещения актёра, инициированного функцией 
+\family typewriter
+beginMove
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Взаимодействие между собой отдельных объектов
+\end_layout
+
+\begin_layout Standard
+Поскольку скрипты сцены и актёров выполняются в своём отдельном контексте,
+ нельзя напрямую обратиться к методам одного объекта из скрипта другого
+ объекта.
+ Для связи объектов между собой, а также для предоставления некоторых дополнител
+ьный функций и методов, доступен глобальный объект с именем 
+\family typewriter
+G
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Методы и свойства объекта 
+\family typewriter
+G
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+property ModuleRoot: string (read) 
+\family default
+-- полный путь к каталогу пакета протоисполнителя;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+property ApplicationRoot: string (read) 
+\family default
+-- полный путь к каталогу приложения (
+\family typewriter
+QApplication::applicationRootDir
+\family default
+);
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+property Log: string (write) 
+\family default
+-- объект, связанный со стандартным потоком вывода (для отладки), доступен
+ долько для записи, при попытке чтения возвращает пустую строку;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+property Scene: сцена (read) 
+\family default
+-- возвращает ссылку на сцену;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+function readText(filename, encoding: string): string 
+\family default
+-- считывает файл с именем 
+\family typewriter
+filename
+\family default
+ и возвращает его текстовое представление в кодировке 
+\family typewriter
+encoding
+\family default
+;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+function actorNames(): string[] 
+\family default
+-- возвращает список имён всех доступных (в том числе неактивных) актёров;
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+function actor(name: string): актёр 
+\family default
+-- возвращает ссылку на актёра с заданным именем 
+\family typewriter
+name
+\family default
+.
+\end_layout
+
+\end_body
+\end_document

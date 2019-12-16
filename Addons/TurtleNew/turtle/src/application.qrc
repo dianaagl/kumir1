@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/">
+        <file>editcopy.xpm</file>
+        <file>editcut.xpm</file>
+        <file>filenew.xpm</file>
+        <file>fileopen.xpm</file>
+        <file>editpaste.xpm</file>
+        <file>filesave.xpm</file>
+        <file>../../img/vpered.png</file>
+        <file>../../img/nazad.png</file>
+        <file>../../img/vlevo.png</file>
+        <file>../../img/vpravo.png</file>
+        <file>../../img/tailup.png</file>
+        <file>../../img/taildown.png</file>
+        <file>../../img/butt.png</file>
+        <file>../../img/buttd.png</file>
+        <file>../../img/butt.png</file>
+        <file>../../img/kumir.png</file>
+        <file>../../img/Trtl1.svg</file>
+        <file>../../img/Trtl2.svg</file>
+        <file>../../img/Trtl3.svg</file>
+        <file>trtl_obod.svg</file>
+        <file>clear.png</file>
+    </qresource>
+</RCC>

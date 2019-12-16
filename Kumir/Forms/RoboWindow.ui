@@ -1,0 +1,60 @@
+<ui version="4.0" >
+ <class>RobotWindow</class>
+ <widget class="QWidget" name="RobotWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>369</width>
+    <height>348</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy vsizetype="MinimumExpanding" hsizetype="Expanding" >
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="contextMenuPolicy" >
+   <enum>Qt::NoContextMenu</enum>
+  </property>
+  <property name="windowTitle" >
+   <string>Robot</string>
+  </property>
+  <layout class="QGridLayout" >
+   <property name="margin" >
+    <number>1</number>
+   </property>
+   <item row="0" column="0" >
+    <widget class="QGraphicsView" name="graphicsView" >
+     <property name="baseSize" >
+      <size>
+       <width>1024</width>
+       <height>1024</height>
+      </size>
+     </property>
+     <property name="verticalScrollBarPolicy" >
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy" >
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="transformationAnchor" >
+      <enum>QGraphicsView::NoAnchor</enum>
+     </property>
+     <property name="resizeAnchor" >
+      <enum>QGraphicsView::AnchorViewCenter</enum>
+     </property>
+     <property name="viewportUpdateMode" >
+      <enum>QGraphicsView::SmartViewportUpdate</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

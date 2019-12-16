@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Kumir Program
+Comment[ru]=Программа Кумир
+Icon=application-x-kumir-program
+Type=MimeType
+Patterns=*.kum;*.Kum;*.KUM

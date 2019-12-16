@@ -1,0 +1,8 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Meta+2" keySequence="Esc, Down" name="вниз" >
+ <event key="1042" count="2" modifiers="0" type="6" text="в" autoRepeat="0" />
+ <event key="1053" count="2" modifiers="0" type="6" text="н" autoRepeat="0" />
+ <event key="1048" count="2" modifiers="0" type="6" text="и" autoRepeat="0" />
+ <event key="1047" count="2" modifiers="0" type="6" text="з" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+</macro>

@@ -1,0 +1,2 @@
+#DESTDIR_TARGET = ../
+DESTDIR = ../

@@ -1,0 +1,31 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Ctrl+Meta+2" keySequence="Esc, 2" name="использовать Чертежник" >
+ <event key="16777249" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777232" count="1" modifiers="67108864" type="6" text="" autoRepeat="0" />
+ <event key="1048" count="2" modifiers="0" type="6" text="и" autoRepeat="0" />
+ <event key="1057" count="2" modifiers="0" type="6" text="с" autoRepeat="0" />
+ <event key="1055" count="2" modifiers="0" type="6" text="п" autoRepeat="0" />
+ <event key="1054" count="2" modifiers="0" type="6" text="о" autoRepeat="0" />
+ <event key="1051" count="2" modifiers="0" type="6" text="л" autoRepeat="0" />
+ <event key="1068" count="2" modifiers="0" type="6" text="ь" autoRepeat="0" />
+ <event key="1047" count="2" modifiers="0" type="6" text="з" autoRepeat="0" />
+ <event key="1054" count="2" modifiers="0" type="6" text="о" autoRepeat="0" />
+ <event key="1042" count="2" modifiers="0" type="6" text="в" autoRepeat="0" />
+ <event key="1040" count="2" modifiers="0" type="6" text="а" autoRepeat="0" />
+ <event key="1058" count="2" modifiers="0" type="6" text="т" autoRepeat="0" />
+ <event key="1068" count="2" modifiers="0" type="6" text="ь" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="16777248" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="1063" count="2" modifiers="33554432" type="6" text="Ч" autoRepeat="0" />
+ <event key="1045" count="2" modifiers="0" type="6" text="е" autoRepeat="0" />
+ <event key="1056" count="2" modifiers="0" type="6" text="р" autoRepeat="0" />
+ <event key="1058" count="2" modifiers="0" type="6" text="т" autoRepeat="0" />
+ <event key="1045" count="2" modifiers="0" type="6" text="е" autoRepeat="0" />
+ <event key="1046" count="2" modifiers="0" type="6" text="ж" autoRepeat="0" />
+ <event key="1053" count="2" modifiers="0" type="6" text="н" autoRepeat="0" />
+ <event key="1048" count="2" modifiers="0" type="6" text="и" autoRepeat="0" />
+ <event key="1050" count="2" modifiers="0" type="6" text="к" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="16777235" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777233" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+</macro>

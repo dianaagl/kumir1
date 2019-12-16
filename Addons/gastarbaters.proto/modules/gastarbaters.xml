@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module name="Гастарбайтеры" scene="building" view="2.5D">
+
+    Перед двумя рабочими из солнечных советских республик поставлена
+    задача: убрать строительный мусор и положить паркет.
+
+    <actor class="gogi" name="gogi"/>
+    <actor class="said" name="said"/>
+
+    <command name="тестирование" return="int" actor="" func="">
+        <argument name="скрипт" type="string" default=""/>
+    </command>
+    
+    <command name="Гоги вперед" return="void" actor="gogi" func="moveForward"/>
+    <command name="Гоги повернуть налево" return="void" actor="gogi" func="turnLeft"/>
+    <command name="Гоги повернуть направо" return="void" actor="gogi" func="turnRight"/>
+    <command name="перед Гоги стена" negative_name="впереди свободно" return="bool" actor="gogi" func="isWallAhead"/>
+    <command name="паркет под ногами Гоги" return="bool" actor="gogi" func="isParquet" />
+    <command name="мусор под ногами Гоги" return="bool" actor="gogi" func="isGarbage" />
+    <command name="положить паркет" return="void" actor="gogi" func="doParquete" />
+    
+    
+    <command name="Саид вперед" return="void" actor="said" func="moveForward"/>
+    <command name="Саид повернуть налево" return="void" actor="said" func="turnLeft"/>
+    <command name="Саид повернуть направо" return="void" actor="said" func="turnRight"/>
+    <command name="перед Саидом стена" negative_name="впереди свободно" return="bool" actor="said" func="isWallAhead"/>
+    <command name="мусор под ногами Саида" return="bool" actor="said" func="isGarbage" />
+    <command name="убрать мусор" return="void" actor="said" func="doCleanup" />
+    
+</module>

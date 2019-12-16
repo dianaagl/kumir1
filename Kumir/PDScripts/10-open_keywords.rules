@@ -1,0 +1,7 @@
+﻿УСЛОВИЕ -> если : { setExtraOpenKeywordError(IF); }
+ТО -> то : { setExtraOpenKeywordError(THEN); setCorrespondingIfBroken(); }
+ИНАЧЕ_ВСЕ -> иначе : { setExtraOpenKeywordError(ELSE); }
+ВЫБОР -> выбор : { setExtraOpenKeywordError(SWITCH); }
+ЦИКЛ -> нц : { setExtraOpenKeywordError(LOOP); }
+ИСПОЛНИТЕЛЬ* -> исп : { setExtraOpenKeywordError(MODULE); }
+ТЕЛО_АЛГОРИТМА -> нач ФРАГМЕНТ_АЛГОРИТМА* end: {setExtraOpenKeywordError(BEGIN);} {}

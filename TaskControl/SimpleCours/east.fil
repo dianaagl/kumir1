@@ -1,0 +1,6 @@
+; Field Size: x, y
+15 10
+; Robot position: x, y
+0 0 east
+; A set of special Fields: x, y, Wall, Color, Radiation, Temperature, Symbol, Symbol1, Point
+; End Of File

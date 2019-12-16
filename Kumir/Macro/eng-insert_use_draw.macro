@@ -1,0 +1,15 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Ctrl+Meta+2" keySequence="Esc, 2" name="use Draw" >
+ <event key="16777249" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="16777232" count="1" modifiers="67108864" type="6" text="" autoRepeat="0" />
+ <event key="85" count="1" modifiers="0" type="6" text="u" autoRepeat="0" />
+ <event key="83" count="1" modifiers="0" type="6" text="s" autoRepeat="0" />
+ <event key="69" count="1" modifiers="0" type="6" text="e" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="16777248" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+ <event key="68" count="1" modifiers="33554432" type="6" text="D" autoRepeat="0" />
+ <event key="82" count="1" modifiers="0" type="6" text="r" autoRepeat="0" />
+ <event key="65" count="1" modifiers="0" type="6" text="a" autoRepeat="0" />
+ <event key="87" count="1" modifiers="0" type="6" text="w" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+</macro>

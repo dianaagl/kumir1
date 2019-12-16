@@ -1,0 +1,5 @@
+rm core/nxtcore.o
+rm core/bluetooth.o
+rm core/nxtthread.o
+rm roboLib/src/turtle.o
+rm roboLib/src/interface.o

@@ -1,0 +1,19 @@
+<!DOCTYPE KumirMacro-1.5>
+<macro macSequence="Meta+A" keySequence="Esc, A" name="alg-begin-end">
+ <event key="65" count="1" modifiers="0" type="6" text="a" autoRepeat="0" />
+ <event key="76" count="1" modifiers="0" type="6" text="l" autoRepeat="0" />
+ <event key="71" count="1" modifiers="0" type="6" text="g" autoRepeat="0" />
+ <event key="32" count="1" modifiers="0" type="6" text=" " autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="66" count="1" modifiers="0" type="6" text="b" autoRepeat="0" />
+ <event key="69" count="1" modifiers="0" type="6" text="e" autoRepeat="0" />
+ <event key="71" count="1" modifiers="0" type="6" text="g" autoRepeat="0" />
+ <event key="73" count="1" modifiers="0" type="6" text="i" autoRepeat="0" />
+ <event key="78" count="1" modifiers="0" type="6" text="n" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="16777220" count="1" modifiers="0" type="6" text="&#xd;" autoRepeat="0" />
+ <event key="69" count="1" modifiers="0" type="6" text="e" autoRepeat="0" />
+ <event key="78" count="1" modifiers="0" type="6" text="n" autoRepeat="0" />
+ <event key="68" count="1" modifiers="0" type="6" text="d" autoRepeat="0" />
+ <event key="16777235" count="1" modifiers="0" type="6" text="" autoRepeat="0" />
+</macro>

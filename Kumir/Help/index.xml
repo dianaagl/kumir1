@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<helpIndex>
+	<node name="Встроенные алгоритмы" header="&lt;b&gt;Встроенные алгоритмы Кумира&lt;/b&gt;" type="alg">
+		<node name="Текстовое представление чисел">
+			<leaf name="цел_в_лит" file="int2str.html" />
+			<leaf name="вещ_в_лит" file="real2str.html" />
+			<leaf name="лит_в_вещ" file="str2float.html" />
+			<leaf name="лит_в_цел" file="str2int.html" />
+		</node>
+		<node name="Математика">
+			<node name="Тригонометрия" header="&lt;b&gt;Тригонометрические функции&lt;/b&gt;" file="trigonom.html" indexword="тригонометрия" keywords="синус косинус">
+				<leaf name="arccos" file="arccos.html" />
+				<leaf name="arcctg" file="arcctg.html" />
+				<leaf name="arcsin" file="arcsin.html" />
+				<leaf name="arctg" file="arctg.html" />
+				<leaf name="cos" file="cos.html" />
+				<leaf name="ctg" file="ctg.html" />
+				<leaf name="sin" file="sin.html" />
+				<leaf name="tg" file="tg.html" />
+			</node>
+			<leaf name="abs" file="abs.html" />
+			<leaf name="div" file="div.html" />
+			<leaf name="exp" file="exp.html" />
+			<leaf name="iabs" file="iabs.html" />
+			<leaf name="int" file="int.html" />
+			<leaf name="lg" file="lg.html" />
+			<leaf name="ln" file="ln.html" />
+			<leaf name="max" file="max.html" />
+			<leaf name="min" file="min.html" />
+			<leaf name="mod" file="mod.html" />
+			<leaf name="rnd" keywords="случайное случайные случайная" file="rnd.html" />
+			<leaf name="sign" file="sign.html" />
+			<leaf name="sqrt" file="sqrt.html" />
+		</node>
+		<node name="Обработка строк">
+			<leaf name="код" file="code.html" />
+			<leaf name="длин" file="len.html" />
+			<leaf name="символ2" file="symbol2.html" />
+			<leaf name="символ" file="symbol.html" />
+			<leaf name="юникод" file="unicode.html" />
+		</node>
+		<node name="Система">
+			<leaf name="пауза" file="pause.html" />
+			<leaf name="стоп" file="stop.html" />
+			<leaf name="время" file="time.html" />
+			<leaf name="клав" file="scankey.html" />
+		</node>
+	</node>
+	<node name="Конструкции языка" header="&lt;b&gt;Управляющие конструкции языка КуМир&lt;/b&gt;">
+		<node name="Структура программы">
+			<leaf name="Программа" indexword="программа" keywords="программа алг исп" file="Program.html"/>
+			<leaf name="Описание алгоритма" indexword="алгоритм" keywords="алг дано надо нач знач кон" file="Algoritm.html"/>
+			<leaf name="Параметры алгоритма" indexword="параметр" keywords="алг арг рез аргрез" file="Parametr.html"/>
+			<leaf name="Описание исполнителя" indexword="исполнитель" keywords="исп кон" file="Ispolnit.html"/>
+			<leaf name="Разбиение строк" indexword="разбиение" keywords="" file="Razbienie.html"/>
+		</node>
+		<node name="Имена, величины, выражения">
+			<leaf name="Имя" indexword="имя" keywords="имя" file="Name.html"/>
+			<leaf name="Константы" indexword="константа" keywords="константа" file="Constant.html"/>
+		</node>
+		<node name="Простые команды">
+			<leaf name="Присваивание" indexword="присваивание" keywords="присваивание :=" file="Assign.html"/>
+			<leaf name="Контроль" indexword="контроль" keywords="утв дано надо" file="Control.html"/>
+			<leaf name="Ввод-вывод" indexword="ввод" keywords="ввод вывод нс" file="InOut.html"/>
+			<leaf name="Вызов алгоритма" indexword="подпрограмма" keywords="арг рез аргрез" file="Call.html"/>
+		</node>
+		<node name="Составные команды">
+			<node name="Команды ветвления">
+				<leaf name="если то иначе все" indexword="ветвление" keywords="если то иначе все" file="IfThenElse.html"/>
+				<leaf name="выбор при иначе все" indexword="выбор" keywords="выбор при иначе все" file="SelectCase.html"/>
+			</node>
+			<node name="Команды цикла">
+				<leaf name="для" indexword="для" keywords="цикл нц для от до шаг кц кц_при выход" file="CyclFor.html"/>
+				<leaf name="пока" indexword="пока" keywords="цикл нц пока кц кц_при выход" file="CyclWhile.html"/>
+				<leaf name="до тех пор" indexword="до" keywords="цикл нц кц_при выход" file="CyclUntil.html"/>
+				<leaf name="N раз" indexword="раз" keywords="цикл нц раз кц кц_при выход" file="CyclNRaz.html"/>
+				<leaf name="нц-кц" indexword="цикл" keywords="цикл нц кц выход" file="Cycl.html"/>
+			</node>
+		</node>
+		<node name="Внешние утилиты">
+			<node name="Компилятор GCC (MinGW)">
+				<leaf name="c++" indexword="-" keywords="c++ cc gcc g++" file="cc.html" />
+				<leaf name="-c" indexword="-" keywords="-c компил" file="cc-c.html" />
+				<leaf name="-I" indexword="-" keywords="-c включ incl" file="cc-I.html" />
+				<leaf name="-o" indexword="-" keywords="-c линк сборк link" file="cc-o.html" />
+			</node>
+			<node name="Конвертор Кумир-C++">
+				<leaf name="java" indexword="-" keywords="java" file="java.html" />
+				<leaf name="-Dindent.size" indexword="-" keywords="indent отступ" file="convertor-indent.html" />
+				<leaf name="-Dtarget.encoding" indexword="-" keywords="encoding кодировка" file="convertor-encoding.html" />
+				<leaf name="-jar" keywords="jar" indexword="-" file="convertor-jar.html" />
+				<leaf name="convertor.jar" indexword="-" keywords="конвертор convertor" file="convertor.html" />
+			</node>
+		</node>
+	</node>
+	<node name="Встроенные исполнители" header="&lt;b&gt;Алгоритмы встроенных исполнителей системы КуМир&lt;/b&gt;" type="alg">
+		<node name="Робот" file="robot.html">	
+			<leaf name="влево" file="robot_left.html" />
+			<leaf name="вверх" file="robot_up.html" />
+			<leaf name="вправо" file="robot_right.html" />
+			<leaf name="вниз" file="robot_down.html" />
+			<leaf name="слева свободно" file="robot_LeftFree.html" />
+			<leaf name="сверху свободно" file="robot_UpFree.html" />
+			<leaf name="справа свободно" file="robot_RightFree.html" />
+			<leaf name="снизу свободно" file="robot_DownFree.html" />
+			<leaf name="слева стена" file="robot_LeftWall.html" />
+			<leaf name="сверху стена" file="robot_UpWall.html" />
+			<leaf name="справа стена" file="robot_RightWall.html" />
+			<leaf name="снизу стена" file="robot_DownWall.html" />
+			<leaf name="закрасить" file="robot_paint.html" />
+			<leaf name="клетка закрашена" file="robot_isPainted.html" />
+			<leaf name="клетка чистая" file="robot_isClear.html" />
+			<leaf name="радиация" file="robot_radiation.html" />
+			<leaf name="температура" file="robot_temperature.html" />
+		</node>
+		<node name="Чертежник" file="draw.html">	
+			<leaf name="установить цвет" file="draw_color.html" />
+			<leaf name="опустить перо" file="draw_setPen.html" />
+			<leaf name="рисунок в окно" file="draw_toCenter.html" />
+			<leaf name="сместиться в точку" file="draw_toPoint.html" />
+			<leaf name="сместиться на вектор" file="draw_toVector.html" />
+			<leaf name="поднять перо" file="draw_unsetPen.html" />
+		</node>
+		<node name="Файлы" file="filesIsp.html">	
+			<leaf name="создать файл" file="files_createFile.html" />
+			<leaf name="открыть на чтение" file="files_openForInput.html" />
+			<leaf name="открыть на запись" file="files_openForOutput.html" />
+			<leaf name="ф_ввод" file="files_fvvod.html" type="operator" />
+			<leaf name="ф_вывод" file="files_fvyvod.html" type="operator" />
+			<leaf name="конец файла" file="files_eof.html" />
+			<leaf name="закрыть" file="files_close.html" />
+			<leaf name="существует файл" file="files_exist.html" />
+		</node>
+	</node>
+	<node name="Внешние исполнители" header="&lt;b&gt;Описание работы с внешними исполнителями системы КуМир&lt;/b&gt;">
+		<leaf name="Создание внешних исполнителей" file="extIsps_create.html" />
+		<leaf name="Пример внешнего исполнителя" file="extIsps_example.html" />
+		<leaf name="Использование внешних исполнителей" file="extIsps_use.html" />
+	</node>
+	<node name="Справочник" header="&lt;b&gt;Справочник&lt;/b&gt;">
+		<leaf name="Страница 1" indexword="-" file="str1.html" />
+		<leaf name="Страница 2" indexword="-" file="str2.html" />
+		<leaf name="Страница 3" indexword="-" file="str3.html" />
+		<leaf name="Страница 4" indexword="-" file="str4.html" />
+	</node>
+</helpIndex>
+
+<!--
+1. Если у листа не задан indexword, то indexword=name
+2. Если indexword=="-", то он не отобразится в индексном списке
+-->

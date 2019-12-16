@@ -1,0 +1,34 @@
+﻿ТО -> иначе ФРАГМЕНТ_АЛГОРИТМА* все : { 
+	this.setError(this.currentPosition, 2200701); 
+	processCorrectElse(); 
+} { 
+	processCorrectFi(); 
+}
+
+#УСЛОВИЕ -> если ФРАГМЕНТ_АЛГОРИТМА* ИНАЧЕ_ВСЕ : { this.setError(cp, 2200304); processCorrectIf(); }
+
+ФРАГМЕНТ_АЛГОРИТМА* -> алг : { this.setError(this.currentPosition, 1103); appendSimpleLine(); }
+ФРАГМЕНТ_АЛГОРИТМА* -> нач : { this.setError(this.currentPosition, 2200008); appendSimpleLine(); }
+ФРАГМЕНТ_АЛГОРИТМА* -> исп : { this.setError(this.currentPosition, 2200009); appendSimpleLine(); }
+ФРАГМЕНТ_АЛГОРИТМА* -> кон_исп : { this.setError(this.currentPosition, 2200010); appendSimpleLine(); }
+
+ЛИШНИЙ_НАЧ_У_ИСПОЛНИТЕЛЯ -> нач : { this.setError(this.currentPosition, 2200001); appendSimpleLine(); }
+
+КОНЕЦ_ИСПОЛНИТЕЛЯ -> end : { if ( moduleBegin != -1 ) this.setError(moduleBegin, 1140); }
+
+ИСПОЛНИТЕЛЬ* -> алг МУСОР_МЕЖДУ_АЛГ_НАЧ ДОКУМЕНТАЦИЯ ДАНО_НАДО ТЕЛО_АЛГОРИТМА : { this.setError(this.currentPosition, 2200801); processCorrectAlgHeader(); }
+
+АЛГОРИТМ* -> если МУСОР_МЕЖДУ_ЕСЛИ_ТО ТО : { this.setError(this.currentPosition, 2200802); processCorrectIf(); }
+АЛГОРИТМ* -> выбор МУСОР_МЕЖДУ_ВЫБОР_ПРИ при ФРАГМЕНТ_АЛГОРИТМА* ПРИ* ИНАЧЕ_ВСЕ : { this.setError(this.currentPosition, 2200803); processCorrectSwitch(); } { processCorrectCase(); }
+АЛГОРИТМ* -> алг ФРАГМЕНТ_АЛГОРИТМА* КОНЕЦ_АЛГОРИТМА : { this.setError(this.currentPosition, 2200101); this.setIndentRank(this.currentPosition, 0, +1);  processCorrectAlgHeader(); }
+
+ФРАГМЕНТ_АЛГОРИТМА* -> алг нач ФРАГМЕНТ_АЛГОРИТМА* кон : {
+  this.setError(this.currentPosition, 2200902); 
+  appendSimpleLine();
+} {
+  this.setError(this.currentPosition, 2200902);
+  appendSimpleLine();
+} {
+  this.setError(this.currentPosition, 2200902);
+  appendSimpleLine();
+}

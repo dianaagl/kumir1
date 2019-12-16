@@ -1,0 +1,303 @@
+﻿/* Данный файл описывает внешний вид и положение
+ * отдельных элементов пульта.
+ * 
+ * Для дизайнера/web-мастера особые комментарии 
+ * не требуются.
+ */
+
+body {
+	background-image: url(background.png);
+}
+.visible {
+	display: block;
+}
+.hidden {
+	display: none;
+}
+#btn_up {
+	display: block;
+	position: absolute;
+	top: 216px;
+	left: 94px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_up.png);
+	background-repeat: no-repeat;
+}
+#btn_up:hover { 
+	background-image: url(btn_up_hover.png); 
+}
+#btn_up:active { 
+	background-image: url(btn_up_pressed.png); 
+}
+#btn_left {
+	display: block;
+	position: absolute;
+	top: 290px;
+	left: 12px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_left.png);
+	background-repeat: no-repeat;
+}
+#btn_left:hover { 
+	background-image: url(btn_left_hover.png); 
+}
+#btn_left:active { 
+	background-image: url(btn_left_pressed.png); 
+}
+#btn_paint {
+	display: block;
+	position: absolute;
+	top: 290px;
+	left: 94px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_paint.png);
+	background-repeat: no-repeat;
+}
+#btn_paint:hover { 
+	background-image: url(btn_paint_hover.png); 
+}
+#btn_paint:active { 
+	background-image: url(btn_paint_pressed.png); 
+}
+#btn_right {
+	display: block;
+	position: absolute;
+	top: 290px;
+	left: 176px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_right.png);
+	background-repeat: no-repeat;
+}
+#btn_right:hover { 
+	background-image: url(btn_right_hover.png); 
+}
+#btn_right:active { 
+	background-image: url(btn_right_pressed.png); 
+}
+#btn_down {
+	display: block;
+	position: absolute;
+	top: 364px;
+	left: 94px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_down.png);
+	background-repeat: no-repeat;
+}
+#btn_down:hover {
+	background-image: url(btn_down_hover.png); 
+}
+#btn_down:active {
+	background-image: url(btn_down_pressed.png); 
+}
+#btn_radiation {
+	display: block;
+	position: absolute;
+	top: 364px;
+	left: 12px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_radiation.png);
+	background-repeat: no-repeat;
+}
+#btn_radiation:hover {
+	background-image: url(btn_radiation_hover.png); 
+}
+#btn_radiation:active {
+	background-image: url(btn_radiation_pressed.png); 
+}
+#btn_temp {
+	display: block;
+	position: absolute;
+	top: 216px;
+	left: 12px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_temp.png);
+	background-repeat: no-repeat;
+}
+#btn_temp:hover {
+	background-image: url(btn_temp_hover.png); 
+}
+#btn_temp:active {
+	background-image: url(btn_temp_pressed.png); 
+}
+#btn_wall_painted {
+	position: absolute;
+	top: 216px;
+	left: 176px;
+	width: 64px;
+	height: 64px;
+	background-repeat: no-repeat;
+	background-image: url(btn_wall_painted.png); 
+}
+#btn_wall_painted:hover {
+	background-image: url(btn_wall_painted_hover.png); 
+}
+#btn_wall_painted:active {
+	background-image: url(btn_wall_painted_pressed.png); 
+}
+#btn_wall_painted_toggled {
+	position: absolute;
+	top: 216px;
+	left: 176px;
+	width: 64px;
+	height: 64px;
+	background-repeat: no-repeat;
+	background-image: url(btn_wall_painted_pressed.png); 
+}
+#btn_wall_painted_toggled:hover {
+	background-image: url(btn_wall_painted_pressed_hover.png); 
+}
+#btn_wall_painted_toggled:active {
+	background-image: url(btn_wall_painted.png); 
+}
+
+#btn_free_clean {
+	position: absolute;
+	top: 364px;
+	left: 176px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_free_clean.png);
+	background-repeat: no-repeat;
+}
+#btn_free_clean:hover {
+	background-image: url(btn_free_clean_hover.png); 
+}
+#btn_free_clean:active {
+	background-image: url(btn_free_clean_pressed.png); 
+}
+#btn_free_clean_toggled {
+	position: absolute;
+	top: 364px;
+	left: 176px;
+	width: 64px;
+	height: 64px;
+	background-image: url(btn_free_clean_pressed.png);
+	background-repeat: no-repeat;
+}
+#btn_free_clean_toggled:hover {
+	background-image: url(btn_free_clean_pressed_hover.png); 
+}
+#btn_free_clean_toggled:active {
+	background-image: url(btn_free_clean.png); 
+}
+#btn_clear {
+	display: block;
+	position: absolute;
+	top: 40px;
+	left: 215px;
+	width: 25px;
+	height: 60px;
+	background-image: url(btn_clear.png);
+	background-repeat: no-repeat;
+}
+#btn_clear:hover {
+	background-image: url(btn_clear_hover.png); 
+}
+#btn_clear:active {
+	background-image: url(btn_clear_pressed.png); 
+}
+#btn_copy {
+	display: block;
+	position: absolute;
+	top: 118px;
+	left: 215px;
+	width: 25px;
+	height: 60px;
+	background-image: url(btn_copy.png);
+	background-repeat: no-repeat;
+}
+#btn_copy:hover {
+	background-image: url(btn_copy_hover.png); 
+}
+#btn_copy:active {
+	background-image: url(btn_copy_pressed.png); 
+}
+#btn_scroll_up {
+	display: block;
+	position: absolute;
+	top: 15px;
+	left: 45px;
+	width: 160px;
+	height: 22px;
+	background-image: url(btn_scroll_up.png);
+	background-repeat: no-repeat;
+}
+#btn_scroll_up:hover {
+	background-image: url(btn_scroll_up_hover.png); 
+}
+#btn_scroll_up:active {
+	background-image: url(btn_scroll_up_pressed.png); 
+}
+#btn_scroll_down {
+	display: block;
+	position: absolute;
+	top: 180px;
+	left: 45px;
+	width: 160px;
+	height: 22px;
+	background-image: url(btn_scroll_down.png);
+	background-repeat: no-repeat;
+}
+#btn_scroll_down:hover {
+	background-image: url(btn_scroll_down_hover.png); 
+}
+#btn_scroll_down:active {
+	background-image: url(btn_scroll_down_pressed.png); 
+}
+#link_indicator {
+	display: block;
+	position: absolute;
+	top: 40px;
+	left: 12px;
+	width: 25px;
+	height: 138px;
+	background-repeat: no-repeat;
+}
+.has_link {
+	background-image: url(has_link.png); 
+}
+.no_link {
+	background-image: url(no_link.png); 
+}
+#logger {
+	display: block;
+	border: none;
+	position: absolute;
+	left: 45px;
+	top: 40px;
+	width: 160px;
+	height: 138px;
+}
+#hint_copy {
+    border: 1px solid black;
+    position: absolute;
+    left: 160px;
+    top: 90px;
+    width: 80px;
+    text-align: center;
+    background-color: lime;
+    font-size: 11px;
+    font-weight: bold;
+    height: 40px;
+    padding: 2px;
+}
+#hint_clear {
+    border: 1px solid black;
+    position: absolute;
+    left: 120px;
+    top: 40px;
+    width: 120px;
+    text-align: center;
+    background-color: lime;
+    font-size: 11px;
+    font-weight: bold;
+    height: 15px;
+    padding: 2px;
+}

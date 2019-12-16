@@ -1,0 +1,1640 @@
+#LyX 1.6.7 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass scrartcl
+\begin_preamble
+\usepackage{indentfirst}
+\end_preamble
+\use_default_options true
+\language russian
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "Рисователь"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 3
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language polish
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Исполнитель 
+\begin_inset Quotes eld
+\end_inset
+
+Рисователь
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Введение
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Введение"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Общие сведения
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Общие-сведения"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Рисователь -- исполнитель системы КуМир.
+ Назначение Рисователя -- создавать рисунки на листе.
+ Как и другие исполнители, он имеет систему команд (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Набор-команд"
+
+\end_inset
+
+), свою 
+\begin_inset Quotes eld
+\end_inset
+
+обстановку
+\begin_inset Quotes erd
+\end_inset
+
+ -- лист, на котором можно рисовать (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Меню-“Лист”"
+
+\end_inset
+
+), и окно, в котором виден лист (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Окно-Рисователя"
+
+\end_inset
+
+).
+ Исполнитель разработан по инициативе д.т.н.
+ проф.
+ К.Ю.Полякова, спецификация исполнителя создана совместно группой разработки
+ КуМир и К.
+\begin_inset space ~
+\end_inset
+
+Ю.
+\begin_inset space ~
+\end_inset
+
+Поляковым.
+\end_layout
+
+\begin_layout Subsection
+Возможности Рисователя
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Возможности-Рисователя"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Рисователь умеет: 
+\end_layout
+
+\begin_layout Itemize
+проводить линии различной толщины и цвета (отрезки прямых, эллипсы, прямоугольни
+ки);
+\end_layout
+
+\begin_layout Itemize
+закрашивать области листа, ограниченные проведенными линиями;
+\end_layout
+
+\begin_layout Itemize
+писать текстовые надписи, используя различные шрифты.
+\end_layout
+
+\begin_layout Section
+Окно Рисователя
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Окно-Рисователя"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Общий вид 
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Общий-вид"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Размеры окна можно менять обычным образом.
+ 
+\end_layout
+
+\begin_layout Standard
+Под полем заголовка расположено меню.
+ 
+\end_layout
+
+\begin_layout Standard
+Внизу окна Рисователя расположена строка состояния.
+ 
+\end_layout
+
+\begin_layout Standard
+Лист рисования располагается в середине рабочего поля окна.
+ Если лист не помещается в окне целиком, включается режим прокрутки.
+\end_layout
+
+\begin_layout Standard
+Вверху и слева на окне находятся линейки.
+ Единица измерения на этих линейках (как и везде в Рисователе) – пиксель,
+ т.е.
+ размер точки на экране (на большинстве современных экранов пиксель равен
+ примерно 
+\begin_inset Formula $0.25$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+мм).
+ 
+\end_layout
+
+\begin_layout Standard
+Линейки располагаются напротив листа рисования и помогают определить координаты
+ различных объектов на листе.
+ Координаты курсора отмечаются на линейках цветными рисками.
+ 
+\end_layout
+
+\begin_layout Subsection
+Заголовок окна
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Заголовок-окна"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+При первом появлении окна Рисователя в строке заголовка пишется 
+\begin_inset Quotes eld
+\end_inset
+
+Рисователь [Новый лист]
+\begin_inset Quotes erd
+\end_inset
+
+.
+ После того, как выполнена команда 
+\begin_inset Quotes eld
+\end_inset
+
+Загрузить лист
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Сохранить копию…
+\begin_inset Quotes erd
+\end_inset
+
+ или 
+\begin_inset Quotes eld
+\end_inset
+
+Сохранить копию как…
+\begin_inset Quotes erd
+\end_inset
+
+ в заголовке появляется соответствующее имя файла (в квадратных скобках).
+ После выполнения команды 
+\begin_inset Quotes eld
+\end_inset
+
+Создать пустой…
+\begin_inset Quotes erd
+\end_inset
+
+ имя файла в заголовке стирается и вместо него снова пишется 
+\begin_inset Quotes eld
+\end_inset
+
+Новый лист
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Все перечисленные команды вызываются из меню 
+\begin_inset Quotes eld
+\end_inset
+
+Лист
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Строка состояния
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Строка-состояния"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В правом нижнем углу указывается масштаб (см.
+ описание меню 
+\begin_inset Quotes eld
+\end_inset
+
+Вид
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Если курсор мыши находится на листе, то слева указываются характеристики
+ точки под курсором: координаты (как показано на линейках) и цвет.
+ Кроме того, координаты курсора показываются рисками.
+ 
+\end_layout
+
+\begin_layout Standard
+Цвет описывается в том формате, который определен в меню 
+\begin_inset Quotes eld
+\end_inset
+
+Вид 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Цвет в строке статуса
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Если для цвета есть стандартное наименование на русском языке, то оно тоже
+ выводится.
+\end_layout
+
+\begin_layout Subsection
+Лист при первом открытии окна
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Лист-при-первом"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Когда окно Рисователя открывается первый раз во время сеанса работы системы
+ КуМир, в нем располагается стандартный чистый лист.
+ По умолчанию, это чистый белый лист размером 
+\begin_inset Formula $640\times480$
+\end_inset
+
+.
+ Если экран маленький (менее 
+\begin_inset Formula $700$
+\end_inset
+
+ пикселей в высоту) -- в масштабе 
+\begin_inset Formula $50\%$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Формат этого листа можно изменить.
+ Для этого нужно файл с описанием нужного листа поместить по адресу 
+\family typewriter
+$KUMDIR/Addons/painter/resources/default.png
+\family default
+.
+ Если указанный файл существует, то именно он будет предъявляться в качестве
+ стандартного чистого листа.
+\end_layout
+
+\begin_layout Section
+Меню “Лист” 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Меню-“Лист”"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Новый лист
+\emph default
+ -- предлагает выбор нового чистого листа: указать параметры нового листа
+ (высота, ширина, цвет); выбрать один из предлагаемых шаблонов.
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Загрузить...
+
+\emph default
+ -- запрашивает имя PNG-фала, который затем загружает и использует в качестве
+ стандартного чистого листа (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Лист-при-первом"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Сохранить копию...
+
+\emph default
+ -- если ранее сохранялась копия, то перезаписывает указанный файл текущим
+ изображением листа, иначе -- эквивалентно “Сохранить копию как...”.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Сохранить копию как...
+
+\emph default
+ -- запрашивает имя PNG-фала, после чего записывает в указанный файл текущее
+ изображение листа.
+ При запросе имени файла предлагается имя по умолчанию: 
+\family typewriter
+рисунок.png
+\family default
+, если не загружен никакой файл шаблона; 
+\family typewriter
+копия $имя_файла
+\family default
+, если в качестве шаблона загружен файл 
+\family typewriter
+$имя_файла
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Меню “Вид” 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Меню-“Вид”"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Масштаб 100%
+\emph default
+ -- устанавливает масштаб отображения листа в окне наблюдения, равный 
+\begin_inset Formula $1.0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Масштаб 50%
+\emph default
+ -- устанавливает масштаб отображения листа в окне наблюдения, равный 
+\begin_inset Formula $0.5$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Масштаб по ширине
+\emph default
+ -- устанавливает масштаб отображения листа таким образом, чтобы лист ширина
+ изображения листа равнялась ширине окна.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Масштаб по высоте
+\emph default
+ -- устанавливает масштаб отображения листа таким образом, чтобы лист высоте
+ изображения листа равнялась высоте окна.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Масштаб по окну
+\emph default
+ -- устанавливает максимальный масштаб отображения листа, при котором лист
+ целиком помещается в окно.
+\end_layout
+
+\begin_layout Section
+Набор команд 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Набор-команд"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Информационные команды
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Информационные-команды."
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Команды этой группы позволяют определить размеры листа и текстовой надписи
+ (в пикселях).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг цел высота листа
+\family default
+ -- возвращает высоту листа.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг цел ширина листа
+\family default
+ -- возвращает ширину листа.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг цел центр x
+\family default
+ -- возвращает координату середины листа по горизонтали (ширине).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг цел центр y
+\family default
+ -- возвращает координату середины листа по вертикали (высоте).
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг цел ширина текста(лит текст)
+\family default
+ -- возвращает ширину текста в пикселях (при заданном шрифте).
+\end_layout
+
+\begin_layout Subsection
+Установка параметров рисования
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Установка-параметров-рисования"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Эти команды нужны для задания параметров рисования линии (толщина, цвет),
+ закрашивания (цвет), рисования текстовых надписей (гарнитура, размер символов,
+ использование жирных или курсивных букв).
+ Эти параметры используются в командах рисования (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Рисование"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Толщина линий задается в пикселях.
+ Цвета задаются литеральными величинами (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Набор-цветов"
+
+\end_inset
+
+).
+ Гарнитуры также задаются литеральными величинами, список допустимых гарнитур
+ определяется таковым списком в операционной системе.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг перо(цел толщина, лит цвет)
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+
+\emph on
+Описание
+\emph default
+ Устанавливает толщину и цвет контура.
+ При толщине 
+\begin_inset Formula $0$
+\end_inset
+
+ линия не рисуется (но заливка внутренней области прямоугольника или эллипса
+ производится -- включая контур).
+ 
+\end_layout
+
+\begin_layout Description
+Установки
+\begin_inset space ~
+\end_inset
+
+по
+\begin_inset space ~
+\end_inset
+
+умолчанию
+\end_layout
+
+\begin_layout Itemize
+Толщина
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Цвет
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $=$
+\end_inset
+
+
+\emph on
+черный
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+
+\emph on
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+Отрицательная
+\begin_inset space ~
+\end_inset
+
+толщина.
+\end_layout
+
+\begin_layout List
+\labelwidthstring 00.00.0000
+Недопустимый
+\begin_inset space ~
+\end_inset
+
+цвет.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг кисть(лит цвет) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Устанавливает цвет заливки.
+ Пустая строка означает прозрачный цвет (отсутствие закрашивания).
+\end_layout
+
+\begin_layout Description
+Установки
+\begin_inset space ~
+\end_inset
+
+по
+\begin_inset space ~
+\end_inset
+
+умолчанию
+\end_layout
+
+\begin_layout Itemize
+Цвет
+\emph on
+ 
+\emph default
+
+\begin_inset Formula $=$
+\end_inset
+
+
+\emph on
+ белый
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_layout Itemize
+Недопустимый цвет.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг шрифт(лит гарнитура, цел размер в пикселях, лог жирный, лог курсив)
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Устанавливает параметры шрифта, которые затем используются командой
+ 
+\family typewriter
+надпись
+\family default
+.
+\end_layout
+
+\begin_layout Description
+Установки
+\begin_inset space ~
+\end_inset
+
+по
+\begin_inset space ~
+\end_inset
+
+умолчанию
+\end_layout
+
+\begin_layout Itemize
+Гарнитура -- из настроек ОС.
+\end_layout
+
+\begin_layout Itemize
+Размер в пикселях -- из настроек ОС.
+\end_layout
+
+\begin_layout Itemize
+Жирный -- из настроек ОС.
+\end_layout
+
+\begin_layout Itemize
+Курсив -- из настроек ОС.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Рисование
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Рисование"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Линии и надписи выполняются пером (его толщина и цвет устанавливаются в
+ команде 
+\family typewriter
+перо
+\family default
+).
+ Для пера определено текущее положение, которое устанавливается в команде
+ 
+\family typewriter
+алг
+\begin_inset space ~
+\end_inset
+
+в
+\begin_inset space ~
+\end_inset
+
+точку(цел
+\begin_inset space ~
+\end_inset
+
+x,
+\begin_inset space ~
+\end_inset
+
+y)
+\family default
+.
+ Начальное положение -- 
+\begin_inset Formula $(0,0)$
+\end_inset
+
+.
+ Если точка, которую нужно отметить, находится вне листа -- никаких действий
+ не производится.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг в точку(цел x, y)
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Помещает перо в указанную точку.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг линия в точку(цел x, y)
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Проводит отрезок из текущей точки пера в точку 
+\begin_inset Formula $(х,у)$
+\end_inset
+
+.
+ Перо перемещается в точку 
+\begin_inset Formula $(х,у)$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг пиксель (цел x, y, лит цвет) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Устанавливает указанный цвет в указанном пикселе.
+ Перо перемещается в точку 
+\begin_inset Formula $(х,у)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Координаты вне листа.
+\end_layout
+
+\begin_layout Itemize
+Недопустимый цвет.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг лит цвет в точке(арг цел x, y)
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Возвращает цвет пикселя.
+ Возвращает стандартный код цвета (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Набор-цветов"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Координата меньше 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Выход за границу рисунка.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг линия(цел x1, y1, x2, y2) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Проводит прямую линию между указанными точками.
+ Перо смещается в точку 
+\begin_inset Formula $(x_{2},y_{2})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг прямоугольник(цел x1, y1, x2, y2) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Проводит контур прямоугольника в соответствии с состоянием пера
+ и закрашивает внутренность в соответствии с состоянием кисти.
+ Точки 
+\begin_inset Formula $(x_{1},y_{1})$
+\end_inset
+
+ и 
+\begin_inset Formula $(x_{2},y_{2})$
+\end_inset
+
+ -- координаты противоположных вершин прямоугольника Перо смещается в точку
+ 
+\begin_inset Formula $(x_{2},y_{2})$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг эллипс(цел x1, y1, x2, y2) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Проводит контур эллипса, вписанного в прямоугольник(цел x1, y1,
+ x2, y2), в соответствии с состоянием пера и закрашивает внутренность в
+ соответствии с состоянием кисти.
+ Точки 
+\begin_inset Formula $(x_{1},y_{1})$
+\end_inset
+
+ и 
+\begin_inset Formula $(x_{2},y_{2})$
+\end_inset
+
+ – координаты противоположных вершин прямоугольника.
+ Перо не меняет положения.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг окружность (цел xc, yc, r) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Проводит окружность с центром 
+\begin_inset Formula $(x_{c},y_{c})$
+\end_inset
+
+и радиусом 
+\begin_inset Formula $r$
+\end_inset
+
+ в соответствии с состоянием пера и закрашивает внутренность круга в соответстви
+и с состоянием кисти.
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Отрицательный радиус
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг надпись(цел x, y, лит текст) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Выводит указанный текст в соответствии с параметрами команд перо
+ (цвет линии) и шрифт.
+ Точка 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ -- левая верхняя точка текста.
+ Выводится только часть текста, которая реально попадает на лист.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг залить(цел x, y) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Область точки -- это связное множество точек, которые имеют тот
+ же цвет, что и данная точка и включают саму точку.
+ Связность понимается только по вертикали и горизонтали.
+ Команда меняет цвет всех точек в этой области в соответствии с состоянием
+ кисти.
+ Если координаты точки вне листа, то никаких действий не выполняется.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Работа с листами
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Работа-с-листами"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг новый лист(цел ширина, высота, лит цвет фона) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Создает новый лист с заданной высотой и цветом фона.
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ширина менее 20.
+\end_layout
+
+\begin_layout Itemize
+Высота менее 20.
+\end_layout
+
+\begin_layout Itemize
+Недопустимый цвет.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг загрузить лист(лит имя файла) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Загружает лист из графического файла в формате PNG.
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Не могу прочитать.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\family typewriter
+алг сохранить лист(лит имя файла) 
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Описание Сохраняет лист в графический файл формата PNG.
+\end_layout
+
+\begin_layout Description
+Ошибки
+\begin_inset space ~
+\end_inset
+
+выполнения
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Не могу записать.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Subsection
+Работа с цветами
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Работа-с-цветами"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Строят внутреннее представление цвета
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Строят-HTML-представление-цвета"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит RGB(цел r, g, b) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит RGBA(цел r, g, b, a)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит CMYK(цел c, m, y, k)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит CMYKA(цел c, m, y, k, a) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит HSV(цел h, s, v) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит HSVA(цел h, s, v, a)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит HSL(цел h, s, l)
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг лит HSLA(цел h, s, l, a) 
+\end_layout
+
+\begin_layout Subsubsection
+Раскладывают цвет из внутреннего кодового представления на его компоненты
+ в соответствии с цветовой моделью
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Раскладывают-цвет-из"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг разложить цвет в RGB(лит цвет, рез цел R, G, B) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг разложить цвет в CMYK(лит цвет, рез цел C, M, Y, K) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг разложить цвет в HSL(лит цвет, рез цел H, S, L) 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+алг разложить цвет в HSV(лит цвет, рез цел H, S, V)
+\end_layout
+
+\begin_layout Section
+Набор цветов 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Набор-цветов"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Способы задания цветов
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Способы-задания-цветов"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Цвета задаются строковыми (литеральными) величинами.
+ Возможны следующие форматы:
+\end_layout
+
+\begin_layout Itemize
+Пустая строка -- прозрачный.
+\end_layout
+
+\begin_layout Itemize
+Строка в CSS-формате, т.
+\begin_inset space ~
+\end_inset
+
+е.
+ попадающая под регулярное выражение: 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+(rgb)|(rgba)|(cmyk)|(cmyka)|(hsl)|(hsla)
+\backslash
+((
+\backslash
+d+,?)+
+\backslash
+)
+\family default
+ 
+\begin_inset Newline newline
+\end_inset
+
+-- установка цвета по модели 
+\family typewriter
+$1
+\family default
+ и десятичным компонентам, разделенных запятыми из 
+\family typewriter
+$2
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+Пример: 
+\family typewriter
+rgb(255,
+\begin_inset space ~
+\end_inset
+
+0,
+\begin_inset space ~
+\end_inset
+
+0)
+\family default
+ -- красный, 
+\family typewriter
+cmyk(0,
+\begin_inset space ~
+\end_inset
+
+0,
+\begin_inset space ~
+\end_inset
+
+255,
+\begin_inset space ~
+\end_inset
+
+0)
+\family default
+ -- желтый.
+ 
+\end_layout
+
+\begin_layout Itemize
+Строка в HTML-формате (строка вида 
+\family typewriter
+#RRGGBB[AA]
+\family default
+).
+\end_layout
+
+\begin_layout Itemize
+Одно из имен цветов радуги (плюс черный и белый) в кириллице (см.
+\begin_inset space ~
+\end_inset
+
+Приложение
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ПРИЛОЖЕНИЕ-1.-Допустимые"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+Одно из определенных стандартом W3C (см.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.w3.org/TR/SVG/types.html#ColorKeywords
+\end_layout
+
+\end_inset
+
+) имен в латинице (см.
+\begin_inset space ~
+\end_inset
+
+Приложение
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ПРИЛОЖЕНИЕ-2.-Допустимые"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Стандартный код цвета
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Стандартный-код-цвета"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В качестве стандартного кода цвета (он используется в строке состояния окна,
+ командах цвет пикселя и код цвета) используется текст, определяемый по
+ следующим правилам: 
+\end_layout
+
+\begin_layout Itemize
+если в цвете нет атрибута 
+\begin_inset Quotes eld
+\end_inset
+
+a
+\begin_inset Quotes erd
+\end_inset
+
+ -- текст вида 
+\family typewriter
+rgb(r,
+\begin_inset space ~
+\end_inset
+
+g,
+\begin_inset space ~
+\end_inset
+
+b)
+\family default
+ 
+\end_layout
+
+\begin_layout Itemize
+если в цвете есть атрибут 
+\begin_inset Quotes eld
+\end_inset
+
+a
+\begin_inset Quotes erd
+\end_inset
+
+ -- текст вида 
+\family typewriter
+rgba(r,
+\begin_inset space ~
+\end_inset
+
+g,
+\begin_inset space ~
+\end_inset
+
+b,
+\begin_inset space ~
+\end_inset
+
+a)
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Допустимые русские названия цветов
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:ПРИЛОЖЕНИЕ-1.-Допустимые"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+черный чёрный белый серый фиолетовый синий голубой зеленый зелёный желтый
+ жёлтый оранжевый красный
+\end_layout
+
+\begin_layout Section
+Допустимые английские названия цветов 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:ПРИЛОЖЕНИЕ-2.-Допустимые"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+aliceblue antiquewhite aqua aquamarine azure beige bisque black blanchedalmond
+ blue blueviolet brown burlywood cadetblue chartreuse chocolate coral cornflower
+blue cornsilk crimson cyan darkblue darkcyan darkgoldenrod darkgray darkgreen
+ darkgrey darkkhaki darkmagenta darkolivegreen darkorange darkorchid darkred
+ darksalmon darkseagreen darkslateblue darkslategray darkslategrey darkturquoise
+ darkviolet deeppink deepskyblue dimgray dimgrey dodgerblue firebrick floralwhit
+e forestgreen fuchsia gainsboro ghostwhite gold goldenrod gray grey green
+ greenyellow honeydew hotpink indianred indigo ivory khaki lavender lavenderblus
+h lawngreen lemonchiffon lightblue lightcoral lightcyan lightgoldenrodyellow
+ lightgray lightgreen lightgrey lightpink lightsalmon lightseagreen lightskyblue
+ lightslategray lightslategrey lightsteelblue lightyellow lime limegreen
+ linen magenta maroon mediumaquamarine mediumblue mediumorchid mediumpurple
+ mediumseagreen mediumslateblue mediumspringgreen mediumturquoise mediumvioletre
+d midnightblue mintcream mistyrose moccasin navajowhite navy oldlace olive
+ olivedrab orange orangered orchid palegoldenrod palegreen paleturquoise
+ palevioletred papayawhip peachpuff peru pink plum powderblue purple red
+ rosybrown royalblue saddlebrown salmon sandybrown seagreen seashell sienna
+ silver skyblue slateblue slategray slategrey snow springgreen steelblue
+ tan teal thistle tomato turquoise violet wheat white whitesmoke yellow
+ yellowgreen
+\end_layout
+
+\end_body
+\end_document

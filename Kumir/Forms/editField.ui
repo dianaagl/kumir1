@@ -1,0 +1,145 @@
+<ui version="4.0" >
+ <class>editField</class>
+ <widget class="QMainWindow" name="editField" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>326</width>
+    <height>264</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Edit Field</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>28</y>
+     <width>326</width>
+     <height>215</height>
+    </rect>
+   </property>
+   <widget class="QGraphicsView" name="View" >
+    <property name="geometry" >
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
+    </property>
+    <property name="sizePolicy" >
+     <sizepolicy vsizetype="Maximum" hsizetype="Maximum" >
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="verticalScrollBarPolicy" >
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy" >
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>326</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuField" >
+    <property name="title" >
+     <string>Field</string>
+    </property>
+    <addaction name="separator" />
+    <addaction name="actionNew_field" />
+    <addaction name="actionOpen" />
+    <addaction name="actionSave" />
+    <addaction name="actionSaveAs" />
+    <addaction name="actionSave_as_start" />
+    <addaction name="actionPrint_to_file" />
+    <addaction name="separator" />
+    <addaction name="actionClose" />
+   </widget>
+   <addaction name="menuField" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>243</y>
+     <width>326</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="sizeGripEnabled" >
+    <bool>false</bool>
+   </property>
+  </widget>
+  <action name="actionOpen" >
+   <property name="text" >
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionOpen_rescent" >
+   <property name="text" >
+    <string>Open rescent..</string>
+   </property>
+  </action>
+  <action name="actionSave" >
+   <property name="text" >
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionPrint_to_file" >
+   <property name="enabled" >
+    <bool>true</bool>
+   </property>
+   <property name="text" >
+    <string>Print to file</string>
+   </property>
+   <property name="autoRepeat" >
+    <bool>false</bool>
+   </property>
+  </action>
+  <action name="actionClose" >
+   <property name="text" >
+    <string>Close</string>
+   </property>
+  </action>
+  <action name="actionSaveAs" >
+   <property name="text" >
+    <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionNew_field" >
+   <property name="text" >
+    <string>New</string>
+   </property>
+  </action>
+  <action name="actionSave_as_start" >
+   <property name="text" >
+    <string>Save as start</string>
+   </property>
+  </action>
+  <action name="actionHelp" >
+   <property name="text" >
+    <string>Help</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

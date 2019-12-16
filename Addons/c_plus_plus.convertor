@@ -1,0 +1,4 @@
+Character-Encoding: UTF-8
+Title: Convertor to C++ (ISO/IEC 14882:1998)
+Title[ru_RU]: Конвертор в язык Си++ (ISO/IEC 14882:1998)
+Python-Module: translator_service.c_plus_plus

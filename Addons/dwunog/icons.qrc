@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>images/headup.png</file>
+        <file>images/headleft.png</file>
+        <file>images/headright.png</file>
+        <file>images/lfootup.png</file>
+        <file>images/lfootdown.png</file>
+        <file>images/rfootup.png</file>
+        <file>images/rfootdown.png</file>
+        <file>images/reset.png</file>
+        <file>images/wait.png</file>
+        <file>images/stop.png</file>
+        <file>images/open.png</file>
+        <file>images/take.png</file>
+        <file>images/k1.png</file>
+        <file>images/reck1.png</file>
+    </qresource>
+</RCC>
