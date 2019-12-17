@@ -18,89 +18,104 @@
 
 #include <QMainWindow>
 #include <QSettings>
-#include "../course_model.h"
+#include <QFile>
+#include <QFileInfo>
+#include <QMenu>
+#include <QModelIndex>
+class QLineEdit;
+
+#include "../course_changes.h"
 #include "../taskControlInterface.h"
-#include "editdialog.h"
-#include "newkursdialog.h"
+
+class newKursDialog;
+class EditDialog;
 class CSInterface;
-namespace Ui {
-    class MainWindowTask;
+class courseModel;
+
+namespace Ui
+{
+class MainWindowTask;
 }
 
-class MainWindowTask : public QMainWindow {
-    Q_OBJECT
+class MainWindowTask : public QMainWindow
+{
+	Q_OBJECT
+
 public:
-    MainWindowTask(QWidget *parent = 0);
-    ~MainWindowTask();
-    void setInterface(CSInterface * csInterface){interface=csInterface;};
-    void setCS(QString cs){CS=cs;};
-    KumZadanie task;
-    void setup();
-     QString getFileName(QString fileName);
-     void setTeacher(bool mode);
+	MainWindowTask(QWidget *parent = 0);
+	~MainWindowTask();
+
+	void setInterface(CSInterface *csInterface) { interface = csInterface; }
+	void setCS(QString cs) { CS = cs; }
+
+	KumZadanie task;
+
+	void setup();
+	QString getFileName(QString fileName);
+	void setTeacher(bool mode);
 
 public slots:
-    void aboutToQuit ();
+	void aboutToQuit();
 
-    void loadCourse();
-    void returnTested();
-    void saveCourse();
-    void saveCourseFile();
-    void saveBaseKurs();
-    void showText(const QModelIndex & index );
-    void loadHtml(QString fileName);
-    void startTask();
-    void checkTask();
-    void lockCheck();
-    void setMark(int mark);
-    void resetTask();
-    void Close();
-    void customContextMenuRequested(QPoint  pos);
-    void addTask();
-    void addDeepTask();
-    void deleteTask();
-    void saveKurs();//TEACHER
-    void saveKursAs();//TEACHER
-    void editTask();//Teacher
-    void setEditTaskEnabled(bool flag);
-    void moveUp();
-    void moveDown();
-     void newKurs();
-     void endRootEdit();
-     void cancelRootEdit();
+	void loadCourse();
+	void returnTested();
+	void saveCourse();
+	void saveCourseFile();
+	void saveBaseKurs();
+	void showText(const QModelIndex &index);
+	void loadHtml(QString fileName);
+	void startTask();
+	void checkTask();
+	void lockCheck();
+	void setMark(int mark);
+	void resetTask();
+	void Close();
+	void customContextMenuRequested(QPoint pos);
+	void addTask();
+	void addDeepTask();
+	void deleteTask();
+	void saveKurs();//TEACHER
+	void saveKursAs();//TEACHER
+	void editTask();//Teacher
+	void setEditTaskEnabled(bool flag);
+	void moveUp();
+	void moveDown();
+	void newKurs();
+	void endRootEdit();
+	void cancelRootEdit();
 
 protected:
-    void changeEvent(QEvent *e);
-    void closeEvent(QCloseEvent *event);
+	void changeEvent(QEvent *e);
+	void closeEvent(QCloseEvent *event);
 
 private:
-    void markProgChange();
-    void createMoveMenu();
-    void setUpDown(QModelIndex index);
-    QString loadScript(QString file_name);
-    QString loadTestAlg(QString file_name);
-    void loadCourseData(const QString filename);
-    void loadMarks(const QString fileName);
+	void markProgChange();
+	void createMoveMenu();
+	void setUpDown(QModelIndex index);
+	QString loadScript(QString file_name);
+	QString loadTestAlg(QString file_name);
+	void loadCourseData(QString filename);
+	void loadMarks(QString fileName);
 
-    QString curDir;
-    courseModel* course;
-    QModelIndex curTaskIdx;
-    CSInterface * interface;
-    QString CS;
-    bool onTask;
-    courseChanges changes;
-    QString cursFile;
-    QList<int> progChange;
-    QFile cursWorkFile;
-    QMenu customMenu;
-    bool isTeacher;
-    EditDialog* editDialog;
-    newKursDialog* newDialog;
-    QSettings* settings;
-     QLineEdit *editRoot;
-     QFileInfo baseKursFile; //4 mode
-       Ui::MainWindowTask *ui;
+	bool onTask;
+	bool isTeacher;
+	courseModel *course;
+	CSInterface *interface;
+	EditDialog *editDialog;
+	newKursDialog *newDialog;
+	Ui::MainWindowTask *ui;
+	courseChanges changes;
 
+	QString curDir;
+	QModelIndex curTaskIdx;
+	QString CS;
+	QString cursFile;
+	QList<int> progChange;
+	QMenu customMenu;
+	QSettings *settings;
+	QLineEdit *editRoot;
+	QFile cursWorkFile;
+	QFileInfo baseKursFile; //4 mode
 };
 
 #endif // MAINWINDOW_H
