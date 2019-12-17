@@ -14,6 +14,12 @@
 **
 ****************************************************************************/
 
+#ifndef Q_OS_WIN32
+#ifndef Q_OS_SOLARIS
+#include <unistd.h>
+#endif
+#endif
+
 #include "pushdownautomata.h"
 //#include "strtypes.h"
 #include "kum_tables.h"
