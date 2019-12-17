@@ -196,6 +196,6 @@ win32-msvc* {
     LIBS += -lUser32
 }
 
-unix {
-    QMAKE_CXXFLAGS_RELEASE += -DQT_NO_DEBUG_OUTPUT
-}
+#unix {
+#    QMAKE_CXXFLAGS_RELEASE += -DQT_NO_DEBUG_OUTPUT
+#}
