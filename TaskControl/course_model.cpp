@@ -120,7 +120,11 @@ QVariant courseModel::data(const QModelIndex &index, int role) const
 };
     QVariant courseModel::headerData(int section, Qt::Orientation orientation,
                         int role ) const
-    {//qDebug()<<"Get Header";
+    {
+        Q_UNUSED(section);
+        Q_UNUSED(orientation);
+        Q_UNUSED(role);
+        //qDebug()<<"Get Header";
         return QVariant(courseFileName);};
 
     QModelIndex courseModel::index(int row, int column, const QModelIndex &parent) const{
@@ -154,8 +158,9 @@ QVariant courseModel::data(const QModelIndex &index, int role) const
        if(par.toElement().attribute("id").toInt()==0) return createIndex(0,0,0);
        return createIndex(domRow(par),0,idByNode(par));
     };
-    int courseModel::columnCount(const QModelIndex &parent)const
+    int courseModel::columnCount(const QModelIndex &parent) const
                    {
+                   Q_UNUSED(parent);
 
                    return 1;} ;
 
@@ -163,6 +168,7 @@ QVariant courseModel::data(const QModelIndex &index, int role) const
 
      QDomNode courseModel::nodeByRowColumn(int row,int column,QDomNode *parent) const
      {
+      Q_UNUSED(column);
       if(!parent)return root;
    qDebug()<<"nodeByRowColumn";
           return parent->childNodes().at(row);
@@ -178,7 +184,7 @@ QVariant courseModel::data(const QModelIndex &index, int role) const
          if(!val.isNull())return val;
 
          QDomNodeList childs=parent.childNodes();
-         for(int i=0;i<childs.length();i++)
+         for(int i=0;i<childs.size();i++)
          {
              if(childs.at(i).toElement().attribute("id","")==QString::number(id))
              {
@@ -188,7 +194,7 @@ QVariant courseModel::data(const QModelIndex &index, int role) const
              };
 
          }
-         for(int i=0;i<childs.length();i++)
+         for(int i=0;i<childs.size();i++)
          {
             // if(childs.at(i).toElement().attribute("id","")==QString::number(id))return childs.at(i);
                 if(childs.at(i).hasChildNodes())
