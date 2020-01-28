@@ -3,13 +3,11 @@
 # -------------------------------------------------
 QT += svg xml webkit
 
-TEMPLATE = lib
-CONFIG += plugin
+TEMPLATE = app
 
-TARGET = ../taskControl
-macx:TARGET = ../../kumir.app/Contents/Resources/taskControl
+TARGET = TaskControl
 
-SOURCES += \
+SOURCES += main.cpp \
 	../course_model.cpp \
 	mainwindow.cpp \
 	interface.cpp \
