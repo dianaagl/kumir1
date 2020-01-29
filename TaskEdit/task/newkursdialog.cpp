@@ -1,36 +1,40 @@
 #include "newkursdialog.h"
 #include "ui_newkursdialog.h"
+#include <QFileDialog>
 
-newKursDialog::newKursDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::newKursDialog)
+NewKursDialog::NewKursDialog(QWidget *parent) :
+	QDialog(parent),
+	ui(new Ui::NewKursDialog)
 {
-    ui->setupUi(this);
-    //connect(ui->fileButt,SIGNAL(pressed()),this,SLOT(showFileSelect()));
+	ui->setupUi(this);
 }
 
-newKursDialog::~newKursDialog()
+NewKursDialog::~NewKursDialog()
 {
-    delete ui;
+	delete ui;
+	ui = 0;
 }
 
-//QString newKursDialog::fileName()
-//{
-    //return ui->fileEdit->text();
-//}
-
-QString newKursDialog::name()
+QString NewKursDialog::name()
 {
- return    ui->nameEdit->text();
+	return ui->nameEdit->text();
 }
 
-void newKursDialog::showFileSelect()
+void NewKursDialog::showFileSelect()
 {
-    QFileDialog dialog(this,trUtf8("Cохранить файл курса"),"", "(*.kurs.xml )");
-    dialog.setAcceptMode(QFileDialog::AcceptSave);
-    if(!dialog.exec())return;
+	QFileDialog dialog(
+		this,
+		trUtf8("Cохранить файл курса"),
+		"", "(*.kurs.xml)"
+	);
+	dialog.setAcceptMode(QFileDialog::AcceptSave);
+	if (!dialog.exec()) {
+		return;
+	}
 
-    QString fname=dialog.selectedFiles().first();
-    if(fname.right(9)!=".kurs.xml")fname=fname+".kurs.xml";
-    //ui->fileEdit->setText(fname);
-};
+	QString fname = dialog.selectedFiles().first();
+	if (fname.right(9) != ".kurs.xml") {
+		fname = fname + ".kurs.xml";
+	}
+}
+
