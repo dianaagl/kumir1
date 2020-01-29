@@ -1,40 +1,38 @@
 #ifndef STARTER_H
 #define STARTER_H
 
-#include <QtCore>
-#include <QtGui>
 #include "plugin_interface.h"
+#include <QObject>
+#include <QString>
+
 class CustomWindow;
+class QEvent;
 
 class Starter : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
+
 public:
-    explicit Starter(
-            const QString &name,
-            CustomWindow *mainWindow,
-            CustomWindow *pultWindow,kumirPluginInterface  *interface);
-bool	eventFilter ( QObject * watched, QEvent * event );
-void loadFile(QString fname)
-{
-    fileName=fname;
-    QList<QVariant> args;
-    Interface->runAlg("|open xml", args<<QVariant(fileName) << QVariant(fname));
-};
-QString FileName()
-{
-    return fileName;
-}
+	explicit Starter(
+		const QString &name,
+		CustomWindow *mainWindow,
+		CustomWindow *pultWindow,
+		kumirPluginInterface  *interface
+	);
+
+	bool eventFilter(QObject *watched, QEvent *event);
+
+	void loadFile(QString fname);
+	QString getFileName() const { return fName; }
 
 protected slots:
-    void handleOneWindowClosed();
+	void handleOneWindowClosed();
 
 private:
-
-    CustomWindow *m_mainWindow;
-    CustomWindow *m_pultWindow;
-    QString s_name,fileName;
-kumirPluginInterface  *Interface;
+	CustomWindow *m_mainWindow;
+	CustomWindow *m_pultWindow;
+	QString sName, fName;
+	kumirPluginInterface *Interface;
 };
 
 #endif // STARTER_H
