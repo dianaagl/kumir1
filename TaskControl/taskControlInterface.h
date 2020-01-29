@@ -1,5 +1,6 @@
 #ifndef TASKCONTROLINTERFACE_H
 #define TASKCONTROLINTERFACE_H
+
 #include <QVariant>
 #include <QStringList>
 #include <QMap>
@@ -38,13 +39,8 @@ public:
 		return ispFields.count();
 	}
 
-	QString name;
-
 	//исполнители используемые в задании
 	QStringList isps;
-
-	//скрипты используемые в задании
-	//QStringList scripts;
 
 	//Обстановки для каждого исполнителя fields[исп,обст]
 	QMap<QString, QString> fields;

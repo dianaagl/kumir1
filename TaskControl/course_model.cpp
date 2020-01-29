@@ -8,7 +8,7 @@
 
 #define MARK_BLOCK 12
 
-courseModel::courseModel() : QAbstractItemModel()
+CourseModel::CourseModel() : QAbstractItemModel()
 {
 	isTeacher = false;
 	itemFont = QFont("Helvetica [Cronyx]");
@@ -67,7 +67,7 @@ courseModel::courseModel() : QAbstractItemModel()
 #endif
 }
 
-int courseModel::loadCourse(QString file)
+int CourseModel::loadCourse(QString file)
 {
 	courseFileName = file;
 	qDebug() << "Load Course";
@@ -94,7 +94,7 @@ int courseModel::loadCourse(QString file)
 }
 
 
-int courseModel::rowCount(const QModelIndex &parent) const
+int CourseModel::rowCount(const QModelIndex &parent) const
 {
 	if (!parent.isValid()) {
 		return 1;
@@ -105,7 +105,7 @@ int courseModel::rowCount(const QModelIndex &parent) const
 }
 
 
-QIcon courseModel::iconByMark(int mark, bool isFolder)const
+QIcon CourseModel::iconByMark(int mark, bool isFolder)const
 {
 	if (isFolder) {
 		mark = mark + MARK_BLOCK;
@@ -118,7 +118,7 @@ QIcon courseModel::iconByMark(int mark, bool isFolder)const
 }
 
 
-QVariant courseModel::data(const QModelIndex &index, int role) const
+QVariant CourseModel::data(const QModelIndex &index, int role) const
 {
 	if (!index.isValid()) {
 		return QVariant();
@@ -179,7 +179,7 @@ QVariant courseModel::data(const QModelIndex &index, int role) const
 }
 
 
-QVariant courseModel::headerData(
+QVariant CourseModel::headerData(
 	int section, Qt::Orientation orientation, int role
 ) const {
 	Q_UNUSED(section);
@@ -189,7 +189,7 @@ QVariant courseModel::headerData(
 }
 
 
-QModelIndex courseModel::index(
+QModelIndex CourseModel::index(
 	int row, int column, const QModelIndex &parent
 ) const {
 	if (!hasIndex(row, column, parent)) {
@@ -199,7 +199,7 @@ QModelIndex courseModel::index(
 }
 
 
-int courseModel::domRow(QDomNode &child) const //TODO Check
+int CourseModel::domRow(QDomNode &child) const //TODO Check
 {
 	QDomNode par = child.parentNode();
 	QDomNodeList list = par.childNodes();
@@ -212,7 +212,7 @@ int courseModel::domRow(QDomNode &child) const //TODO Check
 }
 
 
-QModelIndex courseModel::parent(const QModelIndex &child) const
+QModelIndex CourseModel::parent(const QModelIndex &child) const
 {
 
 	if (!child.isValid()) {
@@ -230,14 +230,14 @@ QModelIndex courseModel::parent(const QModelIndex &child) const
 }
 
 
-int courseModel::columnCount(const QModelIndex &parent) const
+int CourseModel::columnCount(const QModelIndex &parent) const
 {
 	Q_UNUSED(parent);
 	return 1;
 }
 
 
-QDomNode courseModel::nodeByRowColumn(
+QDomNode CourseModel::nodeByRowColumn(
 	int row, int column, QDomNode *parent
 ) const {
 	Q_UNUSED(column);
@@ -249,7 +249,7 @@ QDomNode courseModel::nodeByRowColumn(
 }
 
 
-QDomNode courseModel::nodeById(int id, QDomNode parent) const
+QDomNode CourseModel::nodeById(int id, QDomNode parent) const
 {
 	QString sid = QString::number(id);
 	if (parent.toElement().attribute("id", "") == sid) {
@@ -285,7 +285,7 @@ QDomNode courseModel::nodeById(int id, QDomNode parent) const
 }
 
 
-Qt::ItemFlags courseModel::flags(const QModelIndex &index) const
+Qt::ItemFlags CourseModel::flags(const QModelIndex &index) const
 {
 	if (!index.isValid()) {
 		return 0;
@@ -301,7 +301,7 @@ Qt::ItemFlags courseModel::flags(const QModelIndex &index) const
 }
 
 
-QModelIndex courseModel::createMyIndex(
+QModelIndex CourseModel::createMyIndex(
 	int row, int column, QModelIndex parent
 ) const {
 	if (!parent.isValid()) {
@@ -328,7 +328,7 @@ QModelIndex courseModel::createMyIndex(
 	return createIndex(row, column, new_id);
 }
 
-QString courseModel::getTaskText(QModelIndex index)
+QString CourseModel::getTaskText(QModelIndex index)
 {
 	if (!index.isValid()) {
 		return "INDEX NOT VALID";
@@ -342,7 +342,7 @@ QString courseModel::getTaskText(QModelIndex index)
 	return titleEl.text();
 }
 
-QString courseModel::getTaskCheck(QModelIndex index)
+QString CourseModel::getTaskCheck(QModelIndex index)
 {
 	if (!index.isValid()) {
 		return "INDEX NOT VALID";
@@ -356,7 +356,7 @@ QString courseModel::getTaskCheck(QModelIndex index)
 	return titleEl.text();
 }
 
-QString courseModel::csName(int index)
+QString CourseModel::csName(int index)
 {
 	QDomNode node = nodeById(index, root);
 	QDomElement csEl = node.firstChildElement("CS");
@@ -367,7 +367,7 @@ QString courseModel::csName(int index)
 	return csEl.text();
 }
 
-QString courseModel::progFile(int index)
+QString CourseModel::progFile(int index)
 {
 	QDomNode node = nodeById(index, root);
 	QDomElement csEl = node.firstChildElement("PROGRAM");
@@ -377,7 +377,7 @@ QString courseModel::progFile(int index)
 	return csEl.text();
 }
 
-QStringList courseModel::Modules(int index)
+QStringList CourseModel::Modules(int index)
 {
 	QDomNode node = nodeById(index, root);
 	QDomElement csEl = node.firstChildElement("ISP");
@@ -390,7 +390,7 @@ QStringList courseModel::Modules(int index)
 	return modules;
 }
 
-void courseModel::setIsps(QModelIndex index, QStringList isp)
+void CourseModel::setIsps(QModelIndex index, QStringList isp)
 {
 	QDomNode node = nodeById(index.internalId(), root);
 	QDomElement csEl = node.firstChildElement("ISP");
@@ -411,7 +411,7 @@ void courseModel::setIsps(QModelIndex index, QStringList isp)
 	}
 }
 
-void courseModel::setIspEnvs(QModelIndex index, QString isp, QStringList Envs)
+void CourseModel::setIspEnvs(QModelIndex index, QString isp, QStringList Envs)
 {
 	QDomNode node = nodeById(index.internalId(), root);
 	QDomElement csEl = node.firstChildElement("ISP");
@@ -436,7 +436,7 @@ void courseModel::setIspEnvs(QModelIndex index, QString isp, QStringList Envs)
 	}
 }
 
-void courseModel::setUserText(QModelIndex index, const QString &text)
+void CourseModel::setUserText(QModelIndex index, const QString &text)
 {
 	QDomNode el = nodeById(index.internalId(), root);
 
@@ -451,7 +451,7 @@ void courseModel::setUserText(QModelIndex index, const QString &text)
 	qDebug() << "SET USER PRG" << index.internalId() << " test " << text;
 }
 
-void courseModel::setUserText(int id, const QString &text)
+void CourseModel::setUserText(int id, const QString &text)
 {
 	QDomNode el = nodeById(id, root);
 
@@ -466,7 +466,7 @@ void courseModel::setUserText(int id, const QString &text)
 	qDebug() << "SET USER PRG" << id << " " << text;
 }
 
-void courseModel::setUserTestedText(int id, const QString &text)
+void CourseModel::setUserTestedText(int id, const QString &text)
 {
 	QDomNode el = nodeById(id, root);
 	QDomElement userTextEl = el.firstChildElement("TESTED_PRG");
@@ -480,7 +480,7 @@ void courseModel::setUserTestedText(int id, const QString &text)
 	qDebug() << "SET TESTED PRG" << id;
 }
 
-QString courseModel::getUserText(int curTaskId)
+QString CourseModel::getUserText(int curTaskId)
 {
 	QDomNode  node = nodeById(curTaskId, root);
 	QDomElement userTextEl = node.firstChildElement("USER_PRG");
@@ -492,7 +492,7 @@ QString courseModel::getUserText(int curTaskId)
 	return userPrg;
 }
 
-QString courseModel::getUserTestedText(int curTaskId)
+QString CourseModel::getUserTestedText(int curTaskId)
 {
 	QDomNode  node = nodeById(curTaskId, root);
 	QDomElement userTextEl = node.firstChildElement("TESTED_PRG");
@@ -505,7 +505,7 @@ QString courseModel::getUserTestedText(int curTaskId)
 }
 
 
-void courseModel::setTag(int curTaskId, QString data, QString tag)
+void CourseModel::setTag(int curTaskId, QString data, QString tag)
 {
 	QDomNode node = nodeById(curTaskId, root);
 	if (node.isNull()) {
@@ -537,7 +537,7 @@ void courseModel::setTag(int curTaskId, QString data, QString tag)
 }
 
 
-QModelIndex courseModel::getIndexById(int id)
+QModelIndex CourseModel::getIndexById(int id)
 {
 	QDomNode node = nodeById(id, root);
 	if (node.isNull()) {
@@ -553,7 +553,7 @@ QModelIndex courseModel::getIndexById(int id)
 }
 
 
-QStringList courseModel::Fields(int index, QString isp)
+QStringList CourseModel::Fields(int index, QString isp)
 {
 	QDomNode node = nodeById(index, root);
 	QDomElement csEl = node.firstChildElement("ISP");
@@ -574,7 +574,7 @@ QStringList courseModel::Fields(int index, QString isp)
 }
 
 
-int courseModel::taskMark(QDomNode node) const
+int CourseModel::taskMark(QDomNode node) const
 {
 	if (node.isNull()) {
 		return 0;
@@ -591,7 +591,7 @@ int courseModel::taskMark(QDomNode node) const
 }
 
 
-void courseModel::setParMark(QDomElement pnode)
+void CourseModel::setParMark(QDomElement pnode)
 {
 	QDomNodeList childs = pnode.elementsByTagName("T");
 	int min_m = 11;
@@ -614,7 +614,7 @@ void courseModel::setParMark(QDomElement pnode)
 }
 
 
-void courseModel::setMark(int id, int mark)
+void CourseModel::setMark(int id, int mark)
 {
 	QDomNode  node = nodeById(id, root);
 	if (node.isNull()) {
@@ -650,7 +650,7 @@ void courseModel::setMark(int id, int mark)
 }
 
 
-QString courseModel::Script(int index, QString isp)
+QString CourseModel::Script(int index, QString isp)
 {
 	QDomNode node = nodeById(index, root);
 	QDomElement csEl = node.firstChildElement("ISP");
@@ -667,7 +667,14 @@ QString courseModel::Script(int index, QString isp)
 }
 
 
-int courseModel::getMaxId()
+bool CourseModel::isTask(int id) const
+{
+	QDomNode task = nodeById(id, root);
+	return (task.toElement().attribute("root") != "true");
+}
+
+
+int CourseModel::getMaxId()
 {
 	int max = 0;
 	QDomNodeList list = courseXml.elementsByTagName("T");
@@ -683,7 +690,7 @@ int courseModel::getMaxId()
 }
 
 
-int courseModel::setChildsId(QDomNode par, int first_id)
+int CourseModel::setChildsId(QDomNode par, int first_id)
 {
 	QDomNodeList Childs = par.childNodes();
 	int cur_off = 0;
@@ -706,7 +713,7 @@ int courseModel::setChildsId(QDomNode par, int first_id)
 }
 
 
-void courseModel::addSiblingTask(int id)
+void CourseModel::addSiblingTask(int id)
 {
 	QDomNode task = nodeById(id, root);
 	QDomNode copy = task.cloneNode();
@@ -721,7 +728,7 @@ void courseModel::addSiblingTask(int id)
 }
 
 
-void courseModel::addDeepTask(int id)
+void CourseModel::addDeepTask(int id)
 {
 	if (id == 0) {
 		QDomDocument baseNode;
@@ -764,7 +771,16 @@ void courseModel::addDeepTask(int id)
 }
 
 
-bool courseModel::taskAvailable(QDomNode task) const
+void CourseModel::removeNode(int id)
+{
+	QDomNode task = nodeById(id, root);
+	task.parentNode().removeChild(task);
+	cash.clear();
+	buildCash();
+}
+
+
+bool CourseModel::taskAvailable(QDomNode task) const
 {
 	if (task.isNull()) {
 		return false;
@@ -790,7 +806,7 @@ bool courseModel::taskAvailable(QDomNode task) const
 }
 
 
-QModelIndex courseModel::moveUp(QModelIndex &index)
+QModelIndex CourseModel::moveUp(QModelIndex &index)
 {
 	if (!hasUpSib(index)) {
 		return index;
@@ -803,7 +819,8 @@ QModelIndex courseModel::moveUp(QModelIndex &index)
 	return createMyIndex(index.row() - 1, index.column(), index.parent());
 }
 
-QModelIndex courseModel::moveDown(QModelIndex &index)
+
+QModelIndex CourseModel::moveDown(QModelIndex &index)
 {
 	if (!hasDownSib(index)) {
 		return index;
@@ -816,4 +833,33 @@ QModelIndex courseModel::moveDown(QModelIndex &index)
 	return createMyIndex(index.row() + 1, index.column(), index.parent());
 }
 
+
+void CourseModel::buildCash()
+{
+	QDomNodeList list = courseXml.elementsByTagName("T");
+	for (int i = 0; i < list.count(); i++) {
+		cash.insert(list.at(i).toElement().attribute("id").toInt(), list.at(i));
+	}
+}
+
+
+int CourseModel::idByNode(QDomNode node) const
+{
+	bool ok = false;
+	int id = node.toElement().attribute("id", "").toInt(&ok);
+	return ok ? id : -1;
+}
+
+
+int CourseModel::subTasks(QDomNode parent) const
+{
+	QDomNodeList childs = parent.childNodes();
+	int count = 0;
+	for (int i = 0; i < childs.count(); i++) {
+		if (childs.at(i).nodeName() == "T") {
+			count++;
+		}
+	}
+	return count;
+}
 

@@ -27,10 +27,10 @@ class QLineEdit;
 #include "../course_changes.h"
 #include "../taskControlInterface.h"
 
-class newKursDialog;
+class NewKursDialog;
 class EditDialog;
 class CSInterface;
-class courseModel;
+class CourseModel;
 
 namespace Ui
 {
@@ -47,8 +47,7 @@ public:
 
 	void setInterface(CSInterface *csInterface) { interface = csInterface; }
 	void setCS(QString cs) { CS = cs; }
-
-	KumZadanie task;
+	KumZadanie *getTask() { return &task; }
 
 	void setup();
 	QString getFileName(QString fileName);
@@ -99,17 +98,18 @@ private:
 
 	bool onTask;
 	bool isTeacher;
-	courseModel *course;
+	QString curDir;
+	QString cursFile;
+	QString CS;
+	KumZadanie task;
+	CourseModel *course;
 	CSInterface *interface;
 	EditDialog *editDialog;
-	newKursDialog *newDialog;
+	NewKursDialog *newDialog;
 	Ui::MainWindowTask *ui;
 	courseChanges changes;
 
-	QString curDir;
 	QModelIndex curTaskIdx;
-	QString CS;
-	QString cursFile;
 	QList<int> progChange;
 	QMenu customMenu;
 	QSettings *settings;

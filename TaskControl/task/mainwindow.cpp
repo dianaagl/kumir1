@@ -17,34 +17,47 @@ MainWindowTask::MainWindowTask(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindowTask)
 {
-
 	cursFile = "";
 	course = NULL;
 	curDir = "";
 	progChange.clear();
 	connect(qApp, SIGNAL(aboutToQuit()), this, SLOT(aboutToQuit()));
-
 }
+
+MainWindowTask::~MainWindowTask()
+{
+	disconnect(qApp, SIGNAL(aboutToQuit()), this, SLOT(aboutToQuit()));
+	delete ui;
+	ui = 0;
+}
+
 void MainWindowTask::setup()
 {
 	ui->setupUi(this);
 	ui->treeView->setContextMenuPolicy(Qt::CustomContextMenu);
 	ui->treeView->setIconSize(QSize(25, 25));
-
 	ui->treeView->setStyleSheet("icon-size: 25px;font-size: 14px;");
+
 	settings = new QSettings("NIISI RAS", "Kumir");
 	settings->setIniCodec("UTF-8");
+
 	customMenu.hide();
+
 	connect(ui->loadCurs, SIGNAL(activated()), this, SLOT(loadCourse()));
 	connect(ui->actionSave, SIGNAL(activated()), this, SLOT(saveCourse()));
 	connect(ui->treeView, SIGNAL(clicked(QModelIndex)), this, SLOT(showText(QModelIndex)));
 	connect(ui->do_task, SIGNAL(triggered()), this, SLOT(startTask()));
+
 	qDebug() << "Check Connect tttttttttttttttttt";
+
 	connect(ui->checkTask, SIGNAL(triggered()), this, SLOT(checkTask()));
 	connect(ui->actionReset, SIGNAL(triggered()), this, SLOT(resetTask()));
 	connect(ui->actionClose, SIGNAL(triggered()), this, SLOT(Close()));
 	connect(ui->actionTested, SIGNAL(triggered()), this, SLOT(returnTested()));
-	connect(ui->treeView, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(customContextMenuRequested(QPoint)));
+	connect(
+		ui->treeView, SIGNAL(customContextMenuRequested(QPoint)),
+		this, SLOT(customContextMenuRequested(QPoint))
+	);
 
 	customMenu.addAction(ui->actionAdd);
 	customMenu.addAction(ui->actionRemove);
@@ -53,6 +66,7 @@ void MainWindowTask::setup()
 	customMenu.addAction(ui->actionup);
 	customMenu.addAction(ui->actionDown);
 	customMenu.addAction(ui->addDeep);
+
 	connect(ui->actionup, SIGNAL(triggered()), this, SLOT(moveUp()));
 	connect(ui->actionDown, SIGNAL(triggered()), this, SLOT(moveDown()));
 	connect(ui->actionAdd, SIGNAL(triggered()), this, SLOT(addTask()));
@@ -60,28 +74,26 @@ void MainWindowTask::setup()
 	connect(ui->actionSaveK, SIGNAL(triggered()), this, SLOT(saveKurs()));
 	connect(ui->actionSaveKas, SIGNAL(triggered()), this, SLOT(saveKursAs()));
 	connect(ui->actionRemove, SIGNAL(triggered()), this, SLOT(deleteTask()));
-	newDialog = new newKursDialog();
+
+	newDialog = new NewKursDialog();
 	connect(ui->actionNewK, SIGNAL(triggered()), this, SLOT(newKurs()));
+
 	editDialog = new EditDialog(this);
 	connect(ui->actionEdit, SIGNAL(triggered()), this, SLOT(editTask()));
+
 	ui->menuKurs->menuAction()->setVisible(false);
-	// ui->menuKurs->menuAction()->setEnabled(false);
 	setEditTaskEnabled(false);
 	ui->treeView->setSelectionMode(QAbstractItemView::SingleSelection);
+
 	editRoot = new QLineEdit(ui->treeView);
 	editRoot->hide();
 	connect(editRoot, SIGNAL(editingFinished()), this, SLOT(endRootEdit()));
+
 	ui->menuKurs->hide();
 	ui->treeView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 	isTeacher = false;
 	onTask = false;
 	cursFile = "";
-
-	//ui->textBrowser->setVisible(false);
-};
-MainWindowTask::~MainWindowTask()
-{
-	delete ui;
 }
 
 void MainWindowTask::changeEvent(QEvent *e)
@@ -96,17 +108,19 @@ void MainWindowTask::changeEvent(QEvent *e)
 	}
 }
 
-void MainWindowTask::loadCourseData(const QString fileName)
+void MainWindowTask::loadCourseData(QString fileName)
 {
+	course = new CourseModel();
+	connect(
+		course, SIGNAL(dataChanged(QModelIndex, QModelIndex)),
+		ui->treeView, SLOT(dataChanged(QModelIndex, QModelIndex))
+	);
 
-	course = new courseModel();
-	connect(course, SIGNAL(dataChanged(QModelIndex, QModelIndex)), ui->treeView, SLOT(dataChanged(QModelIndex, QModelIndex)));
 	int tasks = course->loadCourse(fileName);
 	course->setTeacher(isTeacher);
 	if (tasks == -1) {
-//QMessageBox::information( 0, "", trUtf8("Ошибка открытия файла: ") + fileName, 0,0,0);
 		return;
-	};
+	}
 	ui->treeView->setModel(course);
 	curTaskIdx = QModelIndex();
 	onTask = false;
@@ -114,31 +128,38 @@ void MainWindowTask::loadCourseData(const QString fileName)
 
 	changes.cleanChanges();
 	cursFile = fileName;
-};
-void MainWindowTask::loadMarks(const QString fileName)
+}
+
+void MainWindowTask::loadMarks(QString fileName)
 {
 	QDomDocument workXml;
 	QFile f(fileName);
+
 	if (!f.open(QIODevice::ReadOnly)) {
 		QMessageBox::information(0, "", trUtf8("Ошибка открытия файла: ") + fileName, 0, 0, 0);
 		return;
 
-	};
+	}
+
 	if (f.atEnd()) {
 		QMessageBox::information(0, "", trUtf8("Ошибка открытия файла ,файл пуст: ") + fileName, 0, 0, 0);
 		return;
-	};
+	}
+
 	cursWorkFile.setFileName(f.fileName());
+
 	QString error;
 	int str, pos;
+
 	workXml.setContent(f.readAll(), true, &error, &str, &pos);
-	qDebug() << "File parce:" << error << "str" << str << " pos" << pos;
+	qDebug() << "File parse:" << error << "str" << str << " pos" << pos;
 
 	QDomElement root = workXml.documentElement();
 	if (root.tagName() != "COURSE") {
 		QMessageBox::information(0, "", trUtf8("Ошибка загрузки файла: ") + fileName, 0, 0, 0);
 		return;
-	};
+	}
+
 	QDomElement fileEl = root.firstChildElement("FILE");
 	QString krsFile = fileEl.attribute("fileName");
 	loadCourseData(krsFile);//Gruzim kurs
@@ -150,7 +171,6 @@ void MainWindowTask::loadMarks(const QString fileName)
 		krsFile = cfi.dir().canonicalPath() + "/" + finf.fileName();
 		curDir = cfi.dir().canonicalPath();
 		loadCourseData(krsFile);
-
 	}
 
 	QString fileN = fileEl.attribute("fileName");
@@ -163,6 +183,7 @@ void MainWindowTask::loadMarks(const QString fileName)
 			return;
 		}
 	}
+
 	QFileInfo fi_kurs = QFileInfo(krsFile);
 	curDir = fi_kurs.absolutePath();
 	QDomNodeList marksElList = root.elementsByTagName("MARK"); //Оценки
@@ -173,7 +194,7 @@ void MainWindowTask::loadMarks(const QString fileName)
 		qDebug() << "task:" << taskId << " mark:" << mark;
 		course->setMark(taskId, mark);
 		changes.setMark(taskId, mark);
-	};
+	}
 
 	qDebug() << "Loading user prgs...";
 	QDomNodeList prgElList = root.elementsByTagName("USER_PRG"); //Программы
@@ -186,10 +207,9 @@ void MainWindowTask::loadMarks(const QString fileName)
 		if (progChange.indexOf(taskId) == -1) {
 
 			progChange.append(taskId);
-		};
+		}
 		course->setUserText(taskId, prg);
-
-	};
+	}
 
 	QDomNodeList prgElListT = root.elementsByTagName("TESTED_PRG"); //Программы тестированные
 	for (int i = 0; i < prgElListT.count(); i++) {
@@ -198,8 +218,8 @@ void MainWindowTask::loadMarks(const QString fileName)
 
 		course->setUserTestedText(taskId, prg);
 
-	};
-};
+	}
+}
 
 
 void MainWindowTask::loadCourse()
@@ -211,17 +231,9 @@ void MainWindowTask::loadCourse()
 	if (!chD.exists()) {
 		dir = QDir::homePath();
 	}
-//    QFileDialog dialog(this,trUtf8("Открыть файл"),dir, "(*.kurs.xml *.work.xml)");
-//     dialog.setAcceptMode(QFileDialog::AcceptOpen);
-//     if(!dialog.exec())return;
 
-
-	QString    File = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"), dir, "(*.kurs.xml *.work.xml)");
+	QString File = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"), dir, "(*.kurs.xml *.work.xml)");
 	QFileInfo fi(File);
-
-
-
-
 	baseKursFile = fi;
 	curDir = fi.absolutePath();
 	settings->setValue("Directories/Kurs", curDir);
@@ -235,21 +247,20 @@ void MainWindowTask::loadCourse()
 		cursWorkFile.setFileName("");
 	}
 	loadCourseData(fileName);
-	QString cText = course->courceDescr();
-
+	QString cText = course->courseDescr();
 
 	if (cText.right(4) == ".htm" || cText.right(5) == ".html") {
 		loadHtml(cText);
 	} else {
 		ui->webView->setHtml(cText);
 	}
+
 	if (isTeacher) {
 		ui->actionEdit->setEnabled(true);
 	}
-	setWindowTitle(course->name() + trUtf8(" - Практикум"));
 
-};
-
+	setWindowTitle(course->getName() + trUtf8(" - Практикум"));
+}
 
 
 void MainWindowTask::setUpDown(QModelIndex index)
@@ -269,22 +280,22 @@ void MainWindowTask::setUpDown(QModelIndex index)
 	} else {
 		ui->actionDown->setEnabled(false);
 	}
-};
+}
 
 
 void MainWindowTask::moveUp()
-
 {
 	curTaskIdx = course->moveUp(curTaskIdx);
 	QModelIndex par = curTaskIdx.parent();
 	ui->treeView->setCurrentIndex(curTaskIdx);
 	setUpDown(curTaskIdx);
 
-
 	ui->treeView->collapse(par);
 	ui->treeView->expand(par);
 	saveBaseKurs();
-};
+}
+
+
 void MainWindowTask:: moveDown()
 {
 	ui->treeView->setCurrentIndex(curTaskIdx);
@@ -292,13 +303,10 @@ void MainWindowTask:: moveDown()
 	curTaskIdx = course->moveDown(curTaskIdx);
 	ui->treeView->setCurrentIndex(curTaskIdx);
 	setUpDown(curTaskIdx);
-	//ui->treeView->dataChanged(curTaskIdx,ui->treeView->indexAbove(curTaskIdx));
-	//showText(curTaskIdx);
-	// ui->treeView->update(curTaskIdx);
 
 	ui->treeView->collapse(curTaskIdx.parent());
 	ui->treeView->expand(curTaskIdx.parent());
-};
+}
 
 
 void MainWindowTask::showText(const QModelIndex &index)
@@ -314,27 +322,12 @@ void MainWindowTask::showText(const QModelIndex &index)
 	if (index == curTaskIdx) {
 		return;
 	}
-//    if(onTask)
-//    {
-//        QMessageBox::StandardButton ans;
-//        ans = QMessageBox::question(this, trUtf8("Задание"), trUtf8("Вы хотите сменить задание?"),
-//                                                                                                                        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
-//        if ((ans == QMessageBox::Cancel)||(ans == QMessageBox::No))
-//        {
-//            qDebug()<<"Cancel";
-//        if(curTaskIdx.internalId()>0)ui->treeView->setCurrentIndex(curTaskIdx);
-//            return;};
-
-//    }
 	if (curTaskIdx.internalId() > 0) {
 		markProgChange();
 	}
 	onTask = false;
 	ui->checkTask->setEnabled(false);
 	QString taskText = course->getTaskText(index);
-//ui->textBrowser->setText(taskText);
-
-
 
 	if (taskText.right(4) == ".htm" || taskText.right(5) == ".html") {
 		loadHtml(taskText);
@@ -344,7 +337,11 @@ void MainWindowTask::showText(const QModelIndex &index)
 	qDebug() << "TaskText:" << course->getTaskText(index);
 	curTaskIdx = index;
 
-	if (course->isTask(curTaskIdx.internalId()) && curTaskIdx.internalId() > 0 && course->taskAvailable(curTaskIdx.internalId())) {
+	if (
+		curTaskIdx.internalId() > 0 &&
+		course->isTask(curTaskIdx.internalId()) &&
+		course->taskAvailable(curTaskIdx.internalId())
+	) {
 		ui->do_task->setEnabled(true);
 		startTask();
 		ui->do_task->setEnabled(false);
@@ -358,8 +355,9 @@ void MainWindowTask::showText(const QModelIndex &index)
 		ui->do_task->setEnabled(false);
 		ui->actionReset->setEnabled(false);
 		ui->actionTested->setEnabled(false);
-	};
-};
+	}
+}
+
 
 void MainWindowTask::loadHtml(QString fileName)
 {
@@ -367,18 +365,19 @@ void MainWindowTask::loadHtml(QString fileName)
 	if (fileName.isEmpty()) {
 		return;
 	}
+
 	QFile inp(curDir + '/' + fileName);
 	if (!inp.open(QIODevice::ReadOnly)) {
 		QMessageBox::information(0, "", trUtf8("Ошибка чтения: ") + fileName, 0, 0, 0);
 		return;
-	};
+	}
+
 	QString htmlData = QString::fromUtf8(inp.readAll());
-	//ui->textBrowser->setHtml(htmlData);
 
 	ui->webView->setHtml(htmlData, QUrl("file://" + curDir + '/' + fileName));
 	inp.close();
+}
 
-};
 void MainWindowTask::startTask()
 {
 	editRoot->hide();
@@ -387,6 +386,7 @@ void MainWindowTask::startTask()
 		QMessageBox::about(NULL, trUtf8("Не выбрано задание"), trUtf8("Необходимо выбрать задание"));
 		return;
 	}
+
 	if (course->csName(curTaskIdx.internalId()) != CS) {
 		QMessageBox::about(NULL, trUtf8("Неправильное окружение"), trUtf8("Необходим ") + course->csName(curTaskIdx.internalId()));
 		return;
@@ -396,11 +396,13 @@ void MainWindowTask::startTask()
 	interface->setTesting(loadTestAlg(course->getTaskCheck(curTaskIdx)));
 	QFileInfo ioDir(curDir + "/" + course->progFile(curTaskIdx.internalId()));
 	qDebug() << "PRG FILE" << course->progFile(curTaskIdx.internalId());
+
 	if (ioDir.isFile()) {
 		interface->setParam("input dir", ioDir.absoluteFilePath());
-	};
+	}
+
 	task.isps = course->Modules(curTaskIdx.internalId());
-	task.name = course->getTitle(curTaskIdx.internalId());
+	//task.name = course->getTitle(curTaskIdx.internalId());
 	qDebug() << "ISPS" << task.isps;
 	for (int i = 0; i < task.isps.count(); i++) {
 		// task.Scripts.append(loadScript(course->Script(curTaskIdx.internalId(),task.isps[i])));
@@ -412,7 +414,7 @@ void MainWindowTask::startTask()
 			task.fields.insertMulti(task.isps[i], curDir + '/' + t_fields[j]);
 			qDebug() << curDir + '/' + t_fields[j];
 
-		};
+		}
 		qDebug() << "Fields!!!!" << task.fields;
 	}
 	qDebug() << "MODULES:" << course->Modules(curTaskIdx.internalId());
@@ -428,39 +430,35 @@ void MainWindowTask::startTask()
 
 
 
-//qDebug()<<"Scripts "<<task.Scripts;
 	ui->do_task->setEnabled(false);
 	ui->checkTask->setEnabled(true);
 	onTask = true;
-//ui->loadCurs->setEnabled(false);
+
 	qDebug() << "end load task";
 	if (progChange.indexOf(curTaskIdx.internalId()) == -1) {
 		progChange.append(curTaskIdx.internalId());
 	}
-};
+}
+
 void MainWindowTask::checkTask()
 {
 	qDebug() << "CheckTASK";
 	if (!onTask) {
 		qDebug() << "!onTASK";
 		return;
-	};
-
+	}
 
 	markProgChange();
 	if (!cursWorkFile.exists()) {
 
 		QMessageBox::information(0, "", trUtf8("Нужно завести файл рабочей тетради "), 0, 0, 0);
 		saveCourse();
-	};
+	}
 	course->setMark(curTaskIdx.internalId(), 0);
 	ui->splitter->setEnabled(false);
 	ui->checkTask->setEnabled(false);
 	interface->startProgram(QVariant("TODO LOAD SCRIPT"));
-	//ui->loadCurs->setEnabled(false);
-
-};
-
+}
 
 
 void  MainWindowTask::setMark(int mark)
@@ -468,23 +466,28 @@ void  MainWindowTask::setMark(int mark)
 	if (!onTask) {
 		return;
 	}
+
 	ui->loadCurs->setEnabled(true);
 	qDebug() << "ui->cource enabled!";
 	ui->splitter->setEnabled(true);
 	ui->actionTested->setEnabled(true);
 	qDebug() << "ui->treeView enabled!";
 	ui->checkTask->setEnabled(true);
-	if ((course->taskMark(curTaskIdx.internalId()) < mark) && (course->taskMark(curTaskIdx.internalId()) > 0)) {
+
+	quint64 id = curTaskIdx.internalId();
+	int cmark = course->taskMark(id);
+
+	if ((cmark < mark) && (cmark > 0)) {
 		return;
 	}
 
-	course->setUserTestedText(curTaskIdx.internalId(), interface->getText());
+	course->setUserTestedText(id, interface->getText());
 	qDebug() << "Mark:" << mark;
-	course->setMark(curTaskIdx.internalId(), mark);
-	changes.setMark(curTaskIdx.internalId(), mark);
-	//if(mark==10)onTask=false;else onTask=true;
+	course->setMark(id, mark);
+	changes.setMark(id, mark);
+}
 
-};
+
 QString MainWindowTask::loadScript(QString file_name)
 {
 	qDebug() << "Script file name:" << file_name;
@@ -495,9 +498,9 @@ QString MainWindowTask::loadScript(QString file_name)
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		QMessageBox::about(NULL, trUtf8("Ошибка"), trUtf8("Невозможно открыть ") + curDir + "/" + file_name);
 		return "";
-	};
+	}
 	return file.readAll();
-};
+}
 
 
 void MainWindowTask::saveCourse()
@@ -509,18 +512,20 @@ void MainWindowTask::saveCourse()
 	if (!dialog.exec()) {
 		return;
 	}
+
 	QFileInfo fi(dialog.selectedFiles().first());
-	//curDir=fi.absolutePath ();
 	qDebug() << "curDir" << curDir;
 	QString fileName = dialog.selectedFiles().first();
 	QString type = fileName.right(9);
 	if (type != ".work.xml") {
 		fileName += ".work.xml";
 	}
+
 	cursWorkFile.setFileName(fileName);
 	saveCourseFile();
+}
 
-};
+
 void MainWindowTask::saveCourseFile()
 {
 	qDebug() << "Save cource file";
@@ -555,14 +560,8 @@ void MainWindowTask::saveCourseFile()
 		prgElT.setAttributeNode(testIdprg);
 		prgElT.setAttributeNode(userPrgT);
 		crsEl.appendChild(prgElT);
-
-
-
 	}
 	//END USER PROGRAMS
-
-
-
 
 	QMapIterator<int, int> i(changes.marksChanged);
 	while (i.hasNext()) {
@@ -578,19 +577,17 @@ void MainWindowTask::saveCourseFile()
 	}
 	crsEl.appendChild(mrksEl);
 
-
-
-
-
 	if (!cursWorkFile.open(QIODevice::WriteOnly)) {
 		QMessageBox::information(0, "", trUtf8("Ошибка записи: ") + cursWorkFile.fileName(), 0, 0, 0);
 		return;
-	};
+	}
+
 	cursWorkFile.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 	cursWorkFile.write(saveXml.toByteArray());
 	cursWorkFile.close();
 
-};
+}
+
 
 void MainWindowTask::markProgChange()
 {
@@ -606,36 +603,31 @@ void MainWindowTask::markProgChange()
 	}
 
 }
+
+
 QString MainWindowTask::getFileName(QString fileName)
 {
 	QFileInfo finf(fileName);
 	qDebug() << "GET FILE!";
-//    QFileDialog dialog(this,trUtf8("Открыть файл"),curDir, finf.fileName()+" *.kurs.xml");
-//    dialog.setAcceptMode(QFileDialog::AcceptOpen);
-//    if(!dialog.exec())return "";
-//    QFileInfo fi(dialog.selectedFiles().first());
-
-
-
-	QString File = QFileDialog::getOpenFileName(this, QString::fromUtf8("Открыть файл"), curDir,  finf.fileName() + " *.kurs.xml");
+	QString File = QFileDialog::getOpenFileName(
+		this, QString::fromUtf8("Открыть файл"),
+		curDir,  finf.fileName() + " *.kurs.xml"
+	);
 	QFileInfo fi(File);
-
-
 	return File;
-};
+}
+
 
 void MainWindowTask::resetTask()
 {
 	QString progFile = course->progFile(curTaskIdx.internalId());
-
-
 	if (!progFile.isEmpty()) {
 		interface->setPreProgram(QVariant(curDir + '/' + progFile));
 	}
 	course->setUserText(curTaskIdx, "");
+}
 
 
-};
 void MainWindowTask::Close()
 {
 	qDebug() << cursFile;
@@ -644,54 +636,64 @@ void MainWindowTask::Close()
 	}
 	saveBaseKurs();
 	close();
-};
+}
+
+
 void MainWindowTask::closeEvent(QCloseEvent *event)
 {
 	if (!course) {
 		return;
 	}
+
 	qDebug() << "START CLOSE TASK WINDOW";
 	if (!cursWorkFile.exists()) {
-		QMessageBox::StandardButton ans;
-		ans = QMessageBox::question(this, trUtf8("Курсы"), trUtf8("Вы хотите сохранить работу?"),
-				QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
-		if ((ans == QMessageBox::No))
+		QMessageBox::StandardButton ans = QMessageBox::question(
+			this, trUtf8("Курсы"), trUtf8("Вы хотите сохранить работу?"),
+			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes
+		);
 
-		{
+		if ((ans == QMessageBox::No)) {
 			event->accept();
 			if (course) {
 				delete course;
 			}
 			course = NULL;
 			return;
-		};
+		}
+
 		if (ans == QMessageBox::Cancel) {
 			event->ignore();
 			return;
-		};
+		}
 
 		saveCourse();
 	}
+
 	markProgChange();
 	qDebug() << "CLOSE TASK WINDOW";
 	close();
+}
 
-};
+
 void MainWindowTask::returnTested()
 {
 	interface->setPreProgram(QVariant(course->getUserTestedText(curTaskIdx.internalId())));
-};
+}
+
+
 QString MainWindowTask::loadTestAlg(QString file_name)
 {
 	if (file_name.isEmpty()) {
 		return "";
 	}
+
 	QFile file(curDir + "/" + file_name);
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
 
 		QMessageBox::about(NULL, trUtf8("Ошибка"), trUtf8("Невозможно открыть ") + curDir + "/" + file_name);
 		return "";
-	};
+	}
+
 	QTextStream ts(&file);
 	ts.setCodec("UTF-16LE");
 	QString testalg = ts.readAll();
@@ -700,10 +702,14 @@ QString MainWindowTask::loadTestAlg(QString file_name)
 	qDebug() << "Test alg" << testalg;
 	return testalg;
 }
+
+
 void MainWindowTask::aboutToQuit()
 {
 	close();
-};
+}
+
+
 void MainWindowTask:: customContextMenuRequested(QPoint  pos)
 {
 	editRoot->hide();
@@ -719,14 +725,18 @@ void MainWindowTask:: customContextMenuRequested(QPoint  pos)
 	} else {
 		setEditTaskEnabled(true);
 	}
+
 	if (!baseKursFile.isReadable()) {
 		return;
-	};
+	}
+
 	pos.setY(pos.y() + ui->mainToolBar->height());
 	customMenu.move(pos + this->pos() + ui->centralWidget->pos());
 	customMenu.show();
 	qDebug() << "Menu Request!!!";
-};
+}
+
+
 void MainWindowTask::addTask()
 {
 	qDebug() << "Add task";
@@ -734,7 +744,9 @@ void MainWindowTask::addTask()
 	course->addSiblingTask(curTaskIdx.internalId());
 	ui->treeView->collapse(par);
 	ui->treeView->expand(par);
-};
+}
+
+
 void MainWindowTask::addDeepTask()
 {
 	qDebug() << "Add deep task";
@@ -746,14 +758,17 @@ void MainWindowTask::addDeepTask()
 	if (curTaskIdx.internalId() == 0) {
 		loadCourseData(baseKursFile.absoluteFilePath());
 	}
-};
+}
+
+
 void MainWindowTask::deleteTask()
 {
 	QModelIndex par = curTaskIdx.parent();
 	course->removeNode(curTaskIdx.internalId());
 	ui->treeView->collapse(par);
 	ui->treeView->expand(par);
-};
+}
+
 
 void MainWindowTask::saveKurs()
 {
@@ -762,23 +777,26 @@ void MainWindowTask::saveKurs()
 	if (!cursKursFile.open(QIODevice::WriteOnly)) {
 		QMessageBox::information(0, "", trUtf8("Ошибка записи: ") + cursKursFile.fileName(), 0, 0, 0);
 		return;
-	};
+	}
 
 	cursKursFile.write(course->document()->toByteArray());
 	cursKursFile.close();
 	ui->actionEdit->setEnabled(true);
-};
+}
+
+
 void MainWindowTask::saveBaseKurs()
 {
 	QFile cursKursFile(baseKursFile.absoluteFilePath());
 	if (!cursKursFile.open(QIODevice::WriteOnly)) {
 		QMessageBox::information(0, "", trUtf8("Ошибка записи: ") + cursKursFile.fileName(), 0, 0, 0);
 		return;
-	};
+	}
 
 	cursKursFile.write(course->document()->toByteArray());
 	cursKursFile.close();
 }
+
 
 void MainWindowTask::saveKursAs()
 {
@@ -793,36 +811,34 @@ void MainWindowTask::saveKursAs()
 	if (!dialog.exec()) {
 		return;
 	}
+
 	QFileInfo fi(dialog.selectedFiles().first());
 	baseKursFile = fi;
-
-
-
-
-
-
 	saveBaseKurs();
+}
 
-	;
-};
+
 void MainWindowTask:: setTeacher(bool mode)
 {
 	ui->menuKurs->menuAction()->setVisible(false);
 	ui->actionup->setVisible(false);
 	ui->actionDown->setVisible(false);
 	isTeacher = mode;
-};
+}
+
+
 void MainWindowTask::editTask()
 {
 	if (curTaskIdx.internalId() == 0) { //ROOT
 
 		QRect rect = ui->treeView->visualRect(curTaskIdx);
 		editRoot->resize(rect.width(), rect.height());
-		editRoot->setText(course->rootText());
+		editRoot->setText(course->getRootText());
 		editRoot->move(rect.topLeft());
 		editRoot->show();
 		return;
-	};
+	}
+
 	QModelIndex par = curTaskIdx.parent();
 
 	editDialog->setTitle(course->getTitle(curTaskIdx.internalId()));
@@ -841,6 +857,7 @@ void MainWindowTask::editTask()
 	} else {
 		editDialog->setEnvs(QStringList());
 	}
+
 	editDialog->setCurDir(curDir);
 	if (editDialog->exec()) {
 		course->setUserText(curTaskIdx.internalId(), "");
@@ -863,13 +880,13 @@ void MainWindowTask::editTask()
 		qDebug() << "EDIT DIALOG EXEC OK";
 		saveBaseKurs();
 		resetTask();
-	};
+	}
 
-};
+}
+
 
 void MainWindowTask::setEditTaskEnabled(bool flag)
 {
-	// ui->actionEdit->setEnabled(flag);
 	ui->actionup->setEnabled(flag);
 	ui->actionDown->setEnabled(flag);
 
@@ -877,18 +894,18 @@ void MainWindowTask::setEditTaskEnabled(bool flag)
 	ui->actionAdd->setEnabled(flag);
 	ui->actionRemove->setEnabled(flag);
 	ui->addDeep->setEnabled(flag);
-};
+}
 
 void MainWindowTask::newKurs()
 {
-
 	if (newDialog->exec()) {
 		QFile newKurs(newDialog->fileName());
 
 		if (!newKurs.open(QIODevice::WriteOnly)) {
 			QMessageBox::information(0, "", trUtf8("Ошибка записи: ") + newKurs.fileName(), 0, 0, 0);
 			return;
-		};
+		}
+
 		QString toWr = "<?xml version='1.0' encoding='UTF-8'?>\n";
 		newKurs.write(toWr.toUtf8());
 		toWr = "<KURS xml:id=\"0\" xml:name=\"" + newDialog->name() + "\">\n";
@@ -900,27 +917,37 @@ void MainWindowTask::newKurs()
 		toWr = "</KURS>\n";
 		newKurs.write(toWr.toUtf8());
 		newKurs.close();
+
 		loadCourseData(newKurs.fileName());
 		baseKursFile = QFileInfo(newKurs);
 		curDir = baseKursFile.absolutePath();
 		ui->actionEdit->setEnabled(true);
 	}
+}
 
-};
+
 void  MainWindowTask::createMoveMenu()
 {
 
 }
+
+
 void MainWindowTask::endRootEdit()
 {
 	course->setRootText(editRoot->text());
 	editRoot->hide();
 }
+
+
 void MainWindowTask::cancelRootEdit()
 {
 	editRoot->hide();
-};
+}
+
+
 void MainWindowTask::lockCheck()
 {
 	ui->checkTask->setDisabled(true);
 }
+
+

@@ -29,12 +29,12 @@ public:
 
 	KumZadanie *Task()
 	{
-		return &w.task;
+		return w.getTask();
 	}
 
 	QString Isp(int no)
 	{
-		return w.task.Isp(no);
+		return w.getTask()->Isp(no);
 	}
 
 	QString ispName() { return ""; }

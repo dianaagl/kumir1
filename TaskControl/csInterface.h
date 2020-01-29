@@ -2,7 +2,7 @@
 #define CSINTERFACE_H
 
 #include <QVariant>
-#include <QString>
+#include <QStringList>
 
 class CSInterface
 {

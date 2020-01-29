@@ -1,31 +1,31 @@
 #include "newkursdialog.h"
-#include <QFileDialog>
 #include "ui_newkursdialog.h"
+#include <QFileDialog>
 
-newKursDialog::newKursDialog(QWidget *parent) :
+NewKursDialog::NewKursDialog(QWidget *parent) :
 	QDialog(parent),
-	ui(new Ui::newKursDialog)
+	ui(new Ui::NewKursDialog)
 {
 	ui->setupUi(this);
 	connect(ui->fileButt, SIGNAL(pressed()), this, SLOT(showFileSelect()));
 }
 
-newKursDialog::~newKursDialog()
+NewKursDialog::~NewKursDialog()
 {
 	delete ui;
 }
 
-QString newKursDialog::fileName()
+QString NewKursDialog::fileName()
 {
 	return ui->fileEdit->text();
 }
 
-QString newKursDialog::name()
+QString NewKursDialog::name()
 {
-	return    ui->nameEdit->text();
+	return ui->nameEdit->text();
 }
 
-void newKursDialog::showFileSelect()
+void NewKursDialog::showFileSelect()
 {
 	QFileDialog dialog(
 		this,
@@ -41,5 +41,5 @@ void newKursDialog::showFileSelect()
 		fname = fname + ".kurs.xml";
 	}
 	ui->fileEdit->setText(fname);
-};
+}
 

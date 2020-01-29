@@ -8,18 +8,37 @@
 #include <QIcon>
 #include <QHash>
 
-class courseModel: public QAbstractItemModel
+class KumTask
+{
+public:
+	KumTask(int _id, QString _title)
+	{
+		id = _id;
+		title = _title;
+	}
+
+	int getId() const { return id; }
+	QString getTitle() const { return title; }
+
+private:
+	int id;
+	QString title;
+};
+
+
+class CourseModel: public QAbstractItemModel
 {
 	Q_OBJECT
 
 public:
-
-	courseModel();
+	CourseModel();
 
 	int rowCount(const QModelIndex &parent = QModelIndex()) const;
 	QVariant data(const QModelIndex &index, int role) const;
 	QVariant headerData(
-		int section, Qt::Orientation orientation, int role = Qt::DisplayRole
+		int section,
+		Qt::Orientation orientation,
+		int role = Qt::DisplayRole
 	) const;
 	QModelIndex index(int row, int column, const QModelIndex &parent) const;
 	QModelIndex parent(const QModelIndex &child) const;
@@ -30,20 +49,18 @@ public:
 	int loadCourse(QString fileName);
 	QString getTaskText(QModelIndex index);
 	QString getTaskCheck(QModelIndex index);
-	QString courceDescr()
-	{
-		QDomElement titleEl = root.firstChildElement("DESC");
-		if (titleEl.isNull()) {
-			return "";
-		}
 
-		return titleEl.text();
+	QString courseDescr()
+	{
+		QDomElement el = root.firstChildElement("DESC");
+		return el.isNull() ? "" : el.text();
 	}
 
 	QModelIndexList indexes()
 	{
 		return persistentIndexList();
 	}
+
 	void setIspEnvs(QModelIndex index, QString isp, QStringList Envs);
 	void setIsps(QModelIndex index, QStringList isp);
 
@@ -54,17 +71,16 @@ public:
 	QString getUserText(int curTaskId);
 	QString getUserTestedText(int curTaskId);
 
+	QString getName()
+	{
+		return root.toElement().attribute("name", "");
+	}
+
 	QString getTitle(int curTaskId)
 	{
 		QDomNode  node = nodeById(curTaskId, root);
 		return node.toElement().attribute("name", "");
 	}
-
-	QString name()
-	{
-		return root.toElement().attribute("name", "");
-	}
-
 
 	void setTitle(int curTaskId, QString title)
 	{
@@ -98,29 +114,18 @@ public:
 	}
 
 	int taskMark(QDomNode node) const;
-	void setParMark(QDomElement  pnode);
+	void setParMark(QDomElement pnode);
 	void setMark(int id, int mark);
 
 	QStringList getScripts(int id);
-	bool isTask(int id) const
-	{
-		QDomNode task = nodeById(id, root);
-		return (task.toElement().attribute("root") != "true");
-	}
-
+	bool isTask(int id) const;
 	int getMaxId();
 	int setChildsId(QDomNode par, int first_id);
 
 	void addSiblingTask(int id);
 	void addDeepTask(int id);
 
-	void removeNode(int id)
-	{
-		QDomNode task = nodeById(id, root);
-		task.parentNode().removeChild(task);
-		cash.clear();
-		buildCash();
-	}
+	void removeNode(int id);
 
 	bool  taskAvailable(int id) const
 	{
@@ -154,7 +159,7 @@ public:
 	QModelIndex moveUp(QModelIndex &index);
 	QModelIndex moveDown(QModelIndex &index);
 
-	QString rootText()
+	QString getRootText()
 	{
 		return root.attribute("name");
 	}
@@ -164,13 +169,7 @@ public:
 		root.setAttribute("name", text);
 	}
 
-	void buildCash()
-	{
-		QDomNodeList list = courseXml.elementsByTagName("T");
-		for (int i = 0; i < list.count(); i++) {
-			cash.insert(list.at(i).toElement().attribute("id").toInt(), list.at(i));
-		}
-	}
+	void buildCash();
 
 private:
 	QIcon iconByMark(int mark, bool isFolder) const;
@@ -178,27 +177,11 @@ private:
 	QDomNode nodeById(int id, QDomNode parent) const;
 	QModelIndex createMyIndex(int row, int column, QModelIndex parent) const;
 
-	int idByNode(QDomNode node) const
-	{
-		bool ok = false;
-		int id = node.toElement().attribute("id", "").toInt(&ok);
-		return ok ? id : -1;
-	}
-
-	int subTasks(QDomNode parent) const
-	{
-		QDomNodeList childs = parent.childNodes();
-		int count = 0;
-		for (int i = 0; i < childs.count(); i++) {
-			if (childs.at(i).nodeName() == "T") {
-				count++;
-			}
-		}
-		return count;
-	}
-
+	int idByNode(QDomNode node) const;
+	int subTasks(QDomNode parent) const;
 	int domRow(QDomNode &child) const;
 
+private:
 	bool isTeacher;
 	int taskCount;
 	QString courseFileName;
