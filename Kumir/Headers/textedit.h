@@ -16,6 +16,8 @@
 #ifndef TEXTEDIT_H
 #define TEXTEDIT_H
 
+#include <QTextEdit>
+#include <QUndoStack>
 #include <QtCore>
 #include <QtGui>
 

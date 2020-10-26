@@ -1,4 +1,4 @@
-QT += svg script network
+QT += svg network
 TEMPLATE = lib
 TARGET = ../robot25d
 CONFIG += plugin

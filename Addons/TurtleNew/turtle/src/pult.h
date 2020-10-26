@@ -285,7 +285,7 @@ public:
 		 * @param parent ссыка на объект-владелец
 		 * @param fl флаги окна
 		 */
-	TurtlePult ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+	TurtlePult ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 	/**
 		 * Деструктор
 		 */

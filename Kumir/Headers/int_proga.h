@@ -423,7 +423,7 @@ class KumOutBuff
 		void setUpdated ( bool state )
 		{
 			updated=state;
-			updated=TRUE;
+            updated=true;
 		};
 
 		bool isUpdated()

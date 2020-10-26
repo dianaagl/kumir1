@@ -978,14 +978,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(!field->currentCell()->IsColored)
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -998,14 +998,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(field->currentCell()->IsColored)
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1140,7 +1140,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         //float rrr = GetRadiation(m_x,m_y);
         float rrr= field->currentCell()->radiation;
         symbols->symb_table[perem_id].value.setFloatValue( rrr );
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
     };
 
@@ -1171,7 +1171,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         float rrr = field->currentCell()->temperature;
 
         symbols->symb_table[perem_id].value.setFloatValue( rrr );
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
     };
 
@@ -1183,14 +1183,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(field->currentCell()->canLeft())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1203,14 +1203,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(!field->currentCell()->canLeft())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1225,14 +1225,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(field->currentCell()->canRight())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
     }
@@ -1245,14 +1245,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(!field->currentCell()->canRight())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
     }
@@ -1267,14 +1267,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(field->currentCell()->canUp())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1288,14 +1288,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(!field->currentCell()->canUp())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1311,14 +1311,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(field->currentCell()->canDown())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1333,14 +1333,14 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if(!field->currentCell()->canDown())
         {
             symbols->symb_table[perem_id].value.setBoolValue( false );
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
             return;
         }
         else
         {
             symbols->symb_table[perem_id].value.setBoolValue( true);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
             emit sync();
         }
 
@@ -1419,7 +1419,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
 
 
         symbols->symb_table[perem_id].value.setIntegerValue(field->cellAt(w-1,h-1)->temperature);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
         return;
     };
@@ -1434,7 +1434,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
 
 
         symbols->symb_table[perem_id].value.setFloatValue(field->cellAt(w-1,h-1)->radiation);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
         return;
     };
@@ -1449,7 +1449,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
 
 
         symbols->symb_table[perem_id].value.setCharectValue(field->cellAt(w-1,h-1)->downChar);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
         return;
     };
@@ -1464,7 +1464,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
 
 
         symbols->symb_table[perem_id].value.setCharectValue(field->cellAt(w-1,h-1)->upChar);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
         return;
     };
@@ -1479,7 +1479,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
 
 
         symbols->symb_table[perem_id].value.setBoolValue(field->cellAt(w-1,h-1)->mark);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         emit sync();
         return;
     };
@@ -1498,7 +1498,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if (cell) {
             bool value = cell->isColored();
             symbols->symb_table[perem_id].value.setBoolValue(value);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
         }
         else {
             *err = ROBOT_BAD_INDEX;
@@ -1522,7 +1522,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if (cell) {
             bool value = cell->hasRightWall();
             symbols->symb_table[perem_id].value.setBoolValue(value);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
         }
         else {
             *err = ROBOT_BAD_INDEX;
@@ -1546,7 +1546,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if (cell) {
             bool value = cell->hasLeftWall();
             symbols->symb_table[perem_id].value.setBoolValue(value);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
         }
         else {
             *err = ROBOT_BAD_INDEX;
@@ -1570,7 +1570,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if (cell) {
             bool value = cell->hasUpWall();
             symbols->symb_table[perem_id].value.setBoolValue(value);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
         }
         else {
             *err = ROBOT_BAD_INDEX;
@@ -1595,7 +1595,7 @@ void KumRobot::runFunc(QString name,QList<KumValueStackElem>* arguments,int *err
         if (cell) {
             bool value = cell->hasDownWall();
             symbols->symb_table[perem_id].value.setBoolValue(value);
-            symbols->setUsed(perem_id,TRUE);
+            symbols->setUsed(perem_id,true);
         }
         else {
             *err = ROBOT_BAD_INDEX;

@@ -33,7 +33,7 @@
 #define MAX_CALL_DEEP 1800
 #endif
 
-#define REAL_RES_DEBUG FALSE
+#define REAL_RES_DEBUG false
 
 Kumir_Run::Kumir_Run(QObject *parent)
     : QThread(parent)
@@ -612,7 +612,7 @@ void Kumir_Run::run()
         emit finished();
         return;
     };
-    running=TRUE;
+    running=true;
 
     //    RunBreakFlag=false;
     initIsps(); //Инициализация исполнителей
@@ -637,13 +637,13 @@ void Kumir_Run::run()
     run_stack.push_back(start_str);
     int rsc=run_stack.count();
 
-    stoped=FALSE;
+    stoped=false;
     
     bool runStackNotEmpty = run_stack.count() > 0;
     int cnt = Cur_Proga_Value()->count();
     if(cnt<1)
     {
-        running=FALSE;
+        running=false;
         emit finished();
         exit();
         return;
@@ -657,7 +657,7 @@ void Kumir_Run::run()
         {leadOut();
             usleep(300);
             emit finished();
-            running=FALSE;
+            running=false;
             exit();
             return;
         };
@@ -698,7 +698,7 @@ void Kumir_Run::run()
         rsc=run_stack.count();
         if((err!=0)||(ispErrorCode!=0))
         {            if(ispErrorCode!=0)err=ispErrorCode;
-            running=FALSE;
+            running=false;
             //sendText("Run Err"+QString::number(err));
             leadOut();
             if(err==-1)return;
@@ -719,7 +719,7 @@ void Kumir_Run::run()
 
 
 
-    running=FALSE;
+    running=false;
     leadOut();
     emit finished();
     exit();
@@ -757,7 +757,7 @@ int Kumir_Run::setArguments ( symbol_table* arguments,int func_id )
             //int value=argValue.asInt();
             Cur_Symbols()->symb_table[perem_id]
                     .value.setIntegerValue ( arguments->getValueAsInt ( i ) );
-            Cur_Symbols()->setUsed(perem_id,TRUE);
+            Cur_Symbols()->setUsed(perem_id,true);
         };
             break;
 
@@ -766,7 +766,7 @@ int Kumir_Run::setArguments ( symbol_table* arguments,int func_id )
             //float value=argValue.asFloat();
             Cur_Symbols()->symb_table[perem_id]
                     .value.setFloatValue ( arguments->getValueAsFloat ( i ) );
-            Cur_Symbols()->setUsed(perem_id,TRUE);
+            Cur_Symbols()->setUsed(perem_id,true);
         };
             break;
 
@@ -775,7 +775,7 @@ int Kumir_Run::setArguments ( symbol_table* arguments,int func_id )
             //  QString value=argValue.asString();
             Cur_Symbols()->symb_table[perem_id]
                     .value.setStringValue ( arguments->getValueAsString ( i ) );
-            Cur_Symbols()->setUsed(perem_id,TRUE);
+            Cur_Symbols()->setUsed(perem_id,true);
         };
             break;
 
@@ -784,7 +784,7 @@ int Kumir_Run::setArguments ( symbol_table* arguments,int func_id )
             //  QString value=argValue.asString();
             Cur_Symbols()->symb_table[perem_id]
                     .value.setCharectValue ( arguments->getValueAsCharect ( i ) );
-            Cur_Symbols()->setUsed(perem_id,TRUE);
+            Cur_Symbols()->setUsed(perem_id,true);
         };
             break;
         case kumBoolean:
@@ -792,7 +792,7 @@ int Kumir_Run::setArguments ( symbol_table* arguments,int func_id )
             // bool value=argValue.asBool();
             Cur_Symbols()->symb_table[perem_id]
                     .value.setBoolValue ( arguments->getValueAsBool ( i ) );
-            Cur_Symbols()->setUsed(perem_id,TRUE);
+            Cur_Symbols()->setUsed(perem_id,true);
         };
             break;
 
@@ -855,34 +855,34 @@ int Kumir_Run::setArguments ( symbol_table* arguments,int func_id )
                                                            , myTable->symb_table[perem_id].razm
                                                            );
             myTable->setTableValues(perem_id, arguments, i);
-            myTable->setUsed(perem_id,TRUE);
+            myTable->setUsed(perem_id,true);
         };
             break;
 
             //        case mass_integer:
             //            {
             //                arguments->copyMassIntArg ( i,perem_id,Cur_Symbols() );
-            //                Cur_Symbols()->setUsed(perem_id,TRUE);
+            //                Cur_Symbols()->setUsed(perem_id,true);
             //            };
             //            break;
 
             //        case mass_real:
             //            {
             //                arguments->copyMassRealArg ( i,perem_id,Cur_Symbols() );
-            //                Cur_Symbols()->setUsed(perem_id,TRUE);
+            //                Cur_Symbols()->setUsed(perem_id,true);
             //            };
             //            break;
 
             //        case mass_string:
             //            {
             //                arguments->copyMassStringArg ( i,perem_id,Cur_Symbols() );
-            //                Cur_Symbols()->setUsed(perem_id,TRUE);
+            //                Cur_Symbols()->setUsed(perem_id,true);
             //            };
             //            break;
             //        case mass_charect:
             //            {
             //                arguments->copyMassCharectArg ( i,perem_id,Cur_Symbols() );
-            //                Cur_Symbols()->setUsed(perem_id,TRUE);
+            //                Cur_Symbols()->setUsed(perem_id,true);
             //            };
             //            break;
         default:
@@ -908,7 +908,7 @@ int Kumir_Run::runForFunc(int func_id,symbol_table* arguments)
             setup.func_mode=neprerivno;
         run_stack.push_back(start_str);
         int rsc=run_stack.count();
-        running=TRUE;
+        running=true;
         int err = setArguments(arguments,func_id);
         if (err)
             return err;
@@ -1636,11 +1636,11 @@ int Kumir_Run::run_circle(int str)
                                              Cur_Line(str).extraSubExpressions,
                                              Cur_Line(str).VirajList[1].last(),
                                              &error).asInt();
-            Modules->setUsed(point2,TRUE);
+            Modules->setUsed(point2,true);
             if(error!=0)
                 return error;
             int shag=1;
-            Modules->setUsed(point2,TRUE);
+            Modules->setUsed(point2,true);
             //int res,shag=-1;
 
             int StepPosition = Cur_Line(str).line.indexOf(QChar(KS_SHAG));
@@ -3094,7 +3094,7 @@ int Kumir_Run::do_break(int str) //15-09-Mordol
  */
 int Kumir_Run::test_if(int str)
 {
-    Vibor_Flags.append(FALSE);
+    Vibor_Flags.append(false);
     //outBuff->append("Viraj:"+Cur_Line(str).VirajList[0][0]);
     int error=0;
     bool res=calc_simple_universal(Cur_Line(str).VirajList[0],
@@ -3336,7 +3336,7 @@ int Kumir_Run::prepare_arguments(const QString &name,
 
             //if(args->isRes(id)){args->setUsed(id,false);Cur_Symbols()->setUsed(point2,false); };
             if(args->isRes(i)){args->setUsed(i,false);Cur_Symbols()->setUsed(point2,false); };
-            //args->setUsed(id,TRUE);
+            //args->setUsed(id,true);
             args->setPointer(i,ptr.mod_id,ptr.perem_id);
             // ??????????????????????????????????????????????????????????????????????
             arguments->append(KumValueStackElem(ptr.perem_id));
@@ -3364,10 +3364,10 @@ int Kumir_Run::prepare_arguments(const QString &name,
                 copy.perem_id=id;
                 copy.mod_id=module_id;
                 //                Modules->setBoolValue(copy,res);
-                //                Modules->setUsed(copy,TRUE);
+                //                Modules->setUsed(copy,true);
 
             };
-            args->setUsed(i,TRUE);
+            args->setUsed(i,true);
             arguments->append(KumValueStackElem(res));
         }
 
@@ -3388,9 +3388,9 @@ int Kumir_Run::prepare_arguments(const QString &name,
                 copy.perem_id=id;
                 copy.mod_id=module_id;
                 //                Modules->setStringValue(copy,res);
-                //                Modules->setUsed(copy,TRUE);
+                //                Modules->setUsed(copy,true);
             };
-            args->setUsed(i,TRUE);
+            args->setUsed(i,true);
             arguments->append(KumValueStackElem(res));
 
         }
@@ -3406,7 +3406,7 @@ int Kumir_Run::prepare_arguments(const QString &name,
             args->new_argument(charect);
 
             if(Modules->module(module_id)->isKumIsp())args->symb_table[i].value.setCharectValue(res);
-            args->setUsed(i,TRUE);
+            args->setUsed(i,true);
             args->symb_table[i].type = charect;
             arguments->append(KumValueStackElem(res));
         }
@@ -3427,9 +3427,9 @@ int Kumir_Run::prepare_arguments(const QString &name,
                 copy.perem_id=id;
                 copy.mod_id=module_id;
                 //                Modules->setIntegerValue(copy,res);
-                //                Modules->setUsed(copy,TRUE);
+                //                Modules->setUsed(copy,true);
             };
-            args->setUsed(i,TRUE);
+            args->setUsed(i,true);
             arguments->append(KumValueStackElem(res));
         }
 
@@ -3443,7 +3443,7 @@ int Kumir_Run::prepare_arguments(const QString &name,
             if(error!=0){return error;};
             args->new_argument(real);
             if(Modules->module(module_id)->isKumIsp())args->symb_table[i].value.setFloatValue(res);
-            args->setUsed(i,TRUE);
+            args->setUsed(i,true);
             arguments->append(KumValueStackElem(res));
         }
 
@@ -3877,7 +3877,7 @@ int Kumir_Run::do_funct(int str)
 int Kumir_Run::do_vibor(int str)
 {
     /*int perem_id=Cur_Line(str).line.toInt();*/
-    Vibor_Flags.append(FALSE);
+    Vibor_Flags.append(false);
     vibor_stack.append(1);
     run_stack.push_back(Cur_Line(str).else_pos);
     return 0;
@@ -3949,7 +3949,7 @@ int Kumir_Run::do_pri(int str)
             sendDebug(trUtf8("да"),str,curModule);
         run_stack.push_back(str+1);
         vibor_stack[vibor_stack.count()-1]=0;
-        Vibor_Flags[Vibor_Flags.count()-1]=TRUE;};
+        Vibor_Flags[Vibor_Flags.count()-1]=true;};
 
 
     return 0;
@@ -4069,7 +4069,7 @@ int Kumir_Run::do_vvod ( int str )
 
         //      if ( Cur_Symbols()->isConst ( perem_id ) )
         //          return RUN_CONST_INPUT;
-        //      Cur_Symbols()->setUsed ( perem_id,TRUE );
+        //      Cur_Symbols()->setUsed ( perem_id,true );
         PeremType perType=Cur_Symbols()->getTypeByID ( perem_t_id );
         if ( perType == kumString && Cur_Symbols()->isConst(perem_t_id) ) {
             QString text = Modules->getStringValue(point2);
@@ -4136,7 +4136,7 @@ int Kumir_Run::do_vvod ( int str )
 
         //      if ( Cur_Symbols()->isConst ( perem_id ) )
         //          return RUN_CONST_INPUT;
-        Cur_Symbols()->setUsed ( perem_t_id,TRUE );
+        Cur_Symbols()->setUsed ( perem_t_id,true );
 
         //          if ( Cur_Symbols()->isRes ( perem_t_id ) )
         //          {
@@ -4159,7 +4159,7 @@ int Kumir_Run::do_vvod ( int str )
             //              if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             //                  sendDebug ( Cur_Symbols()->symb_table[perem_id].name+"="+QString::number ( value ),str );
             msgTexts << Cur_Symbols()->symb_table[perem_t_id].name+"="+QString::number ( value );
-            Modules->setUsed ( point2,TRUE );
+            Modules->setUsed ( point2,true );
             break;
         };
 
@@ -4184,7 +4184,7 @@ int Kumir_Run::do_vvod ( int str )
 
             QString  res=vvod_str[j];
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setStringMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( error>0 )
                 return error;
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
@@ -4228,7 +4228,7 @@ int Kumir_Run::do_vvod ( int str )
             if ( !ok ) return RUN_INPUT_INT;
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setIntMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( error>0 )
                 return error;
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
@@ -4270,7 +4270,7 @@ int Kumir_Run::do_vvod ( int str )
             if ( !ok ) return RUN_INPUT_FLOAT;
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setFloatMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString massStr;
@@ -4323,7 +4323,7 @@ int Kumir_Run::do_vvod ( int str )
                 return error;
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setBoolMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString massStr;
@@ -4367,7 +4367,7 @@ int Kumir_Run::do_vvod ( int str )
             if ( error>0 )
                 return error;
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setCharMassValue ( chr,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString p;
@@ -4416,7 +4416,7 @@ int Kumir_Run::do_vvod ( int str )
             //              if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             //                  sendDebug ( Cur_Symbols()->symb_table[perem_id].name+"=\""+vvod_str[j]+"\"",str );
             msgTexts << Cur_Symbols()->symb_table[perem_t_id].name+"=\""+vvod_str[j]+"\"";
-            Modules->setUsed ( point2,TRUE );
+            Modules->setUsed ( point2,true );
             break;
 
         case charect:
@@ -4428,7 +4428,7 @@ int Kumir_Run::do_vvod ( int str )
             QChar chr = QChar ( ch[0] );
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setCharectValue ( chr );
-            Modules->setUsed ( point2,TRUE );
+            Modules->setUsed ( point2,true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString p;
@@ -4474,7 +4474,7 @@ int Kumir_Run::do_vvod ( int str )
             QString dbgMsg=Cur_Symbols()->symb_table[perem_t_id].name+"="+QString::number ( value );
             if(!dbgMsg.contains('.'))dbgMsg=dbgMsg+".0";
             msgTexts << dbgMsg;
-            Modules->setUsed ( point2,TRUE );
+            Modules->setUsed ( point2,true );
         }
             break;
 
@@ -4491,7 +4491,7 @@ int Kumir_Run::do_vvod ( int str )
             //              if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             //                  sendDebug ( Cur_Symbols()->symb_table[perem_id].name+"="+vvod_str[j],str );
             msgTexts << Cur_Symbols()->symb_table[perem_t_id].name+"="+vvod_str[j].toLower();
-            Modules->setUsed ( point2,TRUE );
+            Modules->setUsed ( point2,true );
         }
             break;
 
@@ -4576,7 +4576,7 @@ int Kumir_Run::do_fvvod ( int str )
         {
             return RUN_INPUT_RES;
         };
-        Modules->setUsed( point2,TRUE );
+        Modules->setUsed( point2,true );
 
 
 
@@ -4624,7 +4624,7 @@ int Kumir_Run::do_fvvod ( int str )
 
             QString  res=lexem;
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setStringMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( error>0 )
                 return error;
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
@@ -4670,7 +4670,7 @@ int Kumir_Run::do_fvvod ( int str )
             if ( !ok ) return RUN_INPUT_INT;
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setIntMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( error>0 )
                 return error;
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
@@ -4714,7 +4714,7 @@ int Kumir_Run::do_fvvod ( int str )
             if ( !ok ) return RUN_INPUT_FLOAT;
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setFloatMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString massStr;
@@ -4768,7 +4768,7 @@ int Kumir_Run::do_fvvod ( int str )
                 return error;
 
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setBoolMassValue ( res,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString massStr;
@@ -4814,7 +4814,7 @@ int Kumir_Run::do_fvvod ( int str )
             if ( error>0 )
                 return error;
             Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setCharMassValue ( chr,pos_mas[0],pos_mas[1],pos_mas[2] );
-            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], TRUE );
+            Modules->module(point2.mod_id)->Values()->symb_table[point2.perem_id].value.setReady ( pos_mas[0],pos_mas[1],pos_mas[2], true );
             if ( ( setup.isPoShagam() ) || ( setup.isDebug() ) )
             {
                 QString p;
@@ -4962,7 +4962,7 @@ QPair<int,QString> Kumir_Run::runFromTo(int module_id,int from,int to)
 
         run_stack.push_back(from);
         int rsc=run_stack.count();
-        running=TRUE;
+        running=true;
         while(run_stack.count()>0)
         {
             int cur_str=pop();

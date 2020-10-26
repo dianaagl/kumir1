@@ -988,7 +988,7 @@ protected:
 bool PDDebugWindow::isProcessing() { return m_runner->isRunning(); }
 bool PDDebugWindow::result() { return m_runner->result(); }
 
-PDDebugWindow::PDDebugWindow ( PushdownAutomata *automata, QWidget* parent, Qt::WFlags fl )
+PDDebugWindow::PDDebugWindow ( PushdownAutomata *automata, QWidget* parent, Qt::WindowFlags fl )
     : QWidget ( parent, fl ), Ui::PDDebugWindowBase()
 {
     Q_UNUSED(automata);

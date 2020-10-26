@@ -35,7 +35,7 @@ class ProgramTab : public QWidget, public Tab, private Ui::ProgramTab
 		 * @param parent ссылка на объект-владелец
 		 * @param fl флаги окна
 		 */
-		ProgramTab ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		ProgramTab ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		/**
 		 * Деструктор
 		 */

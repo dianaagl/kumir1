@@ -23,7 +23,7 @@ class TextWindow : public QMainWindow, public Ui::TextWindow1
 public:
 	Q_PROPERTY(QString fileName READ fileName WRITE setFileName)
 	Q_PROPERTY(QString textEncoding READ textEncoding WRITE setTextEncoding)
-  TextWindow(QWidget* parent = 0, Qt::WFlags fl = 0 );
+  TextWindow(QWidget* parent = 0, Qt::WindowFlags fl = 0 );
   ~TextWindow();
 	void setFileName(const QString & fileName);
 	inline QString fileName() { return m_fileName; };

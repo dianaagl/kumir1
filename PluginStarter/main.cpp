@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "plugin_interface.h"
+#include <QApplication>
 #include <QtCore>
 #include <QtGui>
 

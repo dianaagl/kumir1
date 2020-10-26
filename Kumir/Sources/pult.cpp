@@ -353,7 +353,7 @@ QString text;
 for(int i=0;i<lines.count();i++)if(!lines[i].KumCommand().isEmpty())text+=lines[i].KumCommand()+"\n";
 cp->setText(text);
 };
-RoboPult::RoboPult ( QWidget* parent, Qt::WFlags fl )
+RoboPult::RoboPult ( QWidget* parent, Qt::WindowFlags fl )
 	: QWidget ( parent, fl ), Ui::RoboPult()
 {
 	

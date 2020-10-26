@@ -19,9 +19,10 @@
 #include "macro.h"
 #include "newmacrodialog.h"
 
+#include <QMessageBox>
 #include <QtXml>
 
-MacrosManagementDialog::MacrosManagementDialog ( QWidget* parent, Qt::WFlags fl )
+MacrosManagementDialog::MacrosManagementDialog ( QWidget* parent, Qt::WindowFlags fl )
 		: QDialog ( parent, fl ), Ui::Dialog()
 {
 	setupUi ( this );

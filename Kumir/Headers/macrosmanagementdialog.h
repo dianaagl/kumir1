@@ -32,7 +32,7 @@ class MacrosManagementDialog : public QDialog, private Ui::Dialog
 		 * @param parent ссылка на объект-владелец
 		 * @param fl флаги окна
 		 */
-		MacrosManagementDialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		MacrosManagementDialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~MacrosManagementDialog();
 	
 	public slots:

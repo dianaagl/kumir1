@@ -34,7 +34,7 @@ class externalIspDialog : public QDialog, Ui::externalIspDialog
 	Q_OBJECT
 
 	public:
-		externalIspDialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		externalIspDialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~externalIspDialog(){};
 	bool network(){return NetworkSW->isChecked();};
 	QString file(){return FileLine->text();};

@@ -1,7 +1,7 @@
 # -------------------------------------------------
 # Project created by QtCreator 2010-03-09T17:26:04
 # -------------------------------------------------
-QT += svg xml webkit
+QT += svg xml webenginewidgets
 
 TEMPLATE = lib
 CONFIG += plugin

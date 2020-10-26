@@ -17,6 +17,7 @@
 #ifndef KUMIREDIT_H
 #define KUMIREDIT_H
 
+#include <QListWidgetItem>
 #include <QtCore>
 #include <QtGui>
 
@@ -31,7 +32,7 @@ class KumirMargin;
 
 /** Текстовый редактор для КУМИР-программ */
 class KumirEdit
-	: public TextEdit
+    : public TextEdit
 {
 	Q_OBJECT;
 	Q_PROPERTY(qreal indentSize READ indentSize WRITE setIndentSize);

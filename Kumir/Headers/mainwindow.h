@@ -45,7 +45,7 @@ public:
 		 * @param parent сслыка на объект-владелец
 		 * @param fl флаги окна
 		 */
-    explicit MainWindow(QWidget* parent = 0, Qt::WFlags fl = 0 );
+    explicit MainWindow(QWidget* parent = 0, Qt::WindowFlags fl = 0 );
     /**
      * Деструктор
      */

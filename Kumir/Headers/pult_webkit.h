@@ -3,10 +3,10 @@
 
 #include <QtCore>
 #include <QtGui>
-#include <QtWebKit>
+#include <QtWebEngineWidgets/QtWebEngineWidgets>
 
 class RobotPultWK:
-        public QWebView
+        public QWebEngineView
 {
     Q_OBJECT;
 public:

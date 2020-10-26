@@ -18,7 +18,7 @@
 #include "application.h"
 #include "mainwindow.h"
 
-ProgramTab::ProgramTab ( QWidget* parent, Qt::WFlags fl )
+ProgramTab::ProgramTab ( QWidget* parent, Qt::WindowFlags fl )
 		: QWidget ( parent, fl ), Ui::ProgramTab()
 {
 	setupUi ( this );

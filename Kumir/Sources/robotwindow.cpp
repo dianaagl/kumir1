@@ -18,7 +18,7 @@
 #include "application.h"
 
 
-RobotWindow::RobotWindow ( QWidget* parent, Qt::WFlags fl ) :
+RobotWindow::RobotWindow ( QWidget* parent, Qt::WindowFlags fl ) :
 		QWidget(parent, fl),
 		Ui::RobotWindow()
 {

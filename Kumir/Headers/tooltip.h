@@ -26,7 +26,7 @@ class ToolTip : public QWidget, public Ui::ToolTip
 		Q_OBJECT
 
 	public:
-		ToolTip ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		ToolTip ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~ToolTip();
 
 		int cursorPosition;

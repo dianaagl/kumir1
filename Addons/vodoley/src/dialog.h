@@ -25,7 +25,7 @@ class Dialog : public QDialog, Ui::Dialog
 	Q_OBJECT
 
 	public:
-		Dialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		Dialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~Dialog(){};
 	int ASize(){return BaseA->value();};
 	int BSize(){return BaseB->value();};

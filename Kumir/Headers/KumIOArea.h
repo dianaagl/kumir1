@@ -17,7 +17,8 @@
 #include <QtGui>
 #include "int_proga.h"
 #include "tools.h"
-
+#include<QScrollBar>
+#include <QMenu>
 class KumIOArea;
 
 class InputHighlighter 

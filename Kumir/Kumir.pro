@@ -159,10 +159,10 @@ INCLUDEPATH += ../
 INCLUDEPATH += ../Addons/protoModule
 
 QT += xml \
-    script \
     svg \
     network\
-    webkit
+    webenginewidgets \
+    widgets
 RESOURCES += Resources/MainWindow.qrc
 TARGET = kumir
 win32: TARGET = kumir

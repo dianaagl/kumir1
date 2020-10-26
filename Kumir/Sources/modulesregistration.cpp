@@ -25,7 +25,7 @@
 #include "kummodules.h"
 #include "kumsinglemodule.h"
 
-ModulesRegistration::ModulesRegistration ( QWidget* parent, Qt::WFlags fl )	: QDialog ( parent, fl ), Ui::ModulesRegistration()
+ModulesRegistration::ModulesRegistration ( QWidget* parent, Qt::WindowFlags fl )	: QDialog ( parent, fl ), Ui::ModulesRegistration()
 {
 	setupUi ( this );
 	checkModules = NULL;
@@ -351,7 +351,7 @@ QList<IspNames> ispNames;
 return ispNames;
 };
 
-CheckModules::CheckModules ( QWidget* parent, Qt::WFlags fl )	: QDialog ( parent, fl ), Ui::CheckModules()
+CheckModules::CheckModules ( QWidget* parent, Qt::WindowFlags fl )	: QDialog ( parent, fl ), Ui::CheckModules()
 {
 	setupUi ( this );
 	count = 0;

@@ -19,7 +19,9 @@
 #include "application.h"
 #include "macro.h"
 
-NewMacroDialog::NewMacroDialog ( QWidget* parent, Qt::WFlags fl )
+#include <QMessageBox>
+
+NewMacroDialog::NewMacroDialog ( QWidget* parent, Qt::WindowFlags fl )
     : QDialog ( parent, fl ), Ui::NewMacroDialog()
 {
     setupUi ( this );
@@ -33,7 +35,7 @@ NewMacroDialog::NewMacroDialog ( QWidget* parent, Qt::WFlags fl )
     macro = NULL;
 }
 
-NewMacroDialog::NewMacroDialog ( Macro *m, QWidget* parent, Qt::WFlags fl )
+NewMacroDialog::NewMacroDialog ( Macro *m, QWidget* parent, Qt::WindowFlags fl )
     : QDialog ( parent, fl ), Ui::NewMacroDialog()
 {
     setupUi ( this );

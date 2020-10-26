@@ -974,7 +974,7 @@ void KumStandartFunctions::runFunc(QString name,QList<KumValueStackElem>* arg,in
         int mod = xx % y;
         int result = ( x - mod ) / y;
         symbols->symb_table[perem_id].value.setIntegerValue( result );
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
     }
     else if (name=="int")
     {

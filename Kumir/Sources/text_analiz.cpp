@@ -2062,14 +2062,14 @@ int set_const_value(int perem_id,const QString &val,symbol_table *symbols)
     if(const_value.isEmpty())
     {
         symbols->symb_table[perem_id].value.setIntegerValue(0);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
         return 0;
     }
     if(symbols->getTypeByID(perem_id)==integer)
     {
         int int_value = text_analiz::createConstValue(val,integer).toInt();
         symbols->symb_table[perem_id].value.setIntegerValue(int_value);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
     }
 
 
@@ -2077,14 +2077,14 @@ int set_const_value(int perem_id,const QString &val,symbol_table *symbols)
     {
         double d = text_analiz::createConstValue(val,real).toDouble();
         symbols->symb_table[perem_id].value.setFloatValue(d);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
     }
 
     if(symbols->getTypeByID(perem_id)==kumString)
     {
         QString s = text_analiz::createConstValue(val,kumString).toString();
         symbols->symb_table[perem_id].value.setStringValue(s);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
     }
 
     // NEW 28.08.2006
@@ -2092,13 +2092,13 @@ int set_const_value(int perem_id,const QString &val,symbol_table *symbols)
     {
         bool value = text_analiz::createConstValue(val,kumBoolean).toBool();
         symbols->symb_table[perem_id].value.setBoolValue(value);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
     }    
     if(symbols->getTypeByID(perem_id)==charect)
     {
         QChar c = text_analiz::createConstValue(val,charect).toChar();
         symbols->symb_table[perem_id].value.setCharectValue(c);
-        symbols->setUsed(perem_id,TRUE);
+        symbols->setUsed(perem_id,true);
     }
     //
     /// END NEW
@@ -8230,7 +8230,7 @@ int text_analiz::parceVariables( QString source,
                 QString s_value;
 
                 if ( cType==integer || cType==real || cType==kumBoolean || cType==charect || cType==kumString ) {
-                    QByteArray ba = QByteArray::fromBase64(cValue.toAscii());
+                    QByteArray ba = QByteArray::fromBase64(cValue.toLatin1());
                     QString sval = QString::fromUtf8(ba);
                     if (cType==kumString)
                         s_value = sval;
@@ -8363,7 +8363,7 @@ int text_analiz::parceConstant(const QString &constant, const PeremType pt, int&
         else if ( ( ct==pt ) || (ct==integer || pt==real) )
         {
             QByteArray ba = createConstValue(constant, ct).toString().toUtf8().toBase64();
-            value = QString::fromAscii(ba);
+            value = QString(ba).toLatin1();
         }
         else {
             errPos = 0;

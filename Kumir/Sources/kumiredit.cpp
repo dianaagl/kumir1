@@ -33,6 +33,7 @@
 #include "messagesprovider.h"
 #include "mainwindow.h"
 #include "kumsinglemodule.h"
+#include <QScrollBar>
 
 KumirEdit::KumirEdit(QWidget *parent)
         : TextEdit(parent)

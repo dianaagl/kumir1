@@ -18,6 +18,8 @@
 #include "compiler.h"
 #include <iostream>
 #include <QtGui>
+#include <QSplashScreen>
+#include <QMessageBox>
 
 #include "tools.h"
 int main(int argc, char *argv[])

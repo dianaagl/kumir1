@@ -55,7 +55,7 @@ class CheckModules : public QDialog, public Ui::CheckModules
 	 * @param parent ссыка на объект-владелец
 	 * @param fl флаги окна
 		 */
-		CheckModules ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		CheckModules ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		/**
 		 * Деструктор
 		 */
@@ -90,7 +90,7 @@ class ModulesRegistration : public QDialog, private Ui::ModulesRegistration
 	 * @param parent ссыка на объект-владелец
 	 * @param fl флаги окна
 		 */
-		ModulesRegistration ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		ModulesRegistration ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		/**
 		 * Деструктор
 		 */

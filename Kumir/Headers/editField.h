@@ -35,7 +35,7 @@ class editField : public QMainWindow, public Ui::editField
 		 * @param parent ссыка на объект-владелец
 		 * @param fl флаги окна
 		 */
-		editField ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		editField ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		/**
 		 * Деструктор
 		 */

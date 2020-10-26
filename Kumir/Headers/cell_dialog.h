@@ -30,7 +30,7 @@ class CellDialog : public QDialog, public Ui::CellDialog
 		 * @param parent ссыка на объект-владелец
 		 * @param fl флаги окна
 		 */
-		CellDialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+        CellDialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		static CellDialog *instance();
 		/**
 		 * Деструктор

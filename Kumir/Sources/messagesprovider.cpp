@@ -18,6 +18,8 @@
 #include "error.h"
 #include "config.h"
 
+#include <QApplication>
+
 MessagesProvider::MessagesProvider(QObject *parent)
  : QObject(parent)
 {

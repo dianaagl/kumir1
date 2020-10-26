@@ -20,7 +20,7 @@ QString TextWindow::fakeLabel()
 	return tr("New text");
 }
 
-TextWindow::TextWindow(QWidget* parent, Qt::WFlags fl)
+TextWindow::TextWindow(QWidget* parent, Qt::WindowFlags fl)
 : QMainWindow( parent, fl ), Ui::TextWindow1()
 {
 	setupUi(this);

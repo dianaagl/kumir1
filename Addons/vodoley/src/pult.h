@@ -287,7 +287,7 @@ class VodoleyPult : public QWidget, public Ui::VodoleyPult
 		 * @param parent ссыка на объект-владелец
 		 * @param fl флаги окна
 		 */
-		VodoleyPult ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		VodoleyPult ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		/**
 		 * Деструктор
 		 */

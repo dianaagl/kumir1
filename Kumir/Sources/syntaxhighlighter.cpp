@@ -748,7 +748,7 @@ QByteArray SyntaxHighlighter::generateFormatString(const QString & text, LinePro
 	//                  Выделение символов латиницы
 
 	for (int i=0; i<txt.length(); i++) {
-		if (txt[i].isLetter() && txt[i].toAscii()!=0) {
+        if (txt[i].isLetter() && txt[i].toLatin1()!=0) {
 			format[i] = format[i] | FC_LATIN_FLAG;
 		}
 	}

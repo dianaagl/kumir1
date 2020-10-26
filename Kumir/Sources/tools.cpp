@@ -1508,7 +1508,7 @@ int KumTools::test_name ( QString name, int & pos, int & len )
     return error;
 }
 
-QString KumTools::SplitPrisvBlock ( const QStringList p_List, QStringList *p_Result, int p_Num = -1, bool p_FuncParam = FALSE )
+QString KumTools::SplitPrisvBlock ( const QStringList p_List, QStringList *p_Result, int p_Num = -1, bool p_FuncParam = false )
 {
     if ( p_Num == -1 )
     {
@@ -2398,7 +2398,7 @@ int KumTools::splitFStringList ( QStringList FSpisok,QList<ProgaText>* result,in
 
                 default: //Простая строка или ошибка.
                     tmp=FSpisok[curLine];
-                    bool flag=FALSE;  //� азделители
+                    bool flag=false;  //� азделители
                     for ( int i=0;i<tmp.length();i++ )
                     {
                         if ( flag ) break;//Что-то уже нашли
@@ -2407,7 +2407,7 @@ int KumTools::splitFStringList ( QStringList FSpisok,QList<ProgaText>* result,in
                         switch ( tmp[i].unicode() )
                         {
                         case KS_INACHE:
-                            flag=TRUE;
+                            flag=true;
                             temp_proga.Text=FSpisok[curLine].mid ( 0,i );
                             result->append ( temp_proga );
                             result->last().P.clear();
@@ -2425,7 +2425,7 @@ int KumTools::splitFStringList ( QStringList FSpisok,QList<ProgaText>* result,in
                             break;
 
                                         case KS_VSE:
-                            flag=TRUE;
+                            flag=true;
                             temp_proga.Text=FSpisok[curLine].mid ( 0,i );
                             result->append ( temp_proga );
                             result->last().P.clear();
@@ -2446,7 +2446,7 @@ int KumTools::splitFStringList ( QStringList FSpisok,QList<ProgaText>* result,in
                             break;
 
                                         case KS_KC:
-                            flag=TRUE;
+                            flag=true;
                             temp_proga.Text=FSpisok[curLine].mid ( 0,i );
                             result->append ( temp_proga );
                             result->last().P.clear();
@@ -2466,7 +2466,7 @@ int KumTools::splitFStringList ( QStringList FSpisok,QList<ProgaText>* result,in
                             break;
 
                                         case KS_PRI:
-                            flag=TRUE;
+                            flag=true;
                             temp_proga.Text=FSpisok[curLine].mid ( 0,i );
                             result->append ( temp_proga );
                             result->last().P.clear();
@@ -2487,7 +2487,7 @@ int KumTools::splitFStringList ( QStringList FSpisok,QList<ProgaText>* result,in
                             break;
 
                                         case KS_KC_PRI:
-                            flag=TRUE;
+                            flag=true;
                             temp_proga.Text=FSpisok[curLine].mid ( 0,i );
                             result->append ( temp_proga );
                             result->last().P.clear();

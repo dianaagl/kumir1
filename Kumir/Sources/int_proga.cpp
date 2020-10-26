@@ -2713,7 +2713,7 @@ void KumOutBuff::appendMainMsg(QString text)
 
     if(!locked)Buffer.append(KumOutBuffElem(1,0,text));
 
-    updated=TRUE;
+    updated=true;
 };
 
 void KumOutBuff::appendDebugMsg(QString text,int str)
@@ -2722,23 +2722,23 @@ void KumOutBuff::appendDebugMsg(QString text,int str)
     if(!locked)
         Buffer.append(KumOutBuffElem(2,str,text));
 
-    updated=TRUE;
+    updated=true;
 };
 
 void KumOutBuff::appendErrMsg(QString text,int str)
 {
 
     if(!locked)Buffer.append(KumOutBuffElem(3,str,text));
-    locked=TRUE;
-    updated=TRUE;
+    locked=true;
+    updated=true;
 };
 
 void KumOutBuff::appendCounterMsg(int increment)
 {
     //  if(!locked)Buffer.append(KumOutBuffElem(4,increment,""));
     Buffer.append(KumOutBuffElem(4,increment,""));
-    //  locked=TRUE;
-    updated=TRUE;
+    //  locked=true;
+    updated=true;
 }
 
 KumOutBuffElem KumOutBuff::GetFirst()

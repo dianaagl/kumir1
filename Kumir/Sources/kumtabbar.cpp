@@ -15,6 +15,8 @@
 ****************************************************************************/
 #include "kumtabbar.h"
 
+#include <QMenu>
+
 KumTabBar::KumTabBar(QWidget *parent)
  : QTabBar(parent)
 {

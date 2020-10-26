@@ -17,7 +17,7 @@
 #include "aboutdialog.h"
 #include "config.h"
 
-AboutDialog::AboutDialog ( QWidget* parent, Qt::WFlags fl )
+AboutDialog::AboutDialog ( QWidget* parent, Qt::WindowFlags fl )
 		: QDialog ( parent, fl ), Ui::AboutDialog()
 {
 	setupUi ( this );

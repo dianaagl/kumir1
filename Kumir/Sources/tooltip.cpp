@@ -19,7 +19,7 @@
 #include "assistant.h"
 #include "application.h"
 
-ToolTip::ToolTip ( QWidget* parent, Qt::WFlags fl )
+ToolTip::ToolTip ( QWidget* parent, Qt::WindowFlags fl )
 	: QWidget ( parent, fl ), Ui::ToolTip()
 {
 	setupUi ( this );

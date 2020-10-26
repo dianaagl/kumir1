@@ -16,6 +16,7 @@
 #ifndef TAB_H
 #define TAB_H
 
+#include <QPrinter>
 #include <QtCore>
 #include <QtGui>
 

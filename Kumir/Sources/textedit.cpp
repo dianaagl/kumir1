@@ -21,7 +21,7 @@
 #include "undocommands.h"
 #include "lineprop.h"
 #include "kumundostack.h"
-
+#include <QScrollBar>
 #ifdef Q_WS_X11
 #include <X11/XKBlib.h>
 #include <QX11Info>
@@ -486,7 +486,7 @@ void TextEdit::keyPressEvent ( QKeyEvent *event )
 			QTextEdit::keyPressEvent(event);
 		ensureCursorVisible();
 		if ( textCursor().columnNumber() == 0 )
-			horizontalScrollBar()->setValue(0);
+            horizontalScrollBar()->setValue(0);
 	}
 	else if ( event->key() == Qt::Key_Right ) {
 		bool filter = false;

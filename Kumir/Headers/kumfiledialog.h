@@ -16,9 +16,11 @@
 #ifndef KUMFILEDIALOG_H
 #define KUMFILEDIALOG_H
 
+#include <QComboBox>
 #include <QFileDialog>
+#include <QLabel>
 #include <QtGui>
-
+#include <QLayout>
 /**
 	@author Victor Yacovlev <V.Yacovlev@gmail.com>
 */

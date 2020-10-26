@@ -50,7 +50,7 @@ void disableTearOff(QWidget *node);
 bool mustDisableTearOff();
 void fixQtBug11693(QWidget *node);
 
-MainWindow::MainWindow(QWidget* parent, Qt::WFlags fl) :
+MainWindow::MainWindow(QWidget* parent, Qt::WindowFlags fl) :
 		QMainWindow( parent, fl ),
 		Ui::MainWindow()
 {
@@ -198,7 +198,7 @@ void MainWindow::init()
 
 
 
-	textEdit3->setUndoRedoEnabled(FALSE);
+	textEdit3->setUndoRedoEnabled(false);
 	connect ( this, SIGNAL(inputOk(QStringList)), app()->run, SLOT(inputReady(QStringList)));
 	connect ( this, SIGNAL(inputKeyOk(uint,bool,bool,bool,bool)), app()->run, SLOT(inputKeyReady(uint, bool, bool, bool, bool)) );
 	isChar=false;waitInput=false;

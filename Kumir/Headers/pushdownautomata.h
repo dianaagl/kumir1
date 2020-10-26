@@ -18,7 +18,6 @@
 #define PUSHDOWNAUTOMATA_H
 
 #include <QtCore>
-#include <QtScript>
 #include "kum_tables.h"
 #include "ui_PDDebugWindow.h"
 
@@ -244,7 +243,7 @@ class PDDebugWindow : public QWidget, public Ui::PDDebugWindowBase
 	Q_OBJECT
 
 	public:
-		PDDebugWindow ( PushdownAutomata *automata, QWidget* parent = 0, Qt::WFlags fl = 0 );
+		PDDebugWindow ( PushdownAutomata *automata, QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		void setProgaText(const QList<ProgaText> &source);
 		void setCurrentPosition(int position);
 		void setStack(const QStack<QString> &stack);

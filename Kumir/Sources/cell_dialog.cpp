@@ -18,7 +18,7 @@
 #include "application.h"
 
 
-CellDialog::CellDialog ( QWidget* parent, Qt::WFlags fl )
+CellDialog::CellDialog ( QWidget* parent, Qt::WindowFlags fl )
 		: QDialog ( parent, fl ), Ui::CellDialog()
 {
 	setupUi ( this );

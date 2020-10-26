@@ -14,14 +14,14 @@
 #include "application.h"
 #include "kumrobot.h"
 
-PrintPreview::PrintPreview ( QWidget* parent, Qt::WFlags  )
+PrintPreview::PrintPreview ( QWidget* parent, Qt::WindowFlags  )
 		: QWidget(parent)
 {
 
 };
 
 
-PrintDialog::PrintDialog(QWidget* parent, Qt::WFlags fl ): QDialog ( parent, fl ), Ui::PrintDialog()
+PrintDialog::PrintDialog(QWidget* parent, Qt::WindowFlags fl ): QDialog ( parent, fl ), Ui::PrintDialog()
 {
 setupUi(this);
 //connect(pushButton,SIGNAL(clicked()),this,SLOT(selectFileName()));

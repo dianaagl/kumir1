@@ -33,7 +33,7 @@ class TextTab : public QWidget, virtual public Tab
 	   * @param parent ссылка на объект-владелец
 	   * @param fl флаги окна
 		 */
-		TextTab ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		TextTab ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		void print(QPrinter *printer);
 		/**
 		 * Деструктор

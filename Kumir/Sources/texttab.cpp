@@ -16,7 +16,7 @@
 #include "textedit.h"
 #include "mainwindow.h"
 
-TextTab::TextTab ( QWidget* parent, Qt::WFlags fl )
+TextTab::TextTab ( QWidget* parent, Qt::WindowFlags fl )
 	: QWidget ( parent, fl )
 {
 	m_editor = new TextEdit(this);

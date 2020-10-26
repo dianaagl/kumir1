@@ -25,7 +25,7 @@ class GoToLineDialog : public QDialog, public Ui::GoToLineDialog
 		Q_OBJECT
 
 	public:
-		GoToLineDialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		GoToLineDialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~GoToLineDialog();
 		/*$PUBLIC_FUNCTIONS$*/
 

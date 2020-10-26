@@ -14,6 +14,10 @@
 **
 ****************************************************************************/
 
+#include <QCheckBox>
+#include <QLabel>
+#include <QLineEdit>
+#include <QToolButton>
 #include <QtGui>
 
 #include "findpanel.h"

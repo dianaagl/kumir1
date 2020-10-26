@@ -20,7 +20,7 @@
 #include "kumsinglemodule.h"
 #include "kumrobot.h"
 
-editField::editField ( QWidget* parent, Qt::WFlags fl )
+editField::editField ( QWidget* parent, Qt::WindowFlags fl )
 	: QMainWindow ( parent, fl ), Ui::editField()
 {
 	

@@ -22,13 +22,15 @@
 #define KUM_PRINTPDF_H
 #include "ui_printDialog.h"
 #include "kum_instrument.h"
+#include <QGraphicsView>
+#include <QPrinter>
 #include <QWidget>
 #include <QtCore>
 #include <QtGui>
 class RoboField;
 class PrintPreview : public QWidget
 {
-		PrintPreview ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		PrintPreview ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~PrintPreview(){};
 };
 
@@ -37,7 +39,7 @@ class PrintDialog : public QDialog, Ui::PrintDialog
 	Q_OBJECT
 
 	public:
-		PrintDialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+		PrintDialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 		~PrintDialog(){};
 	QString fileName()
 	{return PrintFileName;};

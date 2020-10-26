@@ -34,14 +34,14 @@ public:
 		 * @param parent ссылка на объект-владелец
 		 * @param fl флаги окна
 		 */
-	NewMacroDialog ( QWidget* parent = 0, Qt::WFlags fl = 0 );
+	NewMacroDialog ( QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 	/**
 		 * Конструктор диалога при редактировании макроса
 		 * @param m ссылка на редактируемый макрос
 		 * @param parent ссылка на объект-владелец
 		 * @param fl флаги окна
 		 */
-	NewMacroDialog ( Macro *m, QWidget* parent = 0, Qt::WFlags fl = 0 );
+	NewMacroDialog ( Macro *m, QWidget* parent = 0, Qt::WindowFlags fl = 0 );
 	/**
 		 * Деструктор
 		 */

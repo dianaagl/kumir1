@@ -16,8 +16,11 @@
 #ifndef KUMIRMARGIN_H
 #define KUMIRMARGIN_H
 
+#include <QTextEdit>
 #include <QtCore>
 #include <QtGui>
+#include <QScrollBar>
+#include <QMenu>
 
 class KumirEdit;
 class ProgramTab;

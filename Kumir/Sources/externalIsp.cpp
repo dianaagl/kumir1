@@ -17,7 +17,7 @@
 #include "kumfiledialog.h"
 #include "kumsinglemodule.h"
 #include "kummodules.h"
-externalIspDialog::externalIspDialog(QWidget* parent, Qt::WFlags fl ): QDialog ( parent, fl ), Ui::externalIspDialog()
+externalIspDialog::externalIspDialog(QWidget* parent, Qt::WindowFlags fl ): QDialog ( parent, fl ), Ui::externalIspDialog()
 {
 setupUi(this);
 parentDialog=parent;

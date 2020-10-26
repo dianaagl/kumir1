@@ -22,11 +22,14 @@
 #include "config.h"
 #include "httpdaemon.h"
 #include "compiler.h"
-
+#include <QColorDialog>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QStyleFactory>
 #include <QtCore>
 #include <QtGui>
 
-SettingsDialog::SettingsDialog(QWidget* parent, Qt::WFlags fl)
+SettingsDialog::SettingsDialog(QWidget* parent, Qt::WindowFlags fl)
 	: QDialog(parent,fl), Ui::SettingsDialog()
 {
 	setupUi(this);
