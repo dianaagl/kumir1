@@ -177,4 +177,4 @@ emit sendText(text);
 };
 
 
-Q_EXPORT_PLUGIN2(kuznecStarter, KuznecStarter)
+//Q_EXPORT_PLUGIN2(kuznecStarter, KuznecStarter)

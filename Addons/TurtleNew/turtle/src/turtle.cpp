@@ -193,7 +193,7 @@ curX=AncX*zoom;curY=AncY*zoom;
 t1->moveBy(-curX,-curY);
 curX=0;curY=0;
 t1->setTransform(QTransform().translate(AncX*zoom, AncY*zoom).rotate(360).translate(-AncX*zoom, -AncY*zoom));
-t1->scale(zoom ,zoom);
+t1->setScale(zoom);
 
 }
 //-----------------------------------
@@ -207,7 +207,7 @@ if(ang>360)ang=ang-360;
 
 
 rotateImages();
-Tail->rotate(grad);
+Tail->setRotation(grad);
 showCurTurtle();
 }
 void turtle::rotateImages()
@@ -220,7 +220,7 @@ t1->setTransform(QTransform().translate(AncX*zoom, AncY*zoom).rotate(ang).transl
  //qDebug()<<"Ang bugfix"<<ang;
 t1->setTransform(QTransform().translate(AncX*zoom, AncY*zoom).rotate(ang-1).translate(-AncX*zoom, -AncY*zoom));
  };
-t1->scale(zoom,zoom);
+t1->setScale(zoom);
 
 //t2->setTransform(QTransform().translate(AncX*zoom, AncY*zoom).rotate(ang).translate(-AncX*zoom, -AncY*zoom));
 //t2->scale(zoom,zoom);
@@ -284,8 +284,8 @@ void turtle::drawTail()
  Tail = new QGraphicsPathItem();
  Tail->setPath(myPath);
  Tail->setBrush(QBrush(Qt::SolidPattern));
- Tail->scale(0.5,0.5);
- Tail->rotate(180);
+ Tail->setScale(0.5);
+ Tail->setRotation(180);
  Tail->setPos(curX,curY);
  scene->addItem(Tail);
  };

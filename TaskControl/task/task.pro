@@ -24,7 +24,7 @@ HEADERS += \
 	mainwindow.h \
 	interface.h \
 	editdialog.h \
-	newkursdialog.h
+        newkursdialog.h
 
 FORMS += \
 	mainwindow.ui \

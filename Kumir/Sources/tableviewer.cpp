@@ -1,3 +1,4 @@
+#include <QTableWidget>
 #include <QtCore>
 #include <QtGui>
 

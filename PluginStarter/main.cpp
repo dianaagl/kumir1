@@ -22,7 +22,6 @@
 #include <QApplication>
 #include <QtCore>
 #include <QtGui>
-
 #ifndef WIN32
 #include "unistd.h"
 #endif
@@ -59,9 +58,9 @@ int main(int argc, char *argv[])
 
 		}
 	};
-	QString modulesInfoPath = QApplication::applicationDirPath();
-	qDebug() << modulesInfoPath + '/' + "../Resources/libvodoley.dylib";
-	QString vodoleyLoad = modulesInfoPath + '/' + "../Frameworks/libvodoley.dylib";
+    QString modulesInfoPath = QApplication::applicationDirPath();
+    qDebug() << modulesInfoPath + '/' + "../Resources/libvodoley.dylib";
+    QString vodoleyLoad = modulesInfoPath + '/' + "../Frameworks/libvodoley.dylib";
 
 #ifdef WIN32
 	vodoleyLoad = modulesInfoPath + "/Addons/vodoley.dll";

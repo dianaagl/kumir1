@@ -33,16 +33,15 @@
 #include "config.h"
 #include "semaphorewidget.h"
 #include "int_proga.h"
+#include <QMessageBox>
 #include <QtCore>
 #include <QtGui>
-#include <QtScript>
-#include <QtWebKit>
 #include <iostream>
 #include "subprocess.h"
 //#include "multifilesavewizard.h"
 #include "kumsinglemodule.h"
 #include "kumrobot.h"
-
+#include <QCommandLineParser>
 #include "secondarywindow.h"
 
 #ifndef WIN32
@@ -390,7 +389,8 @@ void Application::createSettings()
         settings->setValue("Directories/IO", workDir);
     }
 
-    QString defaultPath = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
+    QString defaultPath = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
+            "/data/organization/application";
     if (!QDir(defaultPath).exists()) {
         QDir::root().mkpath(defaultPath);
     }
@@ -528,7 +528,7 @@ void Application::createSecondaryWindows()
 
 
     settingsDialog = new SettingsDialog(mainWindow, Qt::Dialog | Qt::WindowSystemMenuHint);
-    keywordsViewer = new QWebView;
+    keywordsViewer = new QWebEngineView();
     keywordsViewer->setMinimumSize(300, 300);
     keywordsViewer->setHtml(KumTools::instance()->getKeyWordsHTMLList());
     keywordsViewer->setWindowTitle(tr("Keywords"));
@@ -1361,7 +1361,7 @@ bool fromTCInterface::startNewTask(QStringList isps)
         };
     }
     app()->taskIsps=isps;
-    app()->mainWindow->setWindowTitle(app()->Task()->name+QString::fromUtf8(" - Кумир"));
+    app()->mainWindow->setWindowTitle(QString::fromUtf8(" - Кумир"));
     return true;
 };
 bool fromTCInterface::setPreProgram(QVariant param)
@@ -1371,11 +1371,11 @@ bool fromTCInterface::setPreProgram(QVariant param)
     if(program_file.right(4)==".kum")
     {
         app()->mainWindow->fileOpenInFirstTab(program_file);
-    app()->mainWindow->setWindowTitle(app()->Task()->name+QString::fromUtf8(" - Кумир"));}
+    app()->mainWindow->setWindowTitle(QString::fromUtf8(" - Кумир"));}
     else
     {
         app()->mainWindow->setCurrentEditorText(program_file);
-        app()->mainWindow->setWindowTitle(app()->Task()->name+QString::fromUtf8(" - Кумир"));
+        app()->mainWindow->setWindowTitle(QString::fromUtf8(" - Кумир"));
         if(!app()->isTeacherMode())app()->mainWindow->actionSave->setEnabled(false);
     }
     return true;

@@ -153,7 +153,7 @@ const QString cssPath = QApplication::applicationDirPath()+"/../Resources/assist
 #endif
 	QFile f(cssPath);
 	if (f.open(QIODevice::ReadOnly|QIODevice::Text)) {
-		QString style = QString::fromAscii(f.readAll());
+        QString style = QString(f.readAll()).toLatin1();
 		f.close();
 
 		QPalette p = palette();

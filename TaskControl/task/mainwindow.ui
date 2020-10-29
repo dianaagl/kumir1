@@ -49,14 +49,11 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QWebView" name="webView">
-       <property name="url">
+      <widget class="QWebEngineView" name="webView" native="true">
+       <property name="url" stdset="0">
         <url>
          <string>about:blank</string>
         </url>
-       </property>
-       <property name="renderHints">
-        <set>QPainter::Antialiasing|QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
        </property>
       </widget>
      </widget>
@@ -273,9 +270,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>QWebView</class>
+   <class>QWebEngineView</class>
    <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
+   <header>qwebengineview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

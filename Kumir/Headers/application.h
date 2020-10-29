@@ -126,7 +126,7 @@ public:
 		QWidget * assistantWindow;
 		QWidget * variablesWindow;
 		/** Ссылка на окно со списком ключевых слов */
-		class QWebView *keywordsViewer;
+        class QWebEngineView *keywordsViewer;
 		QWidget * keywordsWindow;
 		/** Ссылка на поток вывода для пакетного режима */
 		QFile *outFile;
@@ -294,6 +294,7 @@ public:
                 bool isExam;
 
 
+        QStringList args;
 };
 
 Application* app();

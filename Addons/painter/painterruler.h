@@ -1,6 +1,8 @@
 #ifndef PAINTERRULER_H
 #define PAINTERRULER_H
 
+#include <QScrollBar>
+#include <QWidget>
 #include <QtGui>
 
 class PainterRuler : public QWidget

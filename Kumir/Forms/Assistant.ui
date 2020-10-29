@@ -63,7 +63,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWebView" name="browser" native="true"/>
+      <widget class="QWebEngineView" name="browser" native="true"/>
      </widget>
     </item>
    </layout>
@@ -104,9 +104,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QWebView</class>
+   <class>QWebEngineView</class>
    <extends>QWidget</extends>
-   <header>qwebview.h</header>
+   <header>qwebengineview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

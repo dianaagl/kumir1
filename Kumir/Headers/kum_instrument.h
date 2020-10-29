@@ -30,6 +30,9 @@
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsScene>
+#include <QGraphicsPolygonItem>
+#include <QGraphicsLineItem>
+#include <QGraphicsSimpleTextItem>
 #include "robotwindow.h"
 
 #define LEFT_WALL 	0x1

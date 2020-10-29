@@ -1,5 +1,6 @@
 #include "painternewimagedialog.h"
 #include "ui_painternewimagedialog.h"
+#include <QColorDialog>
 #include <QtCore>
 #include <QtGui>
 

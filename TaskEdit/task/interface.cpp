@@ -33,4 +33,4 @@ void ControlInterface::checkFinished(int mark)
 	qDebug() << " ControlInterface::checkFinished calls duumy w.setMark(mark)";
 }
 
-Q_EXPORT_PLUGIN2(controlInterface, ControlInterface);
+//Q_EXPORT_PLUGIN2(controlInterface, ControlInterface);

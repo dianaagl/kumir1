@@ -189,4 +189,4 @@ emit sendText(text);
 };
 
 
-Q_EXPORT_PLUGIN2(turtleStarter, TurtleStarter)
+//Q_EXPORT_PLUGIN2(turtleStarter, TurtleStarter)

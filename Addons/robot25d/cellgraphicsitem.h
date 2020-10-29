@@ -1,6 +1,7 @@
 #ifndef CELLGRAPHICSITEM_H
 #define CELLGRAPHICSITEM_H
 
+#include <QGraphicsPolygonItem>
 #include <QtCore>
 #include <QtGui>
 

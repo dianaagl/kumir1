@@ -15,6 +15,10 @@
 //****************************************************************************/
 		//draw_isp.cpp
 		//begin 14-02-2008
+#include <QMenuBar>
+#include <QMessageBox>
+#include <QToolButton>
+#include <QPushButton>
 #include <QtCore>
 #include <QtGui>
 #include "kum_instrument.h"
@@ -911,12 +915,12 @@ void KumDraw::CreatePen(void)
 	mPen->setZValue(100);
 	mPen->setBrush(QBrush(QColor("black")));
 	scene->addItem(mPen);
-	mPen->scale(0.5,0.5);
-	mPen->scale(0.5,0.5);
-	mPen->scale(0.5,0.5);
-	mPen->scale(0.5,0.5);
-	mPen->scale(0.5,0.5);
-	mPen->scale(0.5,0.5);
+    mPen->setScale(0.5);
+    mPen->setScale(0.5);
+    mPen->setScale(0.5);
+    mPen->setScale(0.5);
+    mPen->setScale(0.5);
+    mPen->setScale(0.5);
 
 
 }
@@ -2474,7 +2478,7 @@ void KumDraw::drawText(const QString &Text, qreal Scale)
 	texts.append(m_text);
 	kumtexts.append(KText);
     QList<QGraphicsItem *> scene_items = scene->items();
-    scene_items.last()->scale(0.1,0.1);
+    scene_items.last()->setScale(0.1);
     //scene_items.last()->scale(0.1*Scale,0.1*Scale);
     scene_items.last()->setPos(x0,y0);
 

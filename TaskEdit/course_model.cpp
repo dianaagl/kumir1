@@ -648,7 +648,7 @@ QModelIndex CourseModel::parent(const QModelIndex &child) const
 	QDomNode child_n = nodeById(child.internalId(), root);
 	QDomNode par = child_n.parentNode();
 	if (par.toElement().attribute("id").toInt() == 0) {
-		return createIndex(0, 0, 0);
+        return createIndex(0, 0);
 	}
 
 	return createIndex(domRow(par), 0, idByNode(par));
@@ -734,7 +734,7 @@ Qt::ItemFlags CourseModel::flags(const QModelIndex &index) const
 QModelIndex CourseModel::createMyIndex(int row, int column, QModelIndex parent) const
 {
 	if (!parent.isValid()) {
-		return createIndex(0, 0, 0);
+        return createIndex(0, 0);
 	}
 
 	int id = parent.internalId();

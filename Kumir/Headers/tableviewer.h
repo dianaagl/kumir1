@@ -1,6 +1,7 @@
 #ifndef TABLEVIEWER_H
 #define TABLEVIEWER_H
 
+#include <QTabWidget>
 #include <QtCore>
 #include <QtGui>
 

@@ -7,8 +7,10 @@
 class CSInterface;
 class ControlInterface: public QObject, public taskControlInterface
 {
-	Q_OBJECT
-	Q_INTERFACES(taskControlInterface)
+	Q_OBJECT    
+    Q_PLUGIN_METADATA(IID "kumir.taskControlInterface/1.7.1")
+    Q_INTERFACES(taskControlInterface)
+
 
 public:
 	void start(QString csName);

@@ -1,6 +1,8 @@
 #ifndef PAINTERNEWIMAGEDIALOG_H
 #define PAINTERNEWIMAGEDIALOG_H
 
+#include <QDialog>
+#include <QListWidgetItem>
 #include <QtGui>
 
 namespace Ui {

@@ -294,4 +294,4 @@ void VodoleyStarter::setParameter(const QString &paramName, const QVariant &para
     return;
 };
 
-Q_EXPORT_PLUGIN2(VodoleyStarter, VodoleyStarter)
+//Q_EXPORT_PLUGIN2(VodoleyStarter, VodoleyStarter)

@@ -1,3 +1,4 @@
+#include <QVBoxLayout>
 #include <QtCore>
 #include <QtGui>
 #include "secondarywindow_mac.h"

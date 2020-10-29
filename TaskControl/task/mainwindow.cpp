@@ -1,17 +1,18 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include "interface.h"
 #include "../course_model.h"
 #include "../csInterface.h"
 #include "newkursdialog.h"
 #include "editdialog.h"
-#include <QMacStyle>
 
 #include <QDebug>
 #include <QLineEdit>
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QCloseEvent>
+
 
 MainWindowTask::MainWindowTask(QWidget *parent) :
 	QMainWindow(parent),
@@ -33,7 +34,7 @@ MainWindowTask::~MainWindowTask()
 
 void MainWindowTask::setup()
 {
-	ui->setupUi(this);
+    ui->setupUi(this);
 	ui->treeView->setContextMenuPolicy(Qt::CustomContextMenu);
 	ui->treeView->setIconSize(QSize(25, 25));
 	ui->treeView->setStyleSheet("icon-size: 25px;font-size: 14px;");

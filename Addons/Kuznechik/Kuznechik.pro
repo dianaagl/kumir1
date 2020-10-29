@@ -39,3 +39,6 @@ unix:dummy.extra = python ../../Scripts/install_addon.py --addon=kuznechik --spe
 macx:dummy.extra = python ../../Scripts/install_addon.py --addon=kuznechik --spec=macx --prefix=$$PREFIX --kumir-dir=$$KUMIR_DIR
 win32:dummy.extra = python ../../Scripts/install_addon.py --addon=kuznechik --spec=win32 --prefix=$$PREFIX --kumir-dir=$$KUMIR_DIR
 INSTALLS = dummy          
+
+DISTFILES += \
+    mymetadata.json

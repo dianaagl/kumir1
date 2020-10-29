@@ -3,7 +3,7 @@
 
 
 
-KumScene::KumScene(QWidget *parent)
+KumScene::KumScene(QObject *parent)
     : QGraphicsScene(parent)
 {
 };

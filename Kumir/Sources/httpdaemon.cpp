@@ -15,7 +15,7 @@
 #include "compiler.h"
 #include "kummodules.h"
 #include "kumsinglemodule.h"
-
+#include <QNetworkAccessManager>
 const quint16 HttpDaemon::defaultPort = 4243;
 
 HttpDaemon::HttpDaemon(quint16 port, QObject* parent) : QTcpServer(parent)
@@ -62,7 +62,7 @@ void HttpDaemon::resume()
 
 void HttpDaemon::readClient()
 {
-	if (disabled)
+/*	if (disabled)
 		return;
 
          // This slot is called when the client sent data to the server. The
@@ -85,7 +85,7 @@ void HttpDaemon::readClient()
 		if (!(dir.endsWith('\\') || dir.endsWith('/')))
 			dir += QDir::separator();
 		
-		QHttpRequestHeader header(headerString);
+        QHttpRequestHeader header(headerString);
 		if (header.method() == "GET") {
 			QFile htmlFile( dir + (header.path()=="/" ? "index.html" : header.path().mid(1)) );
 			//qDebug() << htmlFile.fileName();
@@ -238,6 +238,7 @@ void HttpDaemon::readClient()
 			delete socket;
 		}
 	}
+    */
 }
 
 void HttpDaemon::discardClient()

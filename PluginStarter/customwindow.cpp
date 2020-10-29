@@ -9,7 +9,7 @@
 #include <QPainter>
 #include <QPaintEvent>
 #include <math.h>
-
+#include <QDebug>
 
 // class CustomWindow
 

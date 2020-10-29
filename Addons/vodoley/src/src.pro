@@ -25,5 +25,9 @@ FORMS += pult.ui \
     dialog.ui
 TARGET = ../../vodoley
 win32:TARGET = ../../../vodoley
-macx:TARGET = ../../../kumir.app/Contents/Resources/Addons/vodoley
+#macx:TARGET = ../../../kumir.app/Contents/Resources/Addons/vodoley
+macx:TARGET = vodoley
 TEMPLATE = lib
+
+DISTFILES += \
+    mymetadata.json

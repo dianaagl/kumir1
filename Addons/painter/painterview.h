@@ -1,6 +1,7 @@
 #ifndef PAINTERVIEW_H
 #define PAINTERVIEW_H
 
+#include <QWidget>
 #include <QtGui>
 
 class PainterView : public QWidget

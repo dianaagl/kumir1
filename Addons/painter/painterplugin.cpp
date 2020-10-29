@@ -2,6 +2,8 @@
 #include "painterwindow.h"
 #include "paintertools.h"
 
+#include <QApplication>
+
 struct PainterPluginPrivate {
     PainterWindow * mainWidget;
     QWidget * view;
@@ -772,4 +774,4 @@ void PainterPluginPrivate::fill(int x, int y)
 }
 
 
-Q_EXPORT_PLUGIN2(painter, PainterPlugin)
+//Q_EXPORT_PLUGIN2(painter, PainterPlugin)

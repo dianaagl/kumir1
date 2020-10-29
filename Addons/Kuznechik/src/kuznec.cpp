@@ -185,7 +185,9 @@ KumKuznec::KumKuznec()
 {
 
 autoClose=false;
-curDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
+
+curDir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
+        "/data/organization/application";
 if (!QDir(curDir).exists()) {
     QDir::root().mkpath(curDir);
 }
@@ -328,8 +330,8 @@ Finish=1;
 	mFlag->setPolygon(polygonf);
 	mFlag->setZValue(100);
         mFlag->setBrush(QBrush(QColor(150,100,100)));
-	mFlag->rotate(180);	
-	mFlag->scale(0.5,0.5);
+    mFlag->setRotation(180);
+    mFlag->setScale(0.5);
 	mFlag->moveBy(0,0);
 	//scene->addItem(mFlag); UBRAN FLAG
 
@@ -1273,7 +1275,7 @@ void KumKuznec::DrawNet()
 		//qDebug()<<"Text ZoomUP";
 		Zoom=Zoom*1.5;
 		};
-	NetText.last()->scale(0.03*Zoom,0.03*Zoom);
+    NetText.last()->setScale(0.03*Zoom);
         NetText.last()->setZValue(1000);
 	
 	scene->addItem(NetText.last());
@@ -1996,7 +1998,7 @@ texts.append(m_text);
 kumtexts.append(KText);		
     QList<QGraphicsItem *> scene_items = scene->items();
 	
-scene_items.last()->scale(0.1*Scale,0.1*Scale);		
+scene_items.last()->setScale(0.1*Scale);
 scene_items.last()->setPos(x0,y0);
 
 CurZ += 0.01;
@@ -2308,7 +2310,7 @@ void KumKuznec::createFlags()
  KuznFlag* curFlag=new KuznFlag();
  curFlag->flagItem=new QGraphicsPolygonItem(mFlag->polygon());
  curFlag->f_pos=flags_pos[i];
- curFlag->flagItem->scale(BASEZOOM*2,BASEZOOM*2);
+ curFlag->flagItem->setScale(BASEZOOM*2);
  curFlag->flagItem->setZValue(99);
  curFlag->flagItem->setBrush(QBrush(QColor(150,100,100)));
  curFlag->flagItem->setPos(curFlag->f_pos*ZOOMMULTIP,-ZOOMMULTIP);

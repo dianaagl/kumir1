@@ -32,5 +32,3 @@ void ControlInterface::checkFinished(int mark)
 	qDebug() << "Get Mark" << mark;
 	w.setMark(mark);
 }
-
-Q_EXPORT_PLUGIN2(controlInterface, ControlInterface);

@@ -1,2 +1,3 @@
 TEMPLATE = subdirs
-SUBDIRS =  vodoley  Kuznechik TurtleNew painter robot25d
+SUBDIRS =  vodoley Kuznechik TurtleNew painter
+#robot25d

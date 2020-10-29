@@ -3,6 +3,8 @@
 #include "painternewimagedialog.h"
 #include "paintertools.h"
 
+#include <QFileDialog>
+
 PainterWindow::PainterWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::PainterWindow)
@@ -34,7 +36,7 @@ PainterWindow::PainterWindow(QWidget *parent) :
     QSettings s;
     restoreGeometry(s.value("Plugins/Painter/WindowGeometry").toByteArray());
     qreal initialZoom = 1.0;
-    QRect screenRect = qApp->desktop()->availableGeometry();
+    QRect screenRect = qApp->screens().at(0)->geometry();
     if (screenRect.height()<700)
         initialZoom = 0.5;
     initialZoom = s.value("Plugins/Painter/ViewZoom",initialZoom).toReal();

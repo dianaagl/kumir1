@@ -1,7 +1,10 @@
 #ifndef PAINTERWINDOW_H
 #define PAINTERWINDOW_H
 
+#include <QLabel>
+#include <QMainWindow>
 #include <QtGui>
+
 
 namespace Ui {
     class PainterWindow;

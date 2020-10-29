@@ -9,7 +9,7 @@ class KumScene: public QGraphicsScene
 {
     Q_OBJECT
 public:
-    KumScene(QWidget *parent = 0);
+    KumScene(QObject *parent = 0);
 
 public:
 signals:

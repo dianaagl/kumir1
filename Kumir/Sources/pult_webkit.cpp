@@ -1,15 +1,15 @@
 #include "pult_webkit.h"
 
 class PultWebPage:
-        public QWebPage
+        public QWebEnginePage
 {
 protected:
-    virtual void javaScriptAlert ( QWebFrame * frame, const QString & msg );
+    virtual void javaScriptAlert ( QWebEnginePage * frame, const QString & msg );
 };
 
-void PultWebPage::javaScriptAlert(QWebFrame *frame, const QString &msg)
+void PultWebPage::javaScriptAlert(QWebEnginePage *frame, const QString &msg)
 {
-    QWidget *p = frame->page()->view();
+    QWidget *p = frame->view();
     const QString t = frame->title();
     QMessageBox::information(p,
                              t,
@@ -17,17 +17,17 @@ void PultWebPage::javaScriptAlert(QWebFrame *frame, const QString &msg)
 }
 
 RobotPultWK::RobotPultWK(QWidget *parent)
-    : QWebView(parent)
+    : QWebEngineView(parent)
 {
     qDebug() << "RobotPultWK::RobotPultWK; Line = " << __LINE__;
     setPage(new PultWebPage);
     qDebug() << "RobotPultWK::RobotPultWK; Line = " << __LINE__;
     b_hasLink = true;
-    connect(page()->mainFrame(),
+    connect(page(),
             SIGNAL(javaScriptWindowObjectCleared()),
             this,
             SLOT(setJavaScriptObjects()));
-    connect(page()->mainFrame(),
+    connect(page(),
             SIGNAL(titleChanged(QString)),
             this,
             SLOT(setWindowTitle(QString)));
@@ -51,9 +51,9 @@ void RobotPultWK::setWindowSize(int w, int h)
 
 void RobotPultWK::setJavaScriptObjects()
 {
-    QWebSettings::globalSettings()->setAttribute(
-            QWebSettings::DeveloperExtrasEnabled, true);
-    page()->mainFrame()->addToJavaScriptWindowObject("pult", this);
+//    QWebEngineSettings::globalSettings()->setAttribute(
+//            QWebSettings::DeveloperExtrasEnabled, true);
+    this->addToJavaScriptWindowObject("pult", this);
 }
 
 void RobotPultWK::evaluateCommand(const QString &text)
@@ -116,9 +116,9 @@ void RobotPultWK::setHasLink(bool hasLink)
 {
     b_hasLink = hasLink;
     if (hasLink)
-        page()->currentFrame()->evaluateJavaScript("onSetLink(true)");
+        page()->runJavaScript("onSetLink(true)");
     else
-        page()->currentFrame()->evaluateJavaScript("onSetLink(false)");
+        page()->runJavaScript("onSetLink(false)");
 }
 
 void RobotPultWK::copyToClipboard(const QString &data)
@@ -136,5 +136,5 @@ void RobotPultWK::setCommandResult(const QString &text)
             .arg(s_lastCommand)
             .arg(text);
 
-    page()->currentFrame()->evaluateJavaScript(instruction);
+    page()->runJavaScript(instruction);
 }
