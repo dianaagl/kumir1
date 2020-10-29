@@ -42,8 +42,12 @@
 #include "kumrobot.h"
 #include "kumdraw.h"
 
+#include <QMessageBox>
+#include <QPrintDialog>
 #include <QtCore>
 #include <QtGui>
+#include <QDesktopWidget>
+#include <QKeySequence>
 
 
 void disableTearOff(QWidget *node);
@@ -363,10 +367,10 @@ void MainWindow::createStatusBar()
 	btnClearOutput->setAutoRaise(true);
 	btnClearOutput->setObjectName(QString::fromUtf8("btnClearOutput"));
 	btnClearOutput->setIcon(QIcon(QString::fromUtf8(":/icons/output-close.png")));
-	btnSaveOutput->setToolTip(QApplication::translate("MainWindow", "Save output", 0, QApplication::UnicodeUTF8));
-	btnSaveOutput->setText(QApplication::translate("MainWindow", "Save output", 0, QApplication::UnicodeUTF8));
-	btnClearOutput->setToolTip(QApplication::translate("MainWindow", "Clear output", 0, QApplication::UnicodeUTF8));
-	btnClearOutput->setText(QApplication::translate("MainWindow", "Clear output", 0, QApplication::UnicodeUTF8));
+    btnSaveOutput->setToolTip(QApplication::translate("MainWindow", "Save output", 0));
+    btnSaveOutput->setText(QApplication::translate("MainWindow", "Save output", 0));
+    btnClearOutput->setToolTip(QApplication::translate("MainWindow", "Clear output", 0));
+    btnClearOutput->setText(QApplication::translate("MainWindow", "Clear output", 0));
 	btnClearOutput->setIconSize(QSize(16,16));
 	outputBtnsFrame->layout()->addWidget(btnClearOutput);
 	outputBtnsFrame->layout()->setContentsMargins(8,0,8,0);
@@ -1009,7 +1013,10 @@ bool MainWindow::fileSaveAs()
 	// app()->addEventToHistory("MainWindow::fileSaveAs()");
 	qDebug()<<splitter_2->sizes()<<tabWidget->height()+textEdit3->height();
 	
-	QDir lastDir = QDir(app()->settings->value("History/KumDir",QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation)).toString());
+    QDir lastDir = QDir(app()->settings->value("History/KumDir",
+                                               QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
+                                                   "/data/organization/application"
+                                               ).toString());
 	if (!lastDir.exists())
 	{
 		lastDir=QDir::current();
@@ -1243,7 +1250,8 @@ QString MainWindow::getFileNameAndEncoding()
 	bool encodingVisible = false;
 	QString typ = tr("Kumir programs (*.kum)");
 	QString enc("UTF-16LE");
-	QString defaultDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
+    QString defaultDir =QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
+            "/data/organization/application";
 	QDir lastDir = QDir(app()->settings->value("History/KumDir",defaultDir).toString());
 	QString lastDirPath = lastDir.absolutePath().replace("/",QDir::separator())+QDir::separator();
 	if (app()->settings->value("UI/LegacyFileDialog",false).toBool()) {
@@ -1406,7 +1414,8 @@ TextWindow* MainWindow::fileNewText()
 	}
 #endif
         textEditor.replace("$KUMIR_DIR", QApplication::applicationDirPath());
-	QProcess::startDetached(textEditor, QStringList(), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation));
+    QProcess::startDetached(textEditor, QStringList(), QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) +
+                            "/data/organization/application");
 	return NULL;
 }
 
@@ -3135,8 +3144,8 @@ void MainWindow::removeModulesFromTable()
 void MainWindow::arrangeHorizontally()
 {
 	//int descW=qApp->desktop()->size().width();
-	//int descH=qApp->desktop()->size().height();
-	int descW=qApp->desktop()->availableGeometry().width();
+    //int descH=qApp->desktop()->size().height();
+    int descW=qApp->desktop()->availableGeometry().width();
 	int descH=qApp->desktop()->availableGeometry().height();
 	bool flagDraw = false, flagRobot = false;
 	
@@ -3421,7 +3430,7 @@ bool MainWindow::event(QEvent *event)
 
 	if(event->type()==QEvent::User)
 	{KNPEvent* MEvent = dynamic_cast<KNPEvent*>(event);
-		QMetaObject::invokeMethod(this, MEvent->str().toAscii().constData(),
+        QMetaObject::invokeMethod(this, MEvent->str().toLatin1().constData(),
 								  Qt::QueuedConnection);
 		qDebug()<<"OK SUPER";
 	};
@@ -3595,7 +3604,7 @@ void MainWindow::createFriendMenu()
 				flagAlreadyExist = false;
 				foreach(Macro* mm, app()->standardMacros)
 				{
-					if (mm->keySequence()==QKeySequence(Qt::Key_Escape, mas[c]))
+                    if (QKeySequence(mm->keySequence()) == QKeySequence(Qt::Key_Escape, mas[c]))
 						flagAlreadyExist = true;
 				}
 				if (flagAlreadyExist)
@@ -3603,7 +3612,7 @@ void MainWindow::createFriendMenu()
 			} while (flagAlreadyExist);
 			if (c<9)
 			{
-				m->setKeySequence(QKeySequence(Qt::Key_Escape, mas[c]));
+                m->setKeySequence(QKeySequence(Qt::Key_Escape, mas[c]).toString());
 				++c;
 			}
 

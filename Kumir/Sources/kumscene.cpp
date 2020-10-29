@@ -1,8 +1,10 @@
 #include "kumscene.h"
 
 
+
+
 KumScene::KumScene(QWidget *parent)
-	: QGraphicsScene(parent)
+    : QGraphicsScene(parent)
 {
 };
 

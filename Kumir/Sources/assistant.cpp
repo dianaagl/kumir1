@@ -16,7 +16,7 @@
 
 #include "assistant.h"
 #include <QtGui>
-#include <QtWebKit>
+#include <QtWebEngineWidgets/QtWebEngineWidgets>
 #include "application.h"
 #include "int_proga.h"
 #include "kummodules.h"

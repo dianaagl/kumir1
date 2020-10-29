@@ -1,6 +1,7 @@
 #ifndef SECONDARYWINDOW_MAC_H
 #define SECONDARYWINDOW_MAC_H
 
+#include <QWidget>
 #include <QtCore>
 #include <QtGui>
 

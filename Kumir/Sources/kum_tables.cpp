@@ -93,7 +93,7 @@ QList <QList<QVariant> > extract2DArray(const QString &data) {
         row.clear();
         QStringList elems = rows[j].split(".");
         for (int i=0; i<elems.count(); i++ ) {
-            QByteArray ba = QByteArray::fromBase64(elems[i].toAscii());
+            QByteArray ba = QByteArray::fromBase64(elems[i].toLatin1());
             row << QVariant(QString::fromUtf8(ba));
         }
         result << row;
@@ -113,7 +113,7 @@ QList< QList <QList<QVariant> > > extract3DArray(const QString &data) {
             row.clear();
             QStringList elems = rows[j].split(".");
             for (int i=0; i<elems.count(); i++ ) {
-                QByteArray ba = QByteArray::fromBase64(elems[i].toAscii());
+                QByteArray ba = QByteArray::fromBase64(elems[i].toLatin1());
                 row << QVariant(QString::fromUtf8(ba));
             }
             page << row;
@@ -127,7 +127,7 @@ QList<QVariant> extract1DArray(const QString &data) {
     QList<QVariant> result;
     QStringList elems = data.split(".");
     for (int i=0; i<elems.count(); i++ ) {
-        QByteArray ba = QByteArray::fromBase64(elems[i].toAscii());
+        QByteArray ba = QByteArray::fromBase64(elems[i].toLatin1());
         result << QVariant(QString::fromUtf8(ba));
     }
     return result;

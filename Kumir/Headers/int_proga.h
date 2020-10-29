@@ -25,7 +25,7 @@
 #include "kum_instrument.h"
 #include <QtCore>
 #include <QtGui>
-
+#include <QTextEdit>
 
 #define MAX_ISP 64
 

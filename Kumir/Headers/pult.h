@@ -13,6 +13,8 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 **
 ****************************************************************************/
+#include <QFrame>
+#include <QLabel>
 #include <QWidget>
 
 #include "ui_pult.h"

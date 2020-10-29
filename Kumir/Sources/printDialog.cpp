@@ -14,6 +14,8 @@
 #include "application.h"
 #include "kumrobot.h"
 
+#include <QMessageBox>
+
 PrintPreview::PrintPreview ( QWidget* parent, Qt::WindowFlags  )
 		: QWidget(parent)
 {

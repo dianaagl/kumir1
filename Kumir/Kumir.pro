@@ -162,7 +162,8 @@ QT += xml \
     svg \
     network\
     webenginewidgets \
-    widgets
+    widgets \
+    qml
 RESOURCES += Resources/MainWindow.qrc
 TARGET = kumir
 win32: TARGET = kumir

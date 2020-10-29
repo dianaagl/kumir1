@@ -1,6 +1,7 @@
 #ifndef KUMSCENE_H
 #define KUMSCENE_H
-
+#include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include <QtCore>
 #include <QtGui>
 

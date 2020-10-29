@@ -3,6 +3,9 @@
 
 #include "kum_instrument.h"
 
+#include <QGraphicsObject>
+#include <QMainWindow>
+
 
 class SimpleRobot:
         public QGraphicsObject

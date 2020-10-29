@@ -20,6 +20,9 @@
 #include "kumsinglemodule.h"
 #include "kumrobot.h"
 
+#include <QFileDialog>
+#include <QMessageBox>
+
 editField::editField ( QWidget* parent, Qt::WindowFlags fl )
 	: QMainWindow ( parent, fl ), Ui::editField()
 {
@@ -361,7 +364,7 @@ void editField::SaveAsStart()
 
     //QString	RobotFile=dialog.selectedFiles().first();
 
-    QString	RobotFile=QFileDialog::getSaveFileName(this, QString::fromUtf8 ("Сохранить файл"), CurrentFileName, "(*.fil)");
+    QString	RobotFile= QFileDialog::getSaveFileName(this, QString::fromUtf8 ("Сохранить файл"), CurrentFileName, "(*.fil)");
 
 
     //QString	RobotFile=dialog.selectedFiles().first();

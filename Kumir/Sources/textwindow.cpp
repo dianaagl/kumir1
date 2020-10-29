@@ -15,6 +15,8 @@
 #include "kumfiledialog.h"
 #include "application.h"
 
+#include <QMessageBox>
+
 QString TextWindow::fakeLabel()
 {
 	return tr("New text");

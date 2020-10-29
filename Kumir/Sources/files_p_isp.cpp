@@ -115,7 +115,7 @@ int PTFile::OpenByteFile(QString fileName,bool Write)
     return 0;
 };
 void  PTFile::setTextCodec(QString codecName){
-    codec= QTextCodec::codecForName(codecName.toAscii());};
+    codec= QTextCodec::codecForName(codecName.toLatin1());};
 void PTFile::CloseFile()
 {
     if(!ready){

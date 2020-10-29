@@ -1,6 +1,7 @@
 #ifndef LATINHIGHLIGHTER_H
 #define LATINHIGHLIGHTER_H
 
+#include <QTextEdit>
 #include <QtCore>
 #include <QtGui>
 

@@ -20,6 +20,7 @@
 #include "ui_editField.h"
 #include "kum_instrument.h" 
 
+#include <QPushButton>
 #include <QtCore>
 #include <QtGui>
 
