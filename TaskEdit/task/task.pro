@@ -14,7 +14,6 @@ SOURCES += main.cpp \
 
 HEADERS += \
 	../course_model.h \
-	../course_changes.h \
 	../csInterface.h \
 	../taskControlInterface.h \
 	mainwindow.h \
