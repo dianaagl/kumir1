@@ -30,4 +30,5 @@ macx:TARGET = vodoley
 TEMPLATE = lib
 
 DISTFILES += \
+    mymetadata.json \
     mymetadata.json

@@ -291,13 +291,15 @@ void Application::createSettings()
     connectIspPort=-1;
     QString settingsPath;
     QString workDir;
+    QStringList argv = qApp->arguments();
+    int argc = argv.size();
 
-    for (int i=0; i<qApp->argc(); i++ ) {
-        QString param(qApp->argv()[i]);
+    for (int i=0; i< argc; i++ ) {
+        QString param(argv[i]);
         if ( param.startsWith("-c") ) {
-            QString ispPort = QString(qApp->argv()[i]);
-            if (i+1 < qApp->argc()){
-                ispPort = QString(qApp->argv()[i+1]);
+            QString ispPort = QString(argv[i]);
+            if (i+1 < argc){
+                ispPort = QString(argv[i+1]);
 
             };
             connectIspPort=ispPort.toInt();
@@ -321,9 +323,9 @@ void Application::createSettings()
         if (param=="-i")
         {
             ispMode=true;
-            if (i+1 < qApp->argc())
+            if (i+1 < argc)
             {
-                port = QString(qApp->argv()[i+1]).toInt();
+                port = QString(argv[i+1]).toInt();
             }
         };
     }
@@ -539,15 +541,16 @@ void Application::createSecondaryWindows()
 
 void Application::finishGUIInitialization()
 {
-
+    QStringList argv = qApp->arguments();
+    int argc = argv.size();
     runDelayTimer = new QTimer(this);
     runDelayTimer->setSingleShot(true);
     runDelayTimer->setInterval(1000);
     QString fileName;
     QString currentArg;
-    for ( int i=1; i<qApp->argc(); i++ )
+    for ( int i=1; i<argc; i++ )
     {
-        currentArg = QString::fromLocal8Bit(qApp->argv()[i]);
+        currentArg = argv[i];
         if (
                 (currentArg.startsWith("\"") && currentArg.endsWith("\"")) ||
                 (currentArg.startsWith("'") && currentArg.endsWith("'")) )
@@ -582,9 +585,9 @@ void Application::finishGUIInitialization()
         if (!fileName.isEmpty() && QFile::exists(fileName))
         {
             mainWindow->fileOpenInCurrentTab(fileName);
-            for (int i=1; i<qApp->argc(); i++ )
+            for (int i=1; i<argc; i++ )
             {
-                if (QString(qApp->argv()[i]).toLower()=="-x" || QString(qApp->argv()[i]).toLower()=="--execute")
+                if (QString(argv[i]).toLower()=="-x" || QString(argv[i]).toLower()=="--execute")
                 {
                     connect (runDelayTimer, SIGNAL(timeout()), mainWindow, SLOT(StartRun()));
                     runDelayTimer->start();
@@ -603,6 +606,8 @@ void Application::finishGUIInitialization()
 
 void Application::prepareBatch()
 {
+    QStringList argv = qApp->arguments();
+    int argc = argv.size();
     outFile = NULL;
     marginFile = NULL;
     batchTimeout = new QTimer(this);
@@ -620,18 +625,18 @@ void Application::prepareBatch()
     QString outFile_margin;
     QString outFile_output;
     QString outFile_marginRun;
-    for ( int i=0; i<qApp->argc(); i++ )
+    for ( int i=0; i<argc; i++ )
     {
-        if ( QString(qApp->argv()[i]).startsWith("-k") )
+        if ( QString(argv[i]).startsWith("-k") )
         {
-            kumFile = QString(qApp->argv()[i]);
+            kumFile = QString(argv[i]);
             kumFile.remove(0,2);
             mainWindow->fileOpenInFirstTab(kumFile);
             qDebug()<<"Batch file = "<<kumFile;
         }
-        if ( QString(qApp->argv()[i]).startsWith("-o") )
+        if ( QString(argv[i]).startsWith("-o") )
         {
-            QString files = qApp->argv()[i];
+            QString files = argv[i];
             files.remove(0,2);
             QStringList filesList = files.split(",");
             if ( filesList.count() > 0 )

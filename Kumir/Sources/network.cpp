@@ -21,6 +21,8 @@
 #include "mainwindow.h"
 #include "programtab.h"
 #include "kumsinglemodule.h"
+
+#include <QMessageBox>
 KNPCommand KNPParcer::ParceCommand(QString command)
 {
  KNPCommand toret;

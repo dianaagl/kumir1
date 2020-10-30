@@ -17,7 +17,9 @@
 #ifndef PUSHDOWNAUTOMATA_H
 #define PUSHDOWNAUTOMATA_H
 
-#include <QJSEngine>
+#include <QScriptEngine>
+#include <QScriptValue>
+#include <QScriptable>
 #include <QtCore>
 #include "kum_tables.h"
 #include "ui_PDDebugWindow.h"
@@ -32,8 +34,8 @@ class Script
 {
 	public:
 		inline Script(const QString &value, QObject *parent) : QObject(parent) { m_value = value; }
-		inline bool process(QJSEngine *engine, QString &result) { 
-            QJSValue value = engine->evaluate(m_value);
+		inline bool process(QScriptEngine *engine, QString &result) { 
+			QScriptValue value = engine->evaluate(m_value);
 			result = value.toString();
 			return !value.isError();
 		}
@@ -71,7 +73,7 @@ struct PDStackElem {
 };
 
 class AutomataData 
-    : public QObject
+	: public QObject, protected QScriptable
 {
 	Q_OBJECT
 	Q_PROPERTY ( int currentPosition READ currentPosition SCRIPTABLE true )
@@ -83,7 +85,7 @@ class AutomataData
 		 * Конструктор
 		 * @param parent ссылка на объект-хозяин
 		 */
-        inline AutomataData(QObject *parent) : QObject(parent) { }
+		inline AutomataData(QObject *parent) : QObject(parent), QScriptable() { }
 		/**
 		 * Выполняет инициализацию (сброс до начального состояния)
 		 * @param source исходный список ProgaText
@@ -216,7 +218,7 @@ class PushdownAutomata : public AutomataData
 		
 		Matrix m_matrix;
 		QStack< PDStackElem > m_stack;
-        QJSEngine m_scriptEngine;
+		QScriptEngine m_scriptEngine;
 		QVector< QPointer<Script> > m_scripts;
 		QVector< QPointer<Script> > m_fixedScripts;
 		QVector<int> m_nextPointers;

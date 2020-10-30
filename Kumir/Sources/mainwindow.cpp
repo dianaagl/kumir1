@@ -3657,20 +3657,26 @@ uint  MainWindow::checkModulesTask()
     int mark=10;
    int count_i=app()->Task()->isps.count();
 
-    for(int i=0;i<count_i;i++)
-    {
-        QString ispName=app()->TaskControl()->Isp(i);
-        int id=app()->compiler->modules()->idByName(ispName);//Получаем id модуля
-        if(id<0)continue;
-        if(!app()->compiler->modules()->module(id)->isFriend())continue;
-        qDebug()<<"Start script";
-        int c_mark=app()->compiler->modules()->module(id)->
-                     Plugin()->check(app()->Task()->Scripts[i]);
-        qDebug()<<"app()->Task()->Scripts[i]"<<app()->Task()->Scripts[i];
-        if(c_mark<mark)mark=c_mark;
-    }
-    return mark;
+   for (int i = 0; i < count_i; i++) {
+       QString ispName = app()->TaskControl()->Isp(i);
+       int id = app()->compiler->modules()->idByName(ispName); //Получаем id модуля
+       if (id < 0) {
+           continue;
+       }
+       if (!app()->compiler->modules()->module(id)->isFriend()) {
+           continue;
+       }
+       qDebug() << "Start script";
+//       int c_mark = app()->compiler->modules()->module(id)->
+//           Plugin()->check(app()->Task()->scripts[i]);
+//       qDebug() << "app()->Task()->scripts[i]" << app()->Task()->scripts[i];
+//       if (c_mark < mark) {
+//           mark = c_mark;
+//       }
+   }
+   return mark;
 }
+
  void MainWindow::startTC()
  {
      for(int i=0; i<tabWidget->count(); ++i)

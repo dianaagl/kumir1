@@ -840,6 +840,8 @@ QString SyntaxHighlighter::highlightBlockAsHtml(const QString & text, LineProp *
 void SyntaxHighlighter::highlightBlock(const QString & text)
 {
 	LineProp *lp = static_cast<LineProp*>(currentBlockUserData());
+    if(text.isEmpty())
+        return;
 	QByteArray format = generateFormatString(text, lp);
 	QList<Block> formats = splitFormatString(format);
 	foreach (const Block &b, formats) {

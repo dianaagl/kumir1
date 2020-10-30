@@ -24,6 +24,7 @@
 //#include "strtypes.h"
 #include "kum_tables.h"
 #include <QtCore>
+#include <QtScript>
 #include "error.h"
 
 #define CRITICAL_PERFORMANCE_PROGRAM_SIZE 20

@@ -20,3 +20,6 @@ TEMPLATE = lib
 TARGET = ../../../turtle
 win32:TARGET = ../../../../turtle
 macx:TARGET = ../../../../kumir.app/Contents/Resources/Addons/turtle
+
+DISTFILES += \
+    mymetadata.json

@@ -53,7 +53,7 @@ void RobotPultWK::setJavaScriptObjects()
 {
 //    QWebEngineSettings::globalSettings()->setAttribute(
 //            QWebSettings::DeveloperExtrasEnabled, true);
-    this->addToJavaScriptWindowObject("pult", this);
+//    this->addToJavaScriptWindowObject("pult", this);
 }
 
 void RobotPultWK::evaluateCommand(const QString &text)

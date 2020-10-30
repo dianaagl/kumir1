@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
-SUBDIRS =  vodoley Kuznechik TurtleNew painter
-#robot25d
+SUBDIRS =  vodoley TurtleNew
+#robot25d Kuznechik  painter

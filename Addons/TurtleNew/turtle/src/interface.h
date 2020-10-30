@@ -23,6 +23,7 @@ class TurtleStarter:public QObject, public kumirPluginInterface
 {
  Q_OBJECT 
  Q_INTERFACES(kumirPluginInterface)
+ Q_PLUGIN_METADATA(IID "kumir.pluginInterface/turtle" FILE "mymetadata.json")
 public:	 
          void start(); //Запуск исполнителя
          QList<Alg> algList(); //Список алгоритмов исполнителя
